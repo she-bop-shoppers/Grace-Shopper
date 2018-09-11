@@ -1,5 +1,4 @@
 const router = require('express').Router()
-
 const {Book, Author} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
