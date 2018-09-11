@@ -26,4 +26,13 @@ imageUrl: {
   defaultValue:"https://images-na.ssl-images-amazon.com/images/I/51puATl2zfL._SL500_.jpg"
 }
 })
+
+Book.findByGenre = genre => {
+  return Book.findAll({
+    where: {
+      genre
+    }
+  })
+}
+
 module.exports = Book
