@@ -4,7 +4,7 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const GET_BOOK = 'GET_BOOK'
+const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
 /**
@@ -18,21 +18,34 @@ const initState = {
 /**
  * ACTION CREATORS
  */
-const getBook = user => ({type: GET_BOOK, user})
+const getSingleBook = id => ({type: GET_BOOK, payload: id})
 const removeBook = () => ({type: REMOVE_BOOK})
 
 /**
  * THUNK CREATORS
  */
 
+export const fetchSingleBook = id => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get('/api/books/' + id)
+      const action = getSingleBook(data)
+      dispatch(action)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 /**
  * REDUCER
  */
 export default function(state = initState, action) {
   switch (action.type) {
-    case GET_BOOK:
-      return action.book
+    case GET_SINGLE_BOOK:
+      return {
+        singleBook: action.payload
+      }
     case REMOVE_BOOK:
       return action.book
     default:

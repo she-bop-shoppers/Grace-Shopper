@@ -2,21 +2,22 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Author = db.define('author', {
-  firstName:{
+  firstName: {
     type: Sequelize.STRING,
-    allowNull:false
+    allowNull: false
   },
-  lastName:{
+  lastName: {
     type: Sequelize.STRING,
-    allowNull:false
+    allowNull: false
   },
-  bio:{
-    type:Sequelize.TEXT,
+  bio: {
+    type: Sequelize.TEXT
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue:"http://www.harrypotterrealm.com/images/author/jkrowling05.jpg"
+    defaultValue:
+      'http://www.harrypotterrealm.com/images/author/jkrowling05.jpg'
   }
-});
+})
 module.exports = Author
 //

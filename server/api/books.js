@@ -1,4 +1,3 @@
-const router = require('express').Router()
 
 const {Book, Author} = require('../db/models')
 
@@ -38,3 +37,4 @@ router.get('/:id', async (req, res, next) => {
 })
 
 module.exports = router
+
