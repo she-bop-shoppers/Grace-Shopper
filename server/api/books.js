@@ -1,12 +1,12 @@
 const router = require('express').Router()
 
-router.get('/:id', async (req,res,next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.params.id
     const book = await findById(id)
-    res.send(book);
+    res.send(book)
   } catch (error) {
-    next(error);
+    next(error)
   }
 })
 
