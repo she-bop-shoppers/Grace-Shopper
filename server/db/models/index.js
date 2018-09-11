@@ -21,7 +21,6 @@ User.hasMany(Review)
 Book.belongsTo(Author)
 Author.hasMany(Book)
 
-
 module.exports = {
   User,
   Book,
