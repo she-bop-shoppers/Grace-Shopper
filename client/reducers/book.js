@@ -1,10 +1,15 @@
 import axios from 'axios'
 import history from '../history'
+import {CardActions} from '@material-ui/core'
 
 /**
  * ACTION TYPES
  */
+
+const GET_BOOKS_BY_QUERY = 'GET_BOOKS_BY_QUERY'
+
 const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
+
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
 /**
@@ -12,18 +17,34 @@ const REMOVE_BOOK = 'REMOVE_BOOK'
  */
 const initState = {
   allBooks: [],
-  singleBook: {}
+  singleBook: {},
+  booksMatchingQuery: []
 }
 
 /**
  * ACTION CREATORS
  */
+
+const getBooksByQuery = books => ({type: GET_BOOKS_BY_QUERY, books})
+
 const getSingleBook = id => ({type: GET_BOOK, payload: id})
+
 const removeBook = () => ({type: REMOVE_BOOK})
 
 /**
  * THUNK CREATORS
  */
+
+export const getQueriedBooks = queryDetails => async dispatch => {
+  try {
+    const {data} = await axios.get(
+      `/api/books?${queryDetails.queryType}=${queryDetails.queryValue}`
+    )
+    dispatch(getBooksByQuery(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export const fetchSingleBook = id => {
   return async dispatch => {
@@ -48,6 +69,8 @@ export default function(state = initState, action) {
       }
     case REMOVE_BOOK:
       return action.book
+    case GET_BOOKS_BY_QUERY:
+      return {...state, booksMatchingQuery: action.books}
     default:
       return state
   }
