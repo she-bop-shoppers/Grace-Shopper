@@ -25,7 +25,7 @@ const removeBook = () => ({type: REMOVE_BOOK})
  * THUNK CREATORS
  */
 
-export const fetchSingleMessage = id => {
+export const fetchSingleBook = id => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/books/' + id)
