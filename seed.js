@@ -165,6 +165,91 @@ const books = [{
   description: 'An astonishing technique for recovering and cloning dinosaur DNA has been discovered. Now humankind’s most thrilling fantasies have come true. Creatures extinct for eons roam Jurassic Park with their awesome presence and profound mystery, and all the world can visit them—for a price.',
   imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51Sh8gB0bfL._SY346_.jpg',
   authorId: 6
+}];
+
+const authors = [{
+  firstName: 'J.K.',
+  lastName: 'Rowling',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/J._K._Rowling_2010.jpg/220px-J._K._Rowling_2010.jpg',
+  bio: 'Writing under the pen names J. K. Rowling and Robert Galbraith, is a British novelist, philanthropist, film and television producer and screenwriter best known for writing the Harry Potter fantasy series. The books have won multiple awards, and sold more than 500 million copies,[2] becoming the best-selling book series in history.[3] They have also been the basis for a film series, over which Rowling had overall approval on the scripts[4] and was a producer on the final films in the series.'
+},
+{
+  firstName: 'Margaret',
+  lastName: 'Atwood',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Margaret_Atwood_2015.jpg/220px-Margaret_Atwood_2015.jpg',
+  bio: 'Margaret Atwood is a Canadian poet, novelist, literary critic, essayist, inventor, teacher and environmental activist. She has published seventeen books of poetry, sixteen novels, ten books of non-fiction, eight collections of short fiction, eight children\'s books, and one graphic novel, as well as a number of small press editions in poetry and fiction. Atwood and her writing have won numerous awards and honors including the Man Booker Prize, Arthur C. Clarke Award, Governor General\'s Award, and the National Book Critics and PEN Center USA Lifetime Achievement Awards. Atwood is also the inventor and developer of the LongPen and associated technologies that facilitate the remote robotic writing of documents.'
+},
+{
+  firstName: 'Dan',
+  lastName: 'Brown',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dan_Brown_November_2015.jpg/220px-Dan_Brown_November_2015.jpg',
+  bio: 'Dan Brown is an American author of thriller novels, most notably the Robert Langdon stories: Angels & Demons (2000), The Da Vinci Code (2003), The Lost Symbol (2009), Inferno (2013) and Origin (2017). His novels are treasure hunts set in a 24-hour period,[2] and feature the recurring themes of cryptography, keys, symbols, codes, art, and conspiracy theories. His books have been translated into 56 languages, and as of 2012, sold over 200 million copies. Three of them, Angels & Demons (2000), The Da Vinci Code (2003) and Inferno (2013) have been adapted into films.'
+},
+{
+  firstName: 'George',
+  lastName: 'R.R. Martin',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Portrait_photoshoot_at_Worldcon_75%2C_Helsinki%2C_before_the_Hugo_Awards_%E2%80%93_George_R._R._Martin.jpg/220px-Portrait_photoshoot_at_Worldcon_75%2C_Helsinki%2C_before_the_Hugo_Awards_%E2%80%93_George_R._R._Martin.jpg',
+  bio: 'George R.R. Martin is an American novelist and short-story writer in the fantasy, horror, and science fiction genres, screenwriter, and television producer. He is best known for his series of epic fantasy novels, A Song of Ice and Fire, which was later adapted into the HBO series Game of Thrones (2011–present). In 2005, Lev Grossman of Time called Martin "the American Tolkien",[4] and in 2011, he was included on the annual Time 100 list of the most influential people in the world.'
+},
+{
+  firstName: 'Gillian',
+  lastName: 'Flynn',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Gillian_Flynn_2014_%28cropped%29.jpg/210px-Gillian_Flynn_2014_%28cropped%29.jpg',
+  bio: 'Gillian Flynn is an American writer. Flynn has published three novels, Sharp Objects, Dark Places, and Gone Girl,[5] all three of which have been adapted for film or television. Flynn wrote the adaptations for the 2014 Gone Girl film and the HBO limited series Sharp Objects. She was formerly a television critic for Entertainment Weekly.'
+},
+{
+  firstName: 'Catherine',
+  lastName: 'Steadman',
+  imageUrl: 'https://images.gr-assets.com/authors/1507661828p5/16847770.jpg',
+  bio: 'Catherine Steadman is an actress and writer based in North London. She is known for her roles in Downton Abbey and Tutankhamun, starring alongside Sam Neill, as well as shows including Breathless, The Inbetweeners, The Tudors, and Fresh Meat. In 2017 she will feature in political thriller Fearless and new BBC comedy Bucket. She also has appeared on stage in the West End including Oppenheimer for the RSC, for which she was nominated for a 2016 Laurence Olivier Award. Something in the Water is her first novel.'
+},
+{
+  firstName: 'J.R.R.',
+  lastName: 'Tokien',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Tolkien_1916.jpg/220px-Tolkien_1916.jpg',
+  bio: 'J.R.R. Tolkien was an English writer, poet, philologist, and university professor who is best known as the author of the classic high fantasy works The Hobbit, The Lord of the Rings, and The Silmarillion. He served as the Rawlinson and Bosworth Professor of Anglo-Saxon and Fellow of Pembroke College, Oxford, from 1925 to 1945 and Merton Professor of English Language and Literature and Fellow of Merton College, Oxford, from 1945 to 1959.[1] He was at one time a close friend of C. S. Lewis—they were both members of the informal literary discussion group known as the Inklings. Tolkien was appointed a Commander of the Order of the British Empire by Queen Elizabeth II on 28 March 1972.'
+},
+{
+  firstName: 'Kevin',
+  lastName: 'Kwan',
+  imageUrl: 'https://s1.r29static.com//bin/entry/ecd/340x408,80/2001827/image.jpg',
+  bio: 'Kevin Kwan is a Singaporean–American novelist best known for his satirical novels Crazy Rich Asians, China Rich Girlfriend and Rich People Problems. In 2014, Kwan was named as one of the "Five Writers to Watch" on the list of Hollywood\'s Most Powerful Authors published by The Hollywood Reporter.[2] In 2018, Kwan made Time magazine\'s list of 100 most influential people[3] and was inducted into The Asian Hall of Fame, a project of the Robert Chinn Foundation established in 2004.'
+},
+{
+  firstName: 'John',
+  lastName: 'Green',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/John_Green_by_Gage_Skidmore.jpg/220px-John_Green_by_Gage_Skidmore.jpg',
+  bio: 'John Green is an American author, vlogger, writer, producer, actor, editor, and educator. He won the 2006 Printz Award for his debut novel, Looking for Alaska,[2] and his sixth novel, The Fault in Our Stars, debuted at number one on The New York Times Best Seller list in January 2012.[3] The 2014 film adaptation opened at number one at the box office.[4] In 2014, Green was included in Time magazine\'s list of The 100 Most Influential People in the World.[5] Another film based on a Green novel, Paper Towns, was released on July 24, 2015.'
+},
+{
+  firstName: 'Neil',
+  lastName: 'deGrasse Tyson',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Neil_deGrasse_Tyson_in_June_2017_%28cropped%29.jpg/200px-Neil_deGrasse_Tyson_in_June_2017_%28cropped%29.jpg',
+  bio: 'Neil deGrasse Tyson is an American astrophysicist, author, and science communicator. Since 1996, he has been the Frederick P. Rose Director of the Hayden Planetarium at the Rose Center for Earth and Space in New York City. The center is part of the American Museum of Natural History, where Tyson founded the Department of Astrophysics in 1997 and has been a research associate in the department since 2003.'
+},
+{
+  firstName: 'Stephen',
+  lastName: 'King',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Stephen_King%2C_Comicon.jpg/220px-Stephen_King%2C_Comicon.jpg',
+  bio: 'Stephen King is an American author of horror, supernatural fiction, suspense, science fiction and fantasy. His books have sold more than 350 million copies,[2] many of which have been adapted into feature films, miniseries, television series, and comic books. King has published 58 novels, including seven under the pen name Richard Bachman, and six non-fiction books. He has written around 200 short stories, most of which have been published in book collections.'
+},
+{
+  firstName: 'Daniel J.',
+  lastName: 'Siegel',
+  imageUrl: 'https://pbs.twimg.com/profile_images/420573197277208576/iSU2EAFO_400x400.jpeg',
+  bio: 'Daniel J. Siegel is a clinical professor of psychiatry at the UCLA School of Medicine and Executive Director of the Mindsight Institute.'
+},
+{
+  firstName: 'R.L.',
+  lastName: 'Stine',
+  imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/R_l_stine_2008.jpg/220px-R_l_stine_2008.jpg',
+  bio: 'R.L. Stine is an American novelist, short story writer, television producer, screenwriter, and executive editor.Stine has been referred to as the "Stephen King of children\'s literature"[1] and is the author of hundreds of horror fiction novels, including the books in the Fear Street, Goosebumps, Rotten School, Mostly Ghostly, and The Nightmare Room series. Some of his other works include a Space Cadets trilogy, two Hark gamebooks, and dozens of joke books. As of 2008, Stine\'s books have sold over 400 million copies.'
+},
+{
+  firstName: 'Lisa',
+  lastName: 'Regan',
+  imageUrl: 'https://images.gr-assets.com/authors/1342462786p5/6443334.jpg',
+  bio: 'Lisa Regan is a suspense novelist. She has a Bachelor’s Degree in English and Master of Education Degree from Bloomsburg University. She lives in Philadelphia with her husband and daughter.'
 }]
 
 
@@ -176,10 +261,6 @@ const seed = () =>
   .then(() =>
   Promise.all(authors.map(author =>
     Author.create(author))
-  ))
-  .then(() =>
-  Promise.all(reviews.map(review =>
-    Review.create(review))
   )
 );
 
