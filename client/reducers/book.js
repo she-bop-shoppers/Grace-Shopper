@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {CardActions} from '@material-ui/core'
 
 /**
  * ACTION TYPES
@@ -11,14 +12,13 @@ const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
 
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
-
 /**
  * INITIAL STATE
  */
 const initState = {
   allBooks: [],
   singleBook: {},
-  booksMatchingQuery: [],
+  booksMatchingQuery: []
 }
 
 /**
@@ -35,15 +35,16 @@ const removeBook = () => ({type: REMOVE_BOOK})
  * THUNK CREATORS
  */
 
- export const getQueriedBooks = queryDetails => async dispatch => {
-   try {
-     const {data} = await axios.get(`/api/books?${queryDetails.queryType}=${queryDetails.queryValue}`)
-     dispatch(getBooksByQuery(data))
-   } catch (err) {
-     console.error(err)
-   }
- }
-
+export const getQueriedBooks = queryDetails => async dispatch => {
+  try {
+    const {data} = await axios.get(
+      `/api/books?${queryDetails.queryType}=${queryDetails.queryValue}`
+    )
+    dispatch(getBooksByQuery(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export const fetchSingleBook = id => {
   return async dispatch => {
@@ -57,11 +58,10 @@ export const fetchSingleBook = id => {
   }
 }
 
-
 /**
  * REDUCER
  */
-export default function (state = initState, action) {
+export default function(state = initState, action) {
   switch (action.type) {
     case GET_SINGLE_BOOK:
       return {
@@ -70,7 +70,7 @@ export default function (state = initState, action) {
     case REMOVE_BOOK:
       return action.book
     case GET_BOOKS_BY_QUERY:
-      return { ...state, booksMatchingQuery: action.books }
+      return {...state, booksMatchingQuery: action.books}
     default:
       return state
   }

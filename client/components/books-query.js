@@ -31,25 +31,17 @@ class BooksQuery extends React.Component {
         <form action="/" method="get" onSubmit={this.handleSubmit}>
           <div className="form-input">
             <label htmlFor="type">Type:</label>
-            <input
-              type="text"
-              id="input-field"
-              name="type"
-            />
+            <input type="text" id="input-field" name="type" />
           </div>
 
           <div className="form-input">
             <label htmlFor="value">Search for:</label>
-            <input
-              type="text"
-              id="input-field"
-              name="value"
-            />
+            <input type="text" id="input-field" name="value" />
           </div>
 
-        <button type="submit">Submit</button>
-      </form>
-      {books}
+          <button type="submit">Submit</button>
+        </form>
+        {books}
       </div>
     )
   }
@@ -70,4 +62,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(UserHome)
+export default connect(mapState, mapDispatch)(BooksQuery)
