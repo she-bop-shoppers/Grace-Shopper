@@ -1,4 +1,6 @@
+
 const router = require('express').Router()
+
 const {Book} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
@@ -17,6 +19,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id
@@ -26,5 +29,6 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
 
 module.exports = router
