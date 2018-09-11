@@ -63,6 +63,14 @@ const books = [{
   authorId: 7
 },
 {
+  title: 'Lord of the Rings',
+  price: 14.95,
+  genre: 'Fiction',
+  description: 'The Lord of the Rings tells of the great quest undertaken by Frodo and the Fellowship of the Ring: Gandalf the Wizard; the hobbits Merry, Pippin, and Sam; Gimli the Dwarf; Legolas the Elf; Boromir of Gondor; and a tall, mysterious stranger called Strider.',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51eq24cRtRL._SX331_BO1,204,203,200_.jpg',
+  authorId: 8
+},
+{
   title: 'China Rich Girlfriend',
   price: 14.95,
   genre: 'Fiction',
@@ -101,6 +109,62 @@ const books = [{
   description: 'What is the nature of space and time? How do we fit within the universe? How does the universe fit within us? There’s no better guide through these mind-expanding questions than acclaimed astrophysicist and best-selling author Neil deGrasse Tyson. But today, few of us have time to contemplate the cosmos. So Tyson brings the universe down to Earth succinctly and clearly, with sparkling wit, in tasty chapters consumable anytime and anywhere in your busy day.',
   imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51CeYGN%2Bc0L._SX306_BO1,204,203,200_.jpg',
   authorId: 11
+},
+{
+  title: 'IT',
+  price: 18.65,
+  genre: 'Horror',
+  description: 'Welcome to Derry, Maine. It\'s a small city, a place as hauntingly familiar as your own hometown. Only in Derry the haunting is real. They were seven teenagers when they first stumbled upon the horror. Now they are grown-up men and women who have gone out into the big world to gain success and happiness. But the promise they made 28 years ago calls them to reunite in the same place where, as teenagers, they battled an evil creature that preyed on the city\'s children. Now children are being murdered again, and their repressed memories of that terrifying summer return as they prepare to once again battle the monster lurking in Derry\'s sewers.',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/418XRMEX2UL._SX320_BO1,204,203,200_.jpg',
+  authorId: 12
+},
+{
+  title: 'Pet Sematary',
+  price: 18.65,
+  genre: 'Horror',
+  description: 'Welcome to Derry, Maine. It\'s a small city, a place as hauntingly familiar as your own hometown. Only in Derry the haunting is real. They were seven teenagers when they first stumbled upon the horror. Now they are grown-up men and women who have gone out into the big world to gain success and happiness. But the promise they made 28 years ago calls them to reunite in the same place where, as teenagers, they battled an evil creature that preyed on the city\'s children. Now children are being murdered again, and their repressed memories of that terrifying summer return as they prepare to once again battle the monster lurking in Derry\'s sewers.',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51vN64ub8-L._SX326_BO1,204,203,200_.jpg',
+  authorId: 12
+},
+{
+  title: 'Aware: The Science and Practice of Presence',
+  price: 19.04,
+  genre: 'Non-fiction',
+  description: 'An in-depth look at the science that underlies meditation\'s effectiveness, this book teaches readers how to harness the power of the principle "Where attention goes, neural firing flows, and neural connection grows." Siegel reveals how developing a Wheel of Awareness practice to focus attention, open awareness, and cultivate kind intention can literally help you grow a healthier brain and reduce fear, anxiety, and stress in your life. ',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41%2BwB07rAyL._SX327_BO1,204,203,200_.jpg',
+  authorId: 13
+},
+{
+  title: 'Gone Girl',
+  price: 13.79,
+  genre: 'Thrillers & Suspense',
+  description: 'Marriage can be a real killer. One of the most critically acclaimed suspense writers of our time, New York Times best seller Gillian Flynn, takes that statement to its darkest place in this unpausable masterpiece about a marriage gone terribly, terribly wrong. The Chicago Tribune proclaimed that her work "draws you in and keeps you reading with the force of a pure but nasty addiction." Gone Girl\'s toxic mix of sharp-edged wit and deliciously chilling prose creates a nerve-fraying thriller that confounds you at every turn.',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41etyGVwOwL._SX326_BO1,204,203,200_.jpg',
+  authorId: 5
+},
+{
+  title: 'The Haunted Mask',
+  price: 16.92,
+  genre: 'Horror',
+  description: 'Carly Beth thinks she\'s found the best Halloween mask ever. With yellow-green skin and long animal fangs, the mask terrifies the entire neighborhood. Before long, it has a surprising effect on Carly Beth, too. She tries to take it off . . . but it won\'t budge!Halloween is almost over, but fright night is just beginning.',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51OdpP6e0TL.jpg',
+  authorId: 14
+},
+{
+  title: 'Her Mother\'s Grave',
+  price: 10.99,
+  genre: 'Thrillers & Suspense',
+  description: 'When two young boys discover human bones buried beneath a tree in a trailer park, Detective Josie Quinn races to join her team at the scene. She used to play in those woods as a child, happier outside and away from her abusive mother, Belinda Rose. Josie’s past crashes into her present when a rare dental condition confirms the bones belong to a teenage foster-child who was murdered thirty years ago. A girl named Belinda Rose...',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51O5AldHNWL.jpg',
+  authorId: 15
+},
+{
+  title: 'Jurassic Park',
+  price: 19.11,
+  genre: 'Thrillers & Suspense',
+  description: 'An astonishing technique for recovering and cloning dinosaur DNA has been discovered. Now humankind’s most thrilling fantasies have come true. Creatures extinct for eons roam Jurassic Park with their awesome presence and profound mystery, and all the world can visit them—for a price.',
+  imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51Sh8gB0bfL._SY346_.jpg',
+  authorId: 6
 }]
 
 
