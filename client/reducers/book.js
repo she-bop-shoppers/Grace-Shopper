@@ -1,9 +1,11 @@
 import axios from 'axios'
 import history from '../history'
+import {CardActions} from '@material-ui/core'
 
 /**
  * ACTION TYPES
  */
+const GET_ALL_BOOKS = 'GET_ALL_BOOKS'
 const GET_BOOK = 'GET_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
@@ -18,13 +20,13 @@ const initState = {
 /**
  * ACTION CREATORS
  */
+const getAllBooks = books => ({type: GET_ALL_BOOKS, books})
 const getBook = user => ({type: GET_BOOK, user})
 const removeBook = () => ({type: REMOVE_BOOK})
 
 /**
  * THUNK CREATORS
  */
-
 
 /**
  * REDUCER
@@ -35,6 +37,8 @@ export default function(state = initState, action) {
       return action.book
     case REMOVE_BOOK:
       return action.book
+    case GET_ALL_BOOKS:
+      return action.allBooks
     default:
       return state
   }
