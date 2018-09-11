@@ -19,3 +19,4 @@ const Author = db.define('author', {
   }
 });
 module.exports = Author
+//
