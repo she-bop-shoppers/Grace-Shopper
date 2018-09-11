@@ -5,8 +5,11 @@ import {CardActions} from '@material-ui/core'
 /**
  * ACTION TYPES
  */
-const GET_ALL_BOOKS = 'GET_ALL_BOOKS'
-const GET_BOOK = 'GET_BOOK'
+
+const GET_BOOKS_BY_QUERY = 'GET_BOOKS_BY_QUERY'
+
+const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
+
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
 /**
@@ -14,31 +17,60 @@ const REMOVE_BOOK = 'REMOVE_BOOK'
  */
 const initState = {
   allBooks: [],
-  singleBook: {}
+  singleBook: {},
+  booksMatchingQuery: []
 }
 
 /**
  * ACTION CREATORS
  */
-const getAllBooks = books => ({type: GET_ALL_BOOKS, books})
-const getBook = user => ({type: GET_BOOK, user})
+
+const getBooksByQuery = books => ({type: GET_BOOKS_BY_QUERY, books})
+
+const getSingleBook = id => ({type: GET_BOOK, payload: id})
+
 const removeBook = () => ({type: REMOVE_BOOK})
 
 /**
  * THUNK CREATORS
  */
 
+export const getQueriedBooks = queryDetails => async dispatch => {
+  try {
+    const {data} = await axios.get(
+      `/api/books?${queryDetails.queryType}=${queryDetails.queryValue}`
+    )
+    dispatch(getBooksByQuery(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const fetchSingleBook = id => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get('/api/books/' + id)
+      const action = getSingleBook(data)
+      dispatch(action)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 /**
  * REDUCER
  */
 export default function(state = initState, action) {
   switch (action.type) {
-    case GET_BOOK:
-      return action.book
+    case GET_SINGLE_BOOK:
+      return {
+        singleBook: action.payload
+      }
     case REMOVE_BOOK:
       return action.book
-    case GET_ALL_BOOKS:
-      return action.allBooks
+    case GET_BOOKS_BY_QUERY:
+      return {...state, booksMatchingQuery: action.books}
     default:
       return state
   }
