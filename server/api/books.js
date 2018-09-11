@@ -23,4 +23,15 @@ router.get('/:title', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async (req,res,next) => {
+  try {
+    const id = req.params.id;
+    const book = await findById(id)
+    res.send(book);
+  } catch (error) {
+    next(error);
+  }
+})
+
 module.exports = router
