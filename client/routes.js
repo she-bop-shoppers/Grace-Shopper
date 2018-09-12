@@ -5,11 +5,12 @@ import PropTypes from 'prop-types'
 import {
   Login,
   Signup,
-  UserHome,
-  ConnectedAllBooks,
-  SingleBook,
-  allBooks
+  UserHome
+  // ConnectedAllBooks,
+  // SingleBook
 } from './components'
+import ConnectedAllBooks from './components/allBooks'
+import SingleBook from './components/SingleBook'
 import {me} from './reducers/user'
 
 /**
@@ -28,7 +29,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/books" component={allBooks} />
+        <Route exact path="/books" component={ConnectedAllBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
 
         {isLoggedIn && (
