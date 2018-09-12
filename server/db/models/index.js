@@ -1,31 +1,32 @@
-const User = require('./user')
-const Book = require('./book')
-const Author = require('./author')
-const Review = require('./review')
-const Sale = require('./sale')
-const OrderItem = require('./orderItem')
+const User = require('./user');
+const Book = require('./book');
+const Author = require('./author');
+const Review = require('./review');
+const Order = require('./order');
+const OrderBook = require('./orderBook');
+const Genre = require('./genre');
 
 //associations
-Book.belongsTo(Author)
-Author.hasMany(Book)
+Order.belongsTo(User);
+User.hasMany(Order);
 
-Sale.belongsTo(User)
-User.hasMany(Sale)
+Order.belongsToMany(Book, { through: OrderBook });
+Book.belongsToMany(Order, { through: OrderBook });
 
-OrderItem.belongsTo(Sale)
-Sale.hasMany(OrderItem)
+Review.belongsTo(User);
+User.hasMany(Review);
 
-OrderItem.belongsTo(Book)
-Book.hasMany(OrderItem)
+Book.belongsTo(Author);
+Author.hasMany(Book);
 
-Review.belongsTo(User)
-User.hasMany(Review)
+Book.belongsTo(Genre);
+Genre.hasMany(Book);
 
 module.exports = {
-  User,
-  Book,
-  Author,
-  Review,
-  Sale,
-  OrderItem
-}
+	User,
+	Book,
+	Author,
+	Review,
+	Order,
+	OrderBook
+};
