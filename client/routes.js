@@ -2,7 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, ConnectedAllBooks} from './components'
+import {Login, Signup, UserHome} from './components'
+import ConnectedAllBooks from './components/allBooks'
+import ConnectedAddBook from './components/add-book'
+import ConnectedBooksQuery from './components/books-query'
 import {me} from './reducers/user'
 
 /**
@@ -29,6 +32,8 @@ class Routes extends Component {
         )}
         {/* Displays our Login component as a fallback */}
         <Route component={ConnectedAllBooks} />
+        <Route path="/query" component={ConnectedBooksQuery} />
+        <Route path="/add" component={ConnectedAddBook} />
       </Switch>
     )
   }

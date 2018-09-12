@@ -37,4 +37,34 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+const isAdmin = (req, res, next) => {
+  console.log('i am in the isAdmin test for post books or delete books')
+  console.log('req.user', req.user)
+  if (!req.user.isAdmin) {
+    const error = new Error('You are not authorized to complete this action')
+    return next(error)
+  } else {
+    next()
+  }
+}
+
+router.post('/', isAdmin, async (req, res, next) => {
+  try {
+    const newBook = await Book.create(req.body)
+    res.status(201).send(newBook)
+  } catch (err) {
+    console.error(err)
+  }
+})
+
+router.delete('/:id', isAdmin, async (req, res, next) => {
+  try {
+    const bookToDelete = await Book.findById(req.params.id)
+    await bookToDelete.destroy()
+    res.status(204).end()
+  } catch (err) {
+    console.error(err)
+  }
+})
+
 module.exports = router
