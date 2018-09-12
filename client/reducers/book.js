@@ -24,7 +24,6 @@ const initState = {
  * ACTION CREATORS
  */
 
-const getAllBooks = books => ({type: GET_ALL_BOOKS, books})
 const getBooksByQuery = books => ({type: GET_BOOKS_BY_QUERY, books})
 const getSingleBook = id => ({type: GET_BOOK, payload: id})
 const removeBook = () => ({type: REMOVE_BOOK})
@@ -68,17 +67,6 @@ export const fetchSingleBook = id => {
   }
 }
 
-export const fetchAllBooks = () => {
-  return async dispatch => {
-    try {
-      const res = await axios.get('/api/books')
-      const books = res.data
-      dispatch(getAllBooks(books))
-    } catch (error) {
-      console.log(error)
-    }
-  }
-}
 
 /**
  * REDUCER
