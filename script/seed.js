@@ -4,8 +4,8 @@ const User = require('../server/db/models/user')
 const Book = require('../server/db/models/book')
 const Author = require('../server/db/models/author')
 const Review = require('../server/db/models/review')
-const SalesOrder = require('../server/db/models/sale')
-const OrderItem = require('../server/db/models/orderItem')
+const SalesOrder = require('../server/db/models/order')
+const OrderItem = require('../server/db/models/orderBook')
 
 const seed = async () => {
   await db.sync({force: true})
