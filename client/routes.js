@@ -12,6 +12,7 @@ import {
 import ConnectedAllBooks from './components/allBooks'
 import SingleBook from './components/SingleBook'
 import {me} from './reducers/user'
+import SingleBook from './components/SingleBook'
 
 /**
  * COMPONENT
@@ -29,7 +30,8 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/books" component={ConnectedAllBooks} />
+
+        <Route exact path="/books" component={allBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
 
         {isLoggedIn && (

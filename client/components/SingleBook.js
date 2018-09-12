@@ -1,12 +1,16 @@
 import React from 'react'
 import {fetchSingleBook} from '../reducers/book'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 class SingleBook extends React.Component {
   componentDidMount() {
-    this.props.singleBook()
+    const bookId = Number(this.props.match.params.bookId)
+    this.props.singleBook(bookId)
   }
   render() {
+    const bookId = Number(this.props.match.params.bookId)
+    console.log('Title: ', bookId)
     return (
       <div>
         <h1>{this.props.book.title}</h1>
@@ -19,14 +23,16 @@ class SingleBook extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    book: state.singleBook
+    book: state.books.singleBook
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
-    singleBook: () => dispatch(fetchSingleBook(ownProps.match.params.booksId))
+    singleBook: bookId => dispatch(fetchSingleBook(bookId))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleBook)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SingleBook)
+)
