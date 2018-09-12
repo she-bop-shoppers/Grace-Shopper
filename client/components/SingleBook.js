@@ -3,6 +3,9 @@ import {fetchSingleBook} from '../reducers/book'
 import {connect} from 'react-redux'
 
 class SingleBook extends React.Component {
+  componentDidMount() {
+    this.props.singleBook()
+  }
   render() {
     return (
       <div>
@@ -20,9 +23,9 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    singleBook: id => dispatch(fetchSingleBook(id))
+    singleBook: () => dispatch(fetchSingleBook(ownProps.match.params.booksId))
   }
 }
 
