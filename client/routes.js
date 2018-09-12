@@ -7,7 +7,7 @@ import {
   Signup,
   UserHome,
   ConnectedAllBooks,
-  SingleBook,
+  //SingleBook,
   allBooks
 } from './components'
 import {me} from './reducers/user'
@@ -30,10 +30,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
 
-
         <Route exact path="/books" component={allBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
-
 
         {isLoggedIn && (
           <Switch>
