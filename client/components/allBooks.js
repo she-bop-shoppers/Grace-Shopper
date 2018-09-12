@@ -17,7 +17,12 @@ class AllBooks extends Component {
         <ul>
           {books &&
             books.map(book => {
-              return <li key={book.id}>{book.title}</li>
+              return (
+                <li key={book.id}>
+                  <Link to={`/books/${book.id}`}>{book.title}</Link>{' '}
+                  <img src={book.imageUrl} />
+                </li>
+              )
             })}
         </ul>
       </div>
