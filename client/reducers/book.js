@@ -6,7 +6,7 @@ import {CardActions} from '@material-ui/core'
  * ACTION TYPES
  */
 const UPDATE_BOOK = 'UPDATE_BOOK'
-const GET_BOOKS_BY_QUERY = 'GET_BOOKS_BY_QUERY'
+const GET_BOOKS = 'GET_BOOKS'
 const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
@@ -15,15 +15,14 @@ const REMOVE_BOOK = 'REMOVE_BOOK'
  */
 const initState = {
   allBooks: [],
-  singleBook: {},
-  booksMatchingQuery: []
+  singleBook: {}
 }
 
 /**
  * ACTION CREATORS
  */
 
-const getBooksByQuery = books => ({type: GET_BOOKS_BY_QUERY, books})
+const getRequestedBooks = books => ({type: GET_BOOKS, books})
 const getSingleBook = id => ({type: GET_BOOK, payload: id})
 const removeBook = () => ({type: REMOVE_BOOK})
 const updateBook = book => ({type: UPDATE_BOOK, book})
@@ -43,12 +42,17 @@ export const editedBook = (bookId, reqBody) => {
   }
 }
 
-export const getQueriedBooks = queryDetails => async dispatch => {
+export const getBooks = queryDetails => async dispatch => {
   try {
-    const {data} = await axios.get(
-      `/api/books?${queryDetails.queryType}=${queryDetails.queryValue}`
-    )
-    dispatch(getBooksByQuery(data))
+    if (queryDetails.type) {
+      const {data} = await axios.get(
+        `/api/books?${queryDetails.type}=${queryDetails.value}`
+      )
+      dispatch(getRequestedBooks(data))
+    } else {
+      const {data} = await axios.get(`/api/books`)
+      dispatch(getRequestedBooks(data))
+    }
   } catch (err) {
     console.error(err)
   }
@@ -87,8 +91,8 @@ export default function(state = initState, action) {
           )
         ]
       }
-    case GET_BOOKS_BY_QUERY:
-      return {...state, booksMatchingQuery: action.books}
+    case GET_BOOKS:
+      return {...state, allBooks: action.books}
     default:
       return state
   }
