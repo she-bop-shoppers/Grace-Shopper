@@ -10,6 +10,14 @@ const Author = db.define('author', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  fullName: {
+    type: Sequelize.VIRTUAL,
+    get() {
+      return (
+        this.getDataValue('firstName') + ' ' + this.getDataValue('lastName')
+      )
+    }
+  },
   bio: {
     type: Sequelize.TEXT
   },
@@ -19,5 +27,5 @@ const Author = db.define('author', {
       'http://www.harrypotterrealm.com/images/author/jkrowling05.jpg'
   }
 })
+
 module.exports = Author
-//

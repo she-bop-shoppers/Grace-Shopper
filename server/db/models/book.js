@@ -10,13 +10,9 @@ const Book = db.define('book', {
     }
   },
   price: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {min: 0}
-  },
-  genre: {
-    type: Sequelize.STRING,
-    allowNull: false
   },
   description: {
     type: Sequelize.TEXT

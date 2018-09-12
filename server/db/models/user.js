@@ -3,33 +3,33 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
-  firstName:{
+  firstName: {
     type: Sequelize.STRING,
-    allowNull:false
+    allowNull: false
   },
-  lastName:{
+  lastName: {
     type: Sequelize.STRING,
-    allowNull:false
+    allowNull: false
   },
   email: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
-    validate:{
-      isEmail:true
+    validate: {
+      isEmail: true
     }
   },
-  idAdmin:{
-    type: Sequelize.BOOLEAN,
+  idAdmin: {
+    type: Sequelize.BOOLEAN
   },
-  idActive:{
-    type: Sequelize.BOOLEAN,
+  idActive: {
+    type: Sequelize.BOOLEAN
   },
-  userName:{
+  userName: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
-  date:{
+  date: {
     type: Sequelize.DATE
   },
   password: {
@@ -40,7 +40,7 @@ const User = db.define('user', {
     get() {
       return () => this.getDataValue('password')
     },
-    allowNull:false
+    allowNull: false
   },
   salt: {
     type: Sequelize.STRING,

@@ -1,4 +1,5 @@
 const router = require('express').Router()
+
 const {Book, Author} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
@@ -30,7 +31,7 @@ router.get('/:id', async (req, res, next) => {
         }
       ]
     })
-    res.send(book)
+    res.status(200).send(book)
   } catch (error) {
     next(error)
   }
