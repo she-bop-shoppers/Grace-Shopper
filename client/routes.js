@@ -10,6 +10,7 @@ import {
   SingleBook,
   allBooks
 } from './components'
+import AllAuthors from './components/allAuthors'
 import {me} from './reducers/user'
 
 /**
@@ -30,6 +31,7 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route exact path="/books" component={allBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
+        <Route exact path="/authors" component={AllAuthors} />
 
         {isLoggedIn && (
           <Switch>
