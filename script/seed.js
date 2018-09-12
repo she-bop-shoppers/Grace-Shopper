@@ -327,10 +327,7 @@ const seed = async () => {
     }
   ]
 
-  const authorList = await Promise.all(
-    authors.map(author => Author.create(author))
-  )
-  console.log(authorList)
+  await Promise.all(authors.map(author => Author.create(author)))
   await Promise.all(books.map(book => Book.create(book)))
 
   console.log('seeding success!')

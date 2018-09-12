@@ -6,6 +6,9 @@ const Sale = require('./sale')
 const OrderItem = require('./orderItem')
 
 //associations
+Book.belongsTo(Author)
+Author.hasMany(Book)
+
 Sale.belongsTo(User)
 User.hasMany(Sale)
 
@@ -17,9 +20,6 @@ Book.hasMany(OrderItem)
 
 Review.belongsTo(User)
 User.hasMany(Review)
-
-Book.belongsTo(Author)
-Author.hasMany(Book)
 
 module.exports = {
   User,
