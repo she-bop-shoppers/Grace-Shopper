@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getBooks} from '../reducers/book'
 
-class BooksQuery extends React.Component {
+class AllBooks extends React.Component {
   constructor() {
     super()
   }
@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 }
 
 const ConnectedBooksQuery = connect(mapStateToProps, mapDispatchToProps)(
-  BooksQuery
+  AllBooks
 )
 
 export default ConnectedBooksQuery
