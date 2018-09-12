@@ -1,6 +1,5 @@
 import axios from 'axios'
 import history from '../history'
-import {CardActions} from '@material-ui/core'
 
 /**
  * ACTION TYPES
@@ -44,13 +43,16 @@ export const editedBook = (bookId, reqBody) => {
 
 export const getBooks = queryDetails => async dispatch => {
   try {
-    if (queryDetails.type) {
+    console.log('MADE IT HERE')
+    if (queryDetails) {
       const {data} = await axios.get(
         `/api/books?${queryDetails.type}=${queryDetails.value}`
       )
       dispatch(getRequestedBooks(data))
     } else {
+      console.log('MAKE IT INSIDE')
       const {data} = await axios.get(`/api/books`)
+      console.log('DATA', data)
       dispatch(getRequestedBooks(data))
     }
   } catch (err) {
