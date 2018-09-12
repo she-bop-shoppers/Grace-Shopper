@@ -346,8 +346,8 @@ const seed = async () => {
   ]
 
   await Promise.all(authors.map(author => Author.create(author)))
-  await Promise.all(books.map(book => Book.create(book)))
   await Promise.all(genres.map(genre => Genre.create(genre)))
+  await Promise.all(books.map(book => Book.create(book)))
 
   console.log('seeding success!')
   db.close()
