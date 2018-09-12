@@ -25,7 +25,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    singleBook: () => dispatch(fetchSingleBook(ownProps.match.params.booksId))
+    singleBook: () => dispatch(fetchSingleBook(ownProps.match.params.bookId))
   }
 }
 
