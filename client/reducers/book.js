@@ -23,7 +23,7 @@ const initState = {
  */
 
 const getRequestedBooks = books => ({type: GET_BOOKS, books})
-const getSingleBook = id => ({type: GET_BOOK, payload: id})
+const getSingleBook = book => ({type: GET_SINGLE_BOOK, singleBook: book})
 const removeBook = () => ({type: REMOVE_BOOK})
 const updateBook = book => ({type: UPDATE_BOOK, book})
 
@@ -77,7 +77,8 @@ export default function(state = initState, action) {
   switch (action.type) {
     case GET_SINGLE_BOOK:
       return {
-        singleBook: action.payload
+        ...state,
+        singleBook: action.singleBook
       }
     case REMOVE_BOOK:
       return action.book
