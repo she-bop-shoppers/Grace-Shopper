@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getQueriedBooks} from '../reducers/'
+import {getBooks} from '../reducers/'
+import Select from '@material-ui/core/Select'
 
 /**
  * COMPONENT
@@ -9,17 +10,18 @@ class BooksQuery extends React.Component {
   constructor() {
     super()
     this.state = {
-      queryType: '',
-      queryValue: ''
+      type: '',
+      value: ''
     }
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    this.setState({
-      queryType: event.target.name,
-      queryValue: event.target.value
-    })
+    console.log(event.target)
+    // this.setState({
+    //   type: event.target.name,
+    //   value: event.target.value
+    // })
   }
 
   render() {
@@ -27,16 +29,21 @@ class BooksQuery extends React.Component {
 
     return (
       <div>
-        <h3>Please filter by type</h3>
-        <form action="/" method="get" onSubmit={this.handleSubmit}>
-          <div className="form-input">
-            <label htmlFor="type">Type:</label>
-            <input type="text" id="input-field" name="type" />
+        <h3>Search</h3>
+        <form onSubmit={this.handleSubmit}>
+          <div className="search-select">
+            <label htmlFor="search-select">Search by:</label>
+            <select id="search-select">
+              <option value="">--Please choose an option--</option>
+              <option value="genre">Genre</option>
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+            </select>
           </div>
 
-          <div className="form-input">
-            <label htmlFor="value">Search for:</label>
-            <input type="text" id="input-field" name="value" />
+          <div className="search-input">
+            <label htmlFor="search-input">Search for:</label>
+            <input type="text" id="search-input" name="value" />
           </div>
 
           <button type="submit">Submit</button>
@@ -52,13 +59,13 @@ class BooksQuery extends React.Component {
  */
 const mapState = state => {
   return {
-    books: state.books.booksMatchingQuery
+    books: state.books.allBooks
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    getGenreBooks: queryDetails => dispatch(getQueriedBooks(queryDetails))
+    getBooks: queryDetails => dispatch(getBooks(queryDetails))
   }
 }
 
