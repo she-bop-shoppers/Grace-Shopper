@@ -9,6 +9,7 @@ const UPDATE_BOOK = 'UPDATE_BOOK'
 const GET_BOOKS_BY_QUERY = 'GET_BOOKS_BY_QUERY'
 const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
+const GET_ALL_BOOKS = 'GET_ALL_BOOKS'
 
 /**
  * INITIAL STATE
@@ -23,6 +24,7 @@ const initState = {
  * ACTION CREATORS
  */
 
+const getAllBooks = books => ({type: GET_ALL_BOOKS, books})
 const getBooksByQuery = books => ({type: GET_BOOKS_BY_QUERY, books})
 const getSingleBook = id => ({type: GET_BOOK, payload: id})
 const removeBook = () => ({type: REMOVE_BOOK})
@@ -60,6 +62,18 @@ export const fetchSingleBook = id => {
       const {data} = await axios.get('/api/books/' + id)
       const action = getSingleBook(data)
       dispatch(action)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const fetchAllBooks = () => {
+  return async dispatch => {
+    try {
+      const res = await axios.get('/api/books')
+      const books = res.data
+      dispatch(getAllBooks(books))
     } catch (error) {
       console.log(error)
     }
