@@ -4,65 +4,35 @@ import history from '../history'
 
 // ACTION TYPES
 const GET_AUTHORS = 'GET_AUTHORS'
-const REMOVE_AUTHOR = 'REMOVE_AUTHOR'
-const ADD_AUTHOR = 'ADD_AUTHOR'
-const UPDATE_AUTHOR = 'UPDATE_AUTHOR'
+// const REMOVE_AUTHOR = 'REMOVE_AUTHOR';
+// const ADD_AUTHOR = 'ADD_AUTHOR';
 
 // INITIAL STATE
-const initState = {
+const initialState = {
   allAuthors: [],
   selectedAuthor: {}
 }
 
-/**
- * ACTION CREATORS
- */
+//ACTION CREATORS
+const gotAuthors = allAuthors => ({type: GET_AUTHORS, allAuthors})
 
-const gotAuthors = authors => ({type: GET_AUTHORS, allAuthors: authors})
+// const removedAuthor = (id) => ({ type: REMOVE_AUTHOR, id });
 
-const removedAuthor = id => ({type: REMOVE_AUTHOR, id})
+// const addedAuthor = (author) => ({
+// 	type: ADD_AUTHOR,
+// 	selectedAuthor: author
+// });
 
-const updatedAuthor = author => ({type: UPDATE_AUTHOR, author})
-
-/**
- * THUNK CREATORS
- */
-
-export const editedBook = (bookId, reqBody) => {
+// THUNK CREATORS
+export const getAllAuthors = () => {
   return async dispatch => {
+    console.log('ENTERING GET AUTHOR FUNC')
     try {
-      const response = await axios.put('/api/books/' + bookId, reqBody)
-      dispatch(updateBook(response.data))
+      const response = await axios.get('/api/authors')
+      console.log(response.data)
+      dispatch(gotAuthors(response.data))
     } catch (err) {
       console.error(err)
-    }
-  }
-}
-
-export const getBooks = queryDetails => async dispatch => {
-  try {
-    if (queryDetails.type) {
-      const {data} = await axios.get(
-        `/api/books?${queryDetails.type}=${queryDetails.value}`
-      )
-      dispatch(getRequestedBooks(data))
-    } else {
-      const {data} = await axios.get(`/api/books`)
-      dispatch(getRequestedBooks(data))
-    }
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-export const fetchSingleBook = id => {
-  return async dispatch => {
-    try {
-      const {data} = await axios.get('/api/books/' + id)
-      const action = getSingleBook(data)
-      dispatch(action)
-    } catch (error) {
-      console.log(error)
     }
   }
 }
@@ -70,27 +40,12 @@ export const fetchSingleBook = id => {
 /**
  * REDUCER
  */
-export default function(state = initState, action) {
+const authors = function(state = initialState, action) {
   switch (action.type) {
-    case GET_SINGLE_BOOK:
-      return {
-        singleBook: action.payload
-      }
-    case REMOVE_BOOK:
-      return action.book
-    case UPDATE_BOOK:
-      return {
-        ...state,
-        singleBook: action.book,
-        allBooks: [
-          ...state.allBooks.map(
-            book => (action.book.id === book.id ? action.book : book)
-          )
-        ]
-      }
-    case GET_BOOKS:
-      return {...state, allBooks: action.books}
+    case GET_AUTHORS:
+      return {...state, allAuthors: action.allAuthors}
     default:
       return state
   }
 }
+export default authors
