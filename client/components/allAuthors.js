@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {getAllAuthors} from '../reducers/author'
 
 class AllAuthors extends Component {
@@ -18,7 +18,9 @@ class AllAuthors extends Component {
           authors.map(author => {
             return (
               <div className="column" key={author.id}>
-                <h3>{author.fullName} </h3>
+                <h3>
+                  <Link to={`/authors/${author.id}`}>{author.fullName}</Link>{' '}
+                </h3>
                 <img src={author.imageUrl} />
               </div>
             )

@@ -10,6 +10,7 @@ import AllAuthors from './components/allAuthors'
 import SingleBook from './components/SingleBook'
 import AllGenres from './components/AllGenres'
 import SingleGenre from './components/SingleGenre'
+import SingleAuthor from './components/SingleAuthor'
 import {me} from './reducers/user'
 
 /**
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route exact path="/books" component={ConnectedAllBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
         <Route exact path="/authors" component={AllAuthors} />
+        <Route path="/authors/:authorId" component={SingleAuthor} />
         <Route exact path="/genres" component={AllGenres} />
         <Route path="/genres/:genreId" component={SingleGenre} />
 
