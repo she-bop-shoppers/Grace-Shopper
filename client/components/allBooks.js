@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getBooks, removeABook} from '../reducers/book'
 
-
 class AllBooks extends Component {
   constructor() {
     super()
@@ -13,14 +12,13 @@ class AllBooks extends Component {
   componentDidMount() {
     this.props.fetchBooks()
   }
-  
-   handleDelete(id) {
+
+  handleDelete(id) {
     this.props.removeBook(id)
   }
 
   render() {
     const {books, isAdmin} = this.props
-    const books = this.props.books
 
     return (
       <div>
@@ -32,17 +30,17 @@ class AllBooks extends Component {
                 <li key={book.id}>
                   <Link to={`/books/${book.id}`}>{book.title}</Link>{' '}
                   <img src={book.imageUrl} />
-                {!isAdmin ? (
-                  <button
-                    type="submit"
-                    onClick={() => this.handleDelete(book.id)}
-                  >
-                    Delete
-                  </button>
-                ) : (
-                  <div />
-                )}
-              </li>
+                  {!isAdmin ? (
+                    <button
+                      type="submit"
+                      onClick={() => this.handleDelete(book.id)}
+                    >
+                      Delete
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+                </li>
               )
             })}
         </ul>
