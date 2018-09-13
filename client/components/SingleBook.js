@@ -9,8 +9,7 @@ class SingleBook extends React.Component {
     this.props.singleBook(bookId)
   }
   render() {
-    const bookId = Number(this.props.match.params.bookId)
-    console.log('Title: ', bookId)
+    console.log('Book', this.props.book.author)
     return (
       <div>
         <h1>{this.props.book.title}</h1>
