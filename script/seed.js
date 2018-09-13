@@ -344,6 +344,7 @@ const seed = async () => {
       name: 'Horror'
     }
   ]
+
   await Promise.all(genres.map(genre => Genre.create(genre)))
   await Promise.all(authors.map(author => Author.create(author)))
   await Promise.all(books.map(book => Book.create(book)))

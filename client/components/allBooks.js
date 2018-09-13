@@ -1,16 +1,27 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getBooks} from '../reducers/book'
+import {getBooks, removeABook} from '../reducers/book'
+
 
 class AllBooks extends Component {
+  constructor() {
+    super()
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
   componentDidMount() {
     this.props.fetchBooks()
   }
+  
+   handleDelete(id) {
+    this.props.removeBook(id)
+  }
 
   render() {
+    const {books, isAdmin} = this.props
     const books = this.props.books
-    console.log('BOOKS ARE', books)
+
     return (
       <div>
         <h1>BOOKS</h1>
@@ -21,7 +32,17 @@ class AllBooks extends Component {
                 <li key={book.id}>
                   <Link to={`/books/${book.id}`}>{book.title}</Link>{' '}
                   <img src={book.imageUrl} />
-                </li>
+                {!isAdmin ? (
+                  <button
+                    type="submit"
+                    onClick={() => this.handleDelete(book.id)}
+                  >
+                    Delete
+                  </button>
+                ) : (
+                  <div />
+                )}
+              </li>
               )
             })}
         </ul>
@@ -31,12 +52,14 @@ class AllBooks extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {fetchBooks: () => dispatch(getBooks())}
+  return {
+    fetchBooks: () => dispatch(getBooks()),
+    removeBook: id => dispatch(removeABook(id))
+  }
 }
 
 const mapStateToProps = state => {
-  console.log(state)
-  return {books: state.books.allBooks}
+  return {books: state.books.allBooks, isAdmin: state.user.isAdmin}
 }
 
 const ConnectedAllBooks = connect(mapStateToProps, mapDispatchToProps)(AllBooks)
