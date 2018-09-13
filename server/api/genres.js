@@ -3,8 +3,15 @@ const {Genre, Book} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    const genres = await Genre.findAll({})
-    res.status(200).send(genres)
+    if (req.query) {
+      const genres = await Genre.findAll({
+        where: req.query
+      })
+      res.status(200).send(genres)
+    } else {
+      const genres = await Genre.findAll()
+      res.status(200).send(genres)
+    }
   } catch (error) {
     next(error)
   }
