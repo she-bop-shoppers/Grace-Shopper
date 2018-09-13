@@ -9,6 +9,10 @@ import ConnectedBooksQuery from './components/books-query'
 import {
   Login,
   Signup,
+  UserHome,
+  ConnectedAllBooks,
+  //SingleBook,
+  allBooks
   UserHome
   // ConnectedAllBooks,
   // SingleBook
@@ -34,7 +38,6 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-
         <Route exact path="/books" component={ConnectedAllBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
 
