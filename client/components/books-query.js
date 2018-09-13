@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import {connect} from 'react-redux'
 import {getBooks} from '../reducers/book'
 import {Redirect} from 'react-router'
@@ -19,9 +20,27 @@ class BooksQuery extends React.Component {
     this.handleSelect = this.handleSelect.bind(this)
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault()
+    if (this.state.type === 'genreId') {
+      let res = await axios.get(`api/genres?name=${this.state.value}`)
+      let id = res.data[0].id
+      this.setState({
+        value: id
+      })
+    }
+    if (this.state.type === 'authorId') {
+      let res = await axios.get(`api/authors?lastName=${this.state.value}`)
+      let id = res.data[0].id
+      this.setState({
+        value: id
+      })
+    }
     this.props.getBooks(this.state)
+    this.setState({
+      type: '--Please choose an option--',
+      value: ''
+    })
   }
 
   handleSelect(event) {
@@ -51,11 +70,12 @@ class BooksQuery extends React.Component {
               id="search-select"
               value={this.state.type}
               onChange={this.handleSelect}
+              placeholder="--Please choose an option--"
             >
-              <option value="">{this.state.type}</option>
-              <option value="genre">Genre</option>
+              <option value="">--Please choose an option--</option>
+              <option value="genreId">Genre</option>
               <option value="title">Title</option>
-              <option value="author">Author</option>
+              <option value="authorId">Author (last name)</option>
             </select>
           </div>
 

@@ -1,13 +1,13 @@
 const router = require('express').Router()
 
-const {Book, Author} = require('../db/models')
+const {Book, Author, Genre} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
     if (req.query) {
       const books = await Book.findAll({
         where: req.query,
-        include: [{model: Author}]
+        include: [{model: Author}, {model: Genre}]
       })
       res.status(200).send(books)
     } else {
