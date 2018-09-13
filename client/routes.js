@@ -6,7 +6,17 @@ import {Login, Signup, UserHome} from './components'
 import ConnectedAllBooks from './components/allBooks'
 import ConnectedAddBook from './components/add-book'
 import ConnectedBooksQuery from './components/books-query'
+import {
+  Login,
+  Signup,
+  UserHome
+  // ConnectedAllBooks,
+  // SingleBook
+} from './components'
+import ConnectedAllBooks from './components/allBooks'
+import SingleBook from './components/SingleBook'
 import {me} from './reducers/user'
+// import SingleBook from './components/SingleBook'
 
 /**
  * COMPONENT
@@ -24,6 +34,10 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+
+        <Route exact path="/books" component={ConnectedAllBooks} />
+        <Route path="/books/:bookId" component={SingleBook} />
+
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -34,6 +48,7 @@ class Routes extends Component {
         <Route component={ConnectedAllBooks} />
         <Route path="/query" component={ConnectedBooksQuery} />
         <Route path="/add" component={ConnectedAddBook} />
+        <Route path="/" component={ConnectedAllBooks} />
       </Switch>
     )
   }

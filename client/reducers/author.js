@@ -1,34 +1,28 @@
 import axios from 'axios'
 import history from '../history'
+// import {CardActions} from '@material-ui/core'
 
-/**
- * ACTION TYPES
- */
-const UPDATE_BOOK = 'UPDATE_BOOK'
-const GET_BOOKS = 'GET_BOOKS'
-const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
-const ADD_BOOK = 'ADD_BOOK'
-const REMOVE_BOOK = 'REMOVE_BOOK'
+// ACTION TYPES
+const GET_AUTHORS = 'GET_AUTHORS'
+const REMOVE_AUTHOR = 'REMOVE_AUTHOR'
+const ADD_AUTHOR = 'ADD_AUTHOR'
+const UPDATE_AUTHOR = 'UPDATE_AUTHOR'
 
-/**
- * INITIAL STATE
- */
+// INITIAL STATE
 const initState = {
-  allBooks: [],
-  singleBook: {}
+  allAuthors: [],
+  selectedAuthor: {}
 }
 
 /**
  * ACTION CREATORS
  */
 
-const getRequestedBooks = books => ({type: GET_BOOKS, books})
-const removeBook = bookId => ({type: REMOVE_BOOK, bookId})
-const addBook = book => ({type: ADD_BOOK, book})
+const gotAuthors = authors => ({type: GET_AUTHORS, allAuthors: authors})
 
-const getSingleBook = book => ({type: GET_SINGLE_BOOK, singleBook: book})
+const removedAuthor = id => ({type: REMOVE_AUTHOR, id})
 
-const updateBook = book => ({type: UPDATE_BOOK, book})
+const updatedAuthor = author => ({type: UPDATE_AUTHOR, author})
 
 /**
  * THUNK CREATORS
@@ -45,39 +39,15 @@ export const editedBook = (bookId, reqBody) => {
   }
 }
 
-export const addNewBook = book => {
-  return async dispatch => {
-    try {
-      const response = await axios.post('/api/books/', book)
-      dispatch(addBook(response.data))
-    } catch (err) {
-      console.error(err)
-    }
-  }
-}
-
-export const removeABook = bookId => {
-  return async dispatch => {
-    try {
-      await axios.delete(`/api/books/${bookId}`)
-      dispatch(removeBook(bookId))
-    } catch (err) {
-      console.error(err)
-    }
-  }
-}
-
 export const getBooks = queryDetails => async dispatch => {
   try {
-    if (queryDetails) {
+    if (queryDetails.type) {
       const {data} = await axios.get(
         `/api/books?${queryDetails.type}=${queryDetails.value}`
       )
       dispatch(getRequestedBooks(data))
     } else {
-      console.log('MAKE IT INSIDE')
       const {data} = await axios.get(`/api/books`)
-      console.log('DATA', data)
       dispatch(getRequestedBooks(data))
     }
   } catch (err) {
@@ -104,19 +74,10 @@ export default function(state = initState, action) {
   switch (action.type) {
     case GET_SINGLE_BOOK:
       return {
-        ...state,
-        singleBook: action.singleBook
+        singleBook: action.payload
       }
     case REMOVE_BOOK:
-      return {
-        ...state,
-        allBooks: state.allBooks.filter(book => action.bookId !== book.id)
-      }
-    case ADD_BOOK:
-      return {
-        ...state,
-        allBooks: [...state.allBooks, action.book]
-      }
+      return action.book
     case UPDATE_BOOK:
       return {
         ...state,
