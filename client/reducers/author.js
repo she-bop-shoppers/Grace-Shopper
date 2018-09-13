@@ -4,6 +4,7 @@ import history from '../history'
 
 // ACTION TYPES
 const GET_AUTHORS = 'GET_AUTHORS'
+const GET_SINGLE_AUTHOR = 'GET_SINGLE_AUTHOR'
 // const REMOVE_AUTHOR = 'REMOVE_AUTHOR';
 // const ADD_AUTHOR = 'ADD_AUTHOR';
 
@@ -15,6 +16,10 @@ const initialState = {
 
 //ACTION CREATORS
 const gotAuthors = allAuthors => ({type: GET_AUTHORS, allAuthors})
+const getOneAuthor = author => ({
+  type: GET_SINGLE_AUTHOR,
+  selectedAuthor: author
+})
 
 // const removedAuthor = (id) => ({ type: REMOVE_AUTHOR, id });
 
@@ -37,6 +42,18 @@ export const getAllAuthors = () => {
   }
 }
 
+export const getSingleAuthor = id => {
+  return async dispatch => {
+    try {
+      const response = await axios.get('/api/authors/' + id)
+      const author = response.data
+      dispatch(getOneAuthor(author))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 /**
  * REDUCER
  */
@@ -44,6 +61,8 @@ const authors = function(state = initialState, action) {
   switch (action.type) {
     case GET_AUTHORS:
       return {...state, allAuthors: action.allAuthors}
+    case GET_SINGLE_AUTHOR:
+      return {...state, selectedAuthor: action.selectedAuthor}
     default:
       return state
   }
