@@ -28,5 +28,6 @@ module.exports = {
   Author,
   Review,
   Order,
-  OrderBook
+  OrderBook,
+  Genre
 }

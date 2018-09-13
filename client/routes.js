@@ -8,6 +8,8 @@ import ConnectedAddBook from './components/add-book'
 import ConnectedBooksQuery from './components/books-query'
 import AllAuthors from './components/allAuthors'
 import SingleBook from './components/SingleBook'
+import AllGenres from './components/AllGenres'
+import SingleGenre from './components/SingleGenre'
 import {me} from './reducers/user'
 
 /**
@@ -29,6 +31,8 @@ class Routes extends Component {
         <Route exact path="/books" component={ConnectedAllBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
         <Route exact path="/authors" component={AllAuthors} />
+        <Route exact path="/genres" component={AllGenres} />
+        <Route path="/genres/:genreId" component={SingleGenre} />
 
         {isLoggedIn && (
           <Switch>
