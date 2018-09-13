@@ -25,9 +25,7 @@ const initState = {
 const getRequestedBooks = books => ({type: GET_BOOKS, books})
 const removeBook = bookId => ({type: REMOVE_BOOK, bookId})
 const addBook = book => ({type: ADD_BOOK, book})
-
 const getSingleBook = book => ({type: GET_SINGLE_BOOK, singleBook: book})
-
 const updateBook = book => ({type: UPDATE_BOOK, book})
 
 /**
