@@ -1,38 +1,67 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getBooks} from '../reducers/book'
+import {getBooks, removeABook} from '../reducers/book'
 
-class AllBooks extends React.Component {
+
+class AllBooks extends Component {
   constructor() {
     super()
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchBooks()
   }
+  
+   handleDelete(id) {
+    this.props.removeBook(id)
+  }
+
   render() {
+    const {books, isAdmin} = this.props
     const books = this.props.books
+
     return (
-      <ul>
-        {books.map(book => {
-          return <li key={book.id}>{book.title}</li>
-        })}
-      </ul>
+      <div>
+        <h1>BOOKS</h1>
+        <ul>
+          {books &&
+            books.map(book => {
+              return (
+                <li key={book.id}>
+                  <Link to={`/books/${book.id}`}>{book.title}</Link>{' '}
+                  <img src={book.imageUrl} />
+                {!isAdmin ? (
+                  <button
+                    type="submit"
+                    onClick={() => this.handleDelete(book.id)}
+                  >
+                    Delete
+                  </button>
+                ) : (
+                  <div />
+                )}
+              </li>
+              )
+            })}
+        </ul>
+      </div>
     )
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {fetchBooks: () => dispatch(getBooks())}
+  return {
+    fetchBooks: () => dispatch(getBooks()),
+    removeBook: id => dispatch(removeABook(id))
+  }
 }
 
 const mapStateToProps = state => {
-  return {books: state.books}
+  return {books: state.books.allBooks, isAdmin: state.user.isAdmin}
 }
 
-const ConnectedBooksQuery = connect(mapStateToProps, mapDispatchToProps)(
-  AllBooks
-)
+const ConnectedAllBooks = connect(mapStateToProps, mapDispatchToProps)(AllBooks)
 
-export default ConnectedBooksQuery
+export default ConnectedAllBooks
