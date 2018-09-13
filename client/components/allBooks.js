@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getBooks, removeABook} from '../reducers/book'
+import BooksQuery from './books-query'
 
 class AllBooks extends Component {
   constructor() {
@@ -22,6 +23,7 @@ class AllBooks extends Component {
 
     return (
       <div>
+        <BooksQuery />
         <h1>BOOKS</h1>
         <ul>
           {books &&
