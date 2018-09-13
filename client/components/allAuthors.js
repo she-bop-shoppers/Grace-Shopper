@@ -5,13 +5,11 @@ import {getAllAuthors} from '../reducers/author'
 
 class AllAuthors extends Component {
   componentDidMount() {
-    console.log('component mounting')
     this.props.fetchAuthors()
   }
 
   render() {
     const authors = this.props.authors
-    console.log('this is authors', authors)
     return (
       <div>
         {authors &&

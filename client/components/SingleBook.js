@@ -10,12 +10,21 @@ class SingleBook extends React.Component {
   }
   render() {
     const bookId = Number(this.props.match.params.bookId)
-    console.log('Title: ', bookId)
+    const {book} = this.props
+    const {author} = book
+
     return (
       <div>
-        <h1>{this.props.book.title}</h1>
-        <img src={this.props.book.imageUrl} />
-        <p>{this.props.book.description}</p>
+        <h1>{book.title}</h1>
+        <img src={book.imageUrl} />
+        <p>{book.description}</p>
+        <p>Price: ${book.price}</p>
+        <p>
+          Author:{' '}
+          {author && author.fullName
+          // <Link to={`/authors/${author.id}`}>{author.fullName}</Link>
+          }
+        </p>
       </div>
     )
   }
