@@ -6,21 +6,9 @@ import {Login, Signup, UserHome} from './components'
 import ConnectedAllBooks from './components/allBooks'
 import ConnectedAddBook from './components/add-book'
 import ConnectedBooksQuery from './components/books-query'
-import {
-  Login,
-  Signup,
-  UserHome,
-  ConnectedAllBooks,
-  //SingleBook,
-  allBooks
-  UserHome
-  // ConnectedAllBooks,
-  // SingleBook
-} from './components'
 import AllAuthors from './components/allAuthors'
 import SingleBook from './components/SingleBook'
 import {me} from './reducers/user'
-
 
 /**
  * COMPONENT
