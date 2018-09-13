@@ -25,7 +25,7 @@ class BooksQuery extends React.Component {
   }
 
   render() {
-    const {books} = this.props
+    //const {books} = this.props
 
     return (
       <div>
@@ -48,7 +48,6 @@ class BooksQuery extends React.Component {
 
           <button type="submit">Submit</button>
         </form>
-        {books}
       </div>
     )
   }
