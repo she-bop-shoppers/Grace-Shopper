@@ -21,6 +21,9 @@ const Book = db.define('book', {
     type: Sequelize.STRING,
     defaultValue:
       'https://images-na.ssl-images-amazon.com/images/I/51puATl2zfL._SL500_.jpg'
+  },
+  quantity: {
+    type: Sequelize.INTEGER
   }
 })
 
