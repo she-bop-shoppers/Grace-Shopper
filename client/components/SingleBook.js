@@ -1,15 +1,24 @@
 import React from 'react'
 import {fetchSingleBook} from '../reducers/book'
+import {addNewBookToCart} from '../reducers/cart'
+
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
 class SingleBook extends React.Component {
+  constructor() {
+    super()
+    this.handleAddToCart = this.handleAddToCart.bind(this)
+  }
   componentDidMount() {
     const bookId = Number(this.props.match.params.bookId)
     this.props.singleBook(bookId)
   }
+  handleAddToCart() {
+    const {book} = this.props
+    this.props.addBook(book)
+  }
   render() {
-    const bookId = Number(this.props.match.params.bookId)
     const {book} = this.props
     const {author} = book
 
@@ -25,6 +34,9 @@ class SingleBook extends React.Component {
           // <Link to={`/authors/${author.id}`}>{author.fullName}</Link>
           }
         </p>
+        <button type="submit" onClick={this.handleAddToCart}>
+          Add to Cart
+        </button>
       </div>
     )
   }
@@ -38,7 +50,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    singleBook: bookId => dispatch(fetchSingleBook(bookId))
+    singleBook: bookId => dispatch(fetchSingleBook(bookId)),
+    addBook: book => dispatch(addNewBookToCart(book))
   }
 }
 

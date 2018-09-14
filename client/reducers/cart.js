@@ -5,25 +5,26 @@ import history from '../history'
  * ACTION TYPES
  //  */
 // const UPDATE_BOOK = 'UPDATE_BOOK'
-// const GET_BOOKS = 'GET_BOOKS'
+const GET_BOOKS = 'GET_BOOKS'
 // const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
-// const ADD_BOOK = 'ADD_BOOK'
+const ADD_BOOK = 'ADD_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
 /**
  * INITIAL STATE
  */
 const initState = {
-  books: []
+  books: [],
+  book: {}
 }
 
 /**
  * ACTION CREATORS
  */
 
-// const getRequestedBooks = (books) => ({ type: GET_BOOKS, books });
+const getBook = book => ({type: GET_BOOKS, book})
 const deleteFromCart = bookId => ({type: REMOVE_BOOK, bookId})
-// const addBook = (book) => ({ type: ADD_BOOK, book });
+const addedBookToCart = book => ({type: ADD_BOOK, book})
 
 // const getSingleBook = (book) => ({ type: GET_SINGLE_BOOK, singleBook: book });
 
@@ -44,43 +45,37 @@ const deleteFromCart = bookId => ({type: REMOVE_BOOK, bookId})
 // 	};
 // };
 
-// export const addNewBook = (book) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			const response = await axios.post('/api/books/', book);
-// 			dispatch(addBook(response.data));
-// 		} catch (err) {
-// 			console.error(err);
-// 		}
-// 	};
-// };
-
-export const removeFromCart = bookId => {
-  return async dispatch => {
+export const addNewBookToCart = book => {
+  return dispatch => {
     try {
-      //	await axios.delete(`/api/books/${bookId}`);
-      dispatch(deleteFromCart(bookId))
+      localStorage.setItem(JSON.stringify(book.id), JSON.stringify(book))
+      //JSON.stringify
+      dispatch(addedBookToCart(book))
     } catch (err) {
       console.error(err)
     }
   }
 }
 
-// export const getBooks = (queryDetails) => async (dispatch) => {
-// 	try {
-// 		if (queryDetails) {
-// 			const { data } = await axios.get(`/api/books?${queryDetails.type}=${queryDetails.value}`);
-// 			dispatch(getRequestedBooks(data));
-// 		} else {
-// 			console.log('MAKE IT INSIDE');
-// 			const { data } = await axios.get(`/api/books`);
-// 			console.log('DATA', data);
-// 			dispatch(getRequestedBooks(data));
+// export const removeFromCart = (bookId) => {
+// 	return async (dispatch) => {
+// 		try {
+// 			//	await axios.delete(`/api/books/${bookId}`);
+// 			dispatch(deleteFromCart(bookId));
+// 		} catch (err) {
+// 			console.error(err);
 // 		}
-// 	} catch (err) {
-// 		console.error(err);
-// 	}
+// 	};
 // };
+
+export const getBooksFromStorage = () => async dispatch => {
+  try {
+    const bookInStorage = await localStorage.getItem(JSON.stringify(2))
+    dispatch(getBook(bookInStorage))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 // export const fetchSingleBook = (id) => {
 // 	return async (dispatch) => {
@@ -109,19 +104,23 @@ export default function(state = initState, action) {
         ...state,
         books: state.books.filter(book => action.bookId !== book.id)
       }
-    // case ADD_BOOK:
-    // 	return {
-    // 		...state,
-    // 		allBooks: [ ...state.allBooks, action.book ]
-    // 	};
+    case ADD_BOOK:
+      return {
+        ...state,
+        books: [...state.books, action.book]
+      }
     // case UPDATE_BOOK:
     // 	return {
     // 		...state,
     // 		singleBook: action.book,
     // 		allBooks: [ ...state.allBooks.map((book) => (action.book.id === book.id ? action.book : book)) ]
     // 	};
-    // case GET_BOOKS:
-    // 	return { ...state, allBooks: action.books };
+    case GET_BOOKS:
+      return {
+        ...state,
+        books: state.books.concat(action.book),
+        book: action.book
+      }
     default:
       return state
   }

@@ -1,23 +1,29 @@
 import React, {Component} from 'react'
 import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {removeFromCart} from '../reducers/cart'
+import {removeFromCart, getBooksFromStorage} from '../reducers/cart'
 
 class Cart extends Component {
   constructor() {
     super()
     this.handleDelete = this.handleDelete.bind(this)
   }
-
+  componentDidMount() {
+    this.props.gotAllBook()
+  }
   handleDelete(evt) {
     this.props.removeItem()
   }
 
   render() {
+    const book = this.props.book
+
+    console.log('the book from storage', book.title)
     return (
       <div>
-        {this.props.books.map(book => {
-          return (
+        <div>header</div>
+        {book &&
+          book.id(
             <div key={book.id}>
               <h1>{book.title}</h1>
               <img src={book.imageUrl} />
@@ -36,19 +42,19 @@ class Cart extends Component {
                 Delete
               </button>
             </div>
-          )
-        })}
+          )}{' '}
       </div>
     )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
+  gotAllBook: () => dispatch(getBooksFromStorage()),
   removeItem: () => dispatch(removeFromCart())
 })
 
 const mapStateToProps = state => ({
-  books: state.cart.books
+  book: state.cart.book
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))
