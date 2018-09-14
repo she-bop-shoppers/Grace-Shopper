@@ -3,7 +3,7 @@ import books from './book'
 import user from './user'
 import authors from './author'
 import genres from './genres'
-import cart from './cart'
+import cart from './Cart'
 
 const reducer = combineReducers({user, books, authors, genres, cart})
 

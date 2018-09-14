@@ -6,7 +6,6 @@ import history from '../history'
  //  */
 
 const GET_BOOKS = 'GET_BOOKS'
-// const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
 const ADD_BOOK = 'ADD_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 
@@ -22,11 +21,9 @@ const initState = {
  * ACTION CREATORS
  */
 
-const getBook = book => ({type: GET_BOOKS, book})
+const getBooks = books => ({type: GET_BOOKS, books})
 const deleteFromCart = bookId => ({type: REMOVE_BOOK, bookId})
 const addedBookToCart = book => ({type: ADD_BOOK, book})
-
-// const getSingleBook = (book) => ({ type: GET_SINGLE_BOOK, singleBook: book });
 
 /**
  * THUNK CREATORS
@@ -48,48 +45,34 @@ export const removeFromCart = bookId => {
     try {
       await localStorage.removeItem(JSON.stringify(bookId))
       //JSON.stringify
-      dispatch(deleteFromCart())
+      dispatch(deleteFromCart(bookId))
     } catch (err) {
       console.error(err)
     }
   }
 }
 
-export const getBooksFromStorage = () => async dispatch => {
+export const getBooksFromStorage = () => dispatch => {
   try {
-    const bookInStorage = await localStorage.getItem(JSON.stringify(4))
-    dispatch(getBook(JSON.parse(bookInStorage)))
+    const allBookIds = Object.keys(localStorage)
+    const allBooks = allBookIds.map(id => {
+      return JSON.parse(localStorage.getItem(id))
+    })
+    dispatch(getBooks(allBooks))
   } catch (err) {
     console.error(err)
   }
 }
-
-// export const fetchSingleBook = (id) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			const { data } = await axios.get('/api/books/' + id);
-// 			const action = getSingleBook(data);
-// 			dispatch(action);
-// 		} catch (error) {
-// 			console.log(error);
-// 		}
-// 	};
-// };
 
 /**
  * REDUCER
  */
 export default function(state = initState, action) {
   switch (action.type) {
-    // case GET_SINGLE_BOOK:
-    // 	return {
-    // 		...state,
-    // 		singleBook: action.singleBook
-    // 	};
     case REMOVE_BOOK:
       return {
-        ...state
-        // books: state.books.filter((book) => action.bookId !== book.id)
+        ...state,
+        books: state.books.filter(book => action.bookId !== book.id)
       }
     case ADD_BOOK:
       return {
@@ -99,8 +82,7 @@ export default function(state = initState, action) {
     case GET_BOOKS:
       return {
         ...state,
-        books: state.books.concat(action.book),
-        book: action.book
+        books: action.books
       }
     default:
       return state
