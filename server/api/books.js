@@ -38,16 +38,13 @@ router.get('/:id', async (req, res, next) => {
 })
 
 const isAdmin = (req, res, next) => {
-  console.log('i am in the isAdmin test for post books or delete books')
-  console.log('req', req.req)
-  console.log('req.user', req.user)
-  //if () {
-  const error = new Error('You are not authorized to complete this action')
-  error.status = 401
-  return next(error)
-  // } else {
-  //   next()
-  // }
+  if (!req.user.isAdmin) {
+    const error = new Error('You are not authorized to complete this action')
+    error.status = 401
+    return next(error)
+  } else {
+    next()
+  }
 }
 
 router.post('/', isAdmin, async (req, res, next) => {

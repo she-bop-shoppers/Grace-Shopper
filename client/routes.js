@@ -41,12 +41,12 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/addBook" component={ConnectedAddBook} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
         <Route component={ConnectedAllBooks} />
         <Route path="/query" component={ConnectedBooksQuery} />
-        <Route path="/add" component={ConnectedAddBook} />
         <Route path="/" component={ConnectedAllBooks} />
       </Switch>
     )

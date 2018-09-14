@@ -23,18 +23,26 @@ class BooksQuery extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     if (this.state.type === 'genreId') {
-      let res = await axios.get(`api/genres?name=${this.state.value}`)
-      let id = res.data[0].id
-      this.setState({
-        value: id
-      })
+      try {
+        let res = await axios.get(`api/genres?name=${this.state.value}`)
+        let id = res.data[0].id
+        this.setState({
+          value: id
+        })
+      } catch (err) {
+        alert('Invalid search criteria')
+      }
     }
     if (this.state.type === 'authorId') {
-      let res = await axios.get(`api/authors?lastName=${this.state.value}`)
-      let id = res.data[0].id
-      this.setState({
-        value: id
-      })
+      try {
+        let res = await axios.get(`api/authors?lastName=${this.state.value}`)
+        let id = res.data[0].id
+        this.setState({
+          value: id
+        })
+      } catch (err) {
+        alert('Invalid search criteria')
+      }
     }
     this.props.getBooks(this.state)
     this.setState({
