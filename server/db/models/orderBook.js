@@ -17,14 +17,10 @@ const OrderBook = db.define('orderBook', {
 })
 module.exports = OrderBook
 
-OrderBook.prototype.soldOutOrNot = async function() {
+OrderBook.prototype.decrementQty = async function() {
   try {
     const book = await Book.findById(this.bookId)
-    if (book.quantity === 0) {
-      return 'Sold out!'
-    } else {
-      book.quantity = book.quantity - this.quantity
-    }
+    book.quantity = book.quantity - this.quantity
   } catch (error) {
     console.log(error)
   }
