@@ -20,6 +20,7 @@ class Cart extends Component {
     const book = this.props.book
 
     console.log('the book from storage', book)
+    console.log('the book from storage', book)
     const bookId = book.id
     console.log('this is id', bookId)
     return (
