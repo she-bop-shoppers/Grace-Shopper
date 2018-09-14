@@ -8,6 +8,7 @@ import ConnectedAddBook from './components/add-book'
 import ConnectedBooksQuery from './components/books-query'
 import AllAuthors from './components/allAuthors'
 import SingleBook from './components/SingleBook'
+import Cart from './components/Cart'
 import AllGenres from './components/AllGenres'
 import SingleGenre from './components/SingleGenre'
 import SingleAuthor from './components/SingleAuthor'
@@ -32,10 +33,10 @@ class Routes extends Component {
         <Route exact path="/books" component={ConnectedAllBooks} />
         <Route path="/books/:bookId" component={SingleBook} />
         <Route exact path="/authors" component={AllAuthors} />
+        <Route exact path="/cart" component={Cart} />
         <Route path="/authors/:authorId" component={SingleAuthor} />
         <Route exact path="/genres" component={AllGenres} />
         <Route path="/genres/:genreId" component={SingleGenre} />
-
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
