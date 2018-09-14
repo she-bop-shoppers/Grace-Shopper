@@ -8,14 +8,27 @@ import {withRouter} from 'react-router-dom'
 class SingleBook extends React.Component {
   constructor() {
     super()
+    this.state = {
+      quantity: 1
+    }
     this.handleAddToCart = this.handleAddToCart.bind(this)
+    this.addQuantity = this.addQuantity.bind(this)
   }
+
   componentDidMount() {
     const bookId = Number(this.props.match.params.bookId)
     this.props.singleBook(bookId)
   }
+
+  addQuantity(event) {
+    console.log('event', event.target.value)
+    this.setState({quantity: event.target.value})
+  }
+
   handleAddToCart() {
     const {book} = this.props
+    book.quantity = Number(this.state.quantity)
+    console.log('this is addQu', book.quantity)
     this.props.addBook(book)
   }
   render() {
@@ -34,6 +47,18 @@ class SingleBook extends React.Component {
           // <Link to={`/authors/${author.id}`}>{author.fullName}</Link>
           }
         </p>
+        <div>
+          Quantity:
+          <select onChange={this.addQuantity} value={this.state.quantity}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
+              return (
+                <option key={each} value={each + ''}>
+                  {each}
+                </option>
+              )
+            })}
+          </select>
+        </div>{' '}
         <button type="submit" onClick={this.handleAddToCart}>
           Add to Cart
         </button>

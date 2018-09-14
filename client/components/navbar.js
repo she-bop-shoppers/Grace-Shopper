@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../reducers/user'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+
 import Typography from '@material-ui/core/Typography'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
@@ -24,6 +25,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
+          <Link to="/cart">Cart</Link>
         </Toolbar>
       )}
     </AppBar>
