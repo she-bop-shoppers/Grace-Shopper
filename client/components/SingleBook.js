@@ -21,7 +21,7 @@ class SingleBook extends React.Component {
   render() {
     const {book} = this.props
     const {author} = book
-
+    console.log('Book', this.props.book.author)
     return (
       <div>
         <h1>{book.title}</h1>

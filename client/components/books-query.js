@@ -1,6 +1,8 @@
 import React from 'react'
+import axios from 'axios'
 import {connect} from 'react-redux'
-import {getBooks} from '../reducers/'
+import {getBooks} from '../reducers/book'
+import {Redirect} from 'react-router'
 import Select from '@material-ui/core/Select'
 
 /**
@@ -10,18 +12,49 @@ class BooksQuery extends React.Component {
   constructor() {
     super()
     this.state = {
-      type: '',
+      type: '--Please choose an option--',
       value: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault()
-    console.log(event.target)
-    // this.setState({
-    //   type: event.target.name,
-    //   value: event.target.value
-    // })
+    if (this.state.type === 'genreId') {
+      let res = await axios.get(`api/genres?name=${this.state.value}`)
+      let id = res.data[0].id
+      this.setState({
+        value: id
+      })
+    }
+    if (this.state.type === 'authorId') {
+      let res = await axios.get(`api/authors?lastName=${this.state.value}`)
+      let id = res.data[0].id
+      this.setState({
+        value: id
+      })
+    }
+    this.props.getBooks(this.state)
+    this.setState({
+      type: '--Please choose an option--',
+      value: ''
+    })
+  }
+
+  handleSelect(event) {
+    console.log(event.target.value)
+    this.setState({
+      type: event.target.value
+    })
+  }
+
+  handleChange(event) {
+    console.log(event.target.value)
+    this.setState({
+      value: event.target.value
+    })
   }
 
   render() {
@@ -33,17 +66,28 @@ class BooksQuery extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="search-select">
             <label htmlFor="search-select">Search by:</label>
-            <select id="search-select">
+            <select
+              id="search-select"
+              value={this.state.type}
+              onChange={this.handleSelect}
+              placeholder="--Please choose an option--"
+            >
               <option value="">--Please choose an option--</option>
-              <option value="genre">Genre</option>
+              <option value="genreId">Genre</option>
               <option value="title">Title</option>
-              <option value="author">Author</option>
+              <option value="authorId">Author (last name)</option>
             </select>
           </div>
 
           <div className="search-input">
             <label htmlFor="search-input">Search for:</label>
-            <input type="text" id="search-input" name="value" />
+            <input
+              type="text"
+              id="search-input"
+              name="searchedText"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
           </div>
 
           <button type="submit">Submit</button>

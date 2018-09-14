@@ -17,10 +17,10 @@ const User = db.define('user', {
       isEmail: true
     }
   },
-  idAdmin: {
+  isAdmin: {
     type: Sequelize.BOOLEAN
   },
-  idActive: {
+  isActive: {
     type: Sequelize.BOOLEAN
   },
   userName: {

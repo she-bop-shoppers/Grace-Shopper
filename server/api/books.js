@@ -1,13 +1,13 @@
 const router = require('express').Router()
 
-const {Book, Author} = require('../db/models')
+const {Book, Author, Genre} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
     if (req.query) {
       const books = await Book.findAll({
         where: req.query,
-        include: [{model: Author}]
+        include: [{model: Author}, {model: Genre}]
       })
       res.status(200).send(books)
     } else {
@@ -39,13 +39,15 @@ router.get('/:id', async (req, res, next) => {
 
 const isAdmin = (req, res, next) => {
   console.log('i am in the isAdmin test for post books or delete books')
+  console.log('req', req.req)
   console.log('req.user', req.user)
-  if (!req.user.isAdmin) {
-    const error = new Error('You are not authorized to complete this action')
-    return next(error)
-  } else {
-    next()
-  }
+  //if () {
+  const error = new Error('You are not authorized to complete this action')
+  error.status = 401
+  return next(error)
+  // } else {
+  //   next()
+  // }
 }
 
 router.post('/', isAdmin, async (req, res, next) => {
