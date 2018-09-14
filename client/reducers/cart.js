@@ -4,7 +4,7 @@ import history from '../history'
 /**
  * ACTION TYPES
  //  */
-// const UPDATE_BOOK = 'UPDATE_BOOK'
+
 const GET_BOOKS = 'GET_BOOKS'
 // const GET_SINGLE_BOOK = 'GET_SINGLE_BOOK'
 const ADD_BOOK = 'ADD_BOOK'
@@ -28,28 +28,14 @@ const addedBookToCart = book => ({type: ADD_BOOK, book})
 
 // const getSingleBook = (book) => ({ type: GET_SINGLE_BOOK, singleBook: book });
 
-// const updateBook = (book) => ({ type: UPDATE_BOOK, book });
-
 /**
  * THUNK CREATORS
  */
-
-// export const editedBook = (bookId, reqBody) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			const response = await axios.put('/api/books/' + bookId, reqBody);
-// 			dispatch(updateBook(response.data));
-// 		} catch (err) {
-// 			console.error(err);
-// 		}
-// 	};
-// };
 
 export const addNewBookToCart = book => {
   return dispatch => {
     try {
       localStorage.setItem(JSON.stringify(book.id), JSON.stringify(book))
-      //JSON.stringify
       dispatch(addedBookToCart(book))
     } catch (err) {
       console.error(err)
@@ -57,21 +43,22 @@ export const addNewBookToCart = book => {
   }
 }
 
-// export const removeFromCart = (bookId) => {
-// 	return async (dispatch) => {
-// 		try {
-// 			//	await axios.delete(`/api/books/${bookId}`);
-// 			dispatch(deleteFromCart(bookId));
-// 		} catch (err) {
-// 			console.error(err);
-// 		}
-// 	};
-// };
+export const removeFromCart = bookId => {
+  return async dispatch => {
+    try {
+      await localStorage.removeItem(JSON.stringify(bookId))
+      //JSON.stringify
+      dispatch(deleteFromCart())
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
 
 export const getBooksFromStorage = () => async dispatch => {
   try {
-    const bookInStorage = await localStorage.getItem(JSON.stringify(2))
-    dispatch(getBook(bookInStorage))
+    const bookInStorage = await localStorage.getItem(JSON.stringify(4))
+    dispatch(getBook(JSON.parse(bookInStorage)))
   } catch (err) {
     console.error(err)
   }
@@ -101,20 +88,14 @@ export default function(state = initState, action) {
     // 	};
     case REMOVE_BOOK:
       return {
-        ...state,
-        books: state.books.filter(book => action.bookId !== book.id)
+        ...state
+        // books: state.books.filter((book) => action.bookId !== book.id)
       }
     case ADD_BOOK:
       return {
         ...state,
         books: [...state.books, action.book]
       }
-    // case UPDATE_BOOK:
-    // 	return {
-    // 		...state,
-    // 		singleBook: action.book,
-    // 		allBooks: [ ...state.allBooks.map((book) => (action.book.id === book.id ? action.book : book)) ]
-    // 	};
     case GET_BOOKS:
       return {
         ...state,
