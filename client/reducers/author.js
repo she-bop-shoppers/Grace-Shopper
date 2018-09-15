@@ -31,7 +31,6 @@ const getOneAuthor = author => ({
 // THUNK CREATORS
 export const getAllAuthors = () => {
   return async dispatch => {
-    console.log('ENTERING GET AUTHOR FUNC')
     try {
       const response = await axios.get('/api/authors')
       console.log(response.data)
