@@ -16,6 +16,9 @@ Book.belongsToMany(Order, {through: OrderBook})
 Review.belongsTo(User)
 User.hasMany(Review)
 
+Review.belongsTo(Book)
+Book.hasMany(Review)
+
 Book.belongsTo(Author)
 Author.hasMany(Book)
 
