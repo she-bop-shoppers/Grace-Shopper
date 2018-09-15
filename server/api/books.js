@@ -56,6 +56,17 @@ router.post('/', isAdmin, async (req, res, next) => {
   }
 })
 
+router.put('/:id', isAdmin, async (req, res, next) => {
+  const id = req.params.id
+  const book = await Book.findOne({
+    where: {
+      id
+    }
+  })
+  const updatedBook = await book.update(req.body)
+  res.json(updatedBook)
+})
+
 router.delete('/:id', isAdmin, async (req, res, next) => {
   try {
     const bookToDelete = await Book.findById(req.params.id)

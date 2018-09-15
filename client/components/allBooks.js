@@ -11,7 +11,9 @@ class AllBooks extends Component {
     super()
     this.handleDelete = this.handleDelete.bind(this)
     this.state = {
-      redirect: false
+      addRedirect: false,
+      updateRedirect: false,
+      bookId: ''
     }
   }
 
@@ -19,15 +21,25 @@ class AllBooks extends Component {
     this.props.fetchBooks()
   }
 
-  setRedirect = () => {
+  setAddRedirect = () => {
     this.setState({
-      redirect: true
+      addRedirect: true
+    })
+  }
+
+  setUpdateRedirect = bookId => {
+    this.setState({
+      bookId,
+      updateRedirect: true
     })
   }
 
   renderRedirect = () => {
-    if (this.state.redirect) {
+    if (this.state.addRedirect) {
       return <Redirect to="/addBook" />
+    }
+    if (this.state.updateRedirect) {
+      return <Redirect to={`/updateBook/${this.state.bookId}`} />
     }
   }
 
@@ -46,7 +58,7 @@ class AllBooks extends Component {
           {isAdmin ? (
             <div>
               {this.renderRedirect()}
-              <button type="submit" onClick={this.setRedirect}>
+              <button type="submit" onClick={this.setAddRedirect}>
                 Add Book Item
               </button>
             </div>
@@ -60,12 +72,24 @@ class AllBooks extends Component {
                   <Link to={`/books/${book.id}`}>{book.title}</Link>{' '}
                   <img src={book.imageUrl} />
                   {isAdmin ? (
-                    <button
-                      type="submit"
-                      onClick={() => this.handleDelete(book.id)}
-                    >
-                      Delete
-                    </button>
+                    <div>
+                      {' '}
+                      <button
+                        type="submit"
+                        onClick={() => this.handleDelete(book.id)}
+                      >
+                        Delete
+                      </button>
+                      <div>
+                        {this.renderRedirect()}
+                        <button
+                          type="submit"
+                          onClick={() => this.setUpdateRedirect(book.id)}
+                        >
+                          Update Item
+                        </button>
+                      </div>
+                    </div>
                   ) : (
                     <div />
                   )}
