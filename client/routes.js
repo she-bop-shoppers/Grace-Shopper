@@ -13,6 +13,7 @@ import AllGenres from './components/AllGenres'
 import SingleGenre from './components/SingleGenre'
 import SingleAuthor from './components/SingleAuthor'
 import ConnectedUpdateBook from './components/update-book'
+import PastOrders from './components/pastOrders'
 import {me} from './reducers/user'
 
 /**
@@ -43,6 +44,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
             <Route path="/addBook" component={ConnectedAddBook} />
+            <Route path="/pastorders" component={PastOrders} />
             <Route
               path="/updateBook/:bookId"
               render={props => <ConnectedUpdateBook {...props} />}
