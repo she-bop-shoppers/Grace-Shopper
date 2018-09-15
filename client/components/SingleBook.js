@@ -8,9 +8,8 @@ import {withRouter} from 'react-router-dom'
 class SingleBook extends React.Component {
   constructor() {
     super()
-    this.state = {
-      quantity: 1
-    }
+    this.state = {quantity: 0}
+
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.addQuantity = this.addQuantity.bind(this)
   }
@@ -28,8 +27,13 @@ class SingleBook extends React.Component {
   handleAddToCart() {
     const {book} = this.props
     book.quantity = Number(this.state.quantity)
-    console.log('this is addQu', book.quantity)
     this.props.addBook(book)
+    alert(
+      `you have "${book.quantity}" books with the title "${
+        book.title
+      }" in your cart`
+    )
+    this.setState({quantity: 0})
   }
   render() {
     const {book} = this.props
@@ -50,7 +54,7 @@ class SingleBook extends React.Component {
         <div>
           Quantity:
           <select onChange={this.addQuantity} value={this.state.quantity}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
               return (
                 <option key={each} value={each + ''}>
                   {each}

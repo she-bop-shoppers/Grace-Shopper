@@ -28,7 +28,7 @@ class Cart extends Component {
                 <p>{book.description}</p>
                 <p>Price: ${book.price}</p>
                 <p>Quantity: {book.quantity}</p>
-                <p>Subtotal: $</p>
+                <p>Subtotal: ${book.quantity * book.price}</p>
                 <button
                   type="submit"
                   onClick={() => this.handleDelete(book.id)}
