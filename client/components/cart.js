@@ -27,15 +27,8 @@ class Cart extends Component {
                 <img src={book.imageUrl} />
                 <p>{book.description}</p>
                 <p>Price: ${book.price}</p>
-                <div>
-                  Quentity:
-                  <select>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
-                      return <option key={each}>{each}</option>
-                    })}
-                  </select>
-                </div>
-                <p>Subtotal: $</p>
+                <p>Quantity: {book.quantity}</p>
+                <p>Subtotal: ${book.quantity * book.price}</p>
                 <button
                   type="submit"
                   onClick={() => this.handleDelete(book.id)}
