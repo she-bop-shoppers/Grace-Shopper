@@ -1,17 +1,20 @@
 import React from 'react'
 import {fetchSingleBook} from '../reducers/book'
 import {addNewBookToCart} from '../reducers/cart'
-
+import Review from './Review'
+import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
 class SingleBook extends React.Component {
   constructor() {
     super()
-    this.state = {quantity: 0}
-
+    this.state = {
+      updateRedirect: false,
+      quantity: 0
+    }
     this.handleAddToCart = this.handleAddToCart.bind(this)
-    this.addQuantity = this.addQuantity.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -28,16 +31,33 @@ class SingleBook extends React.Component {
     book.quantity = Number(this.state.quantity)
     this.props.addBook(book)
     alert(
-      `you have "${book.quantity}" books with the title "${
+      `You have "${book.quantity}" books with the title "${
         book.title
       }" in your cart`
     )
     this.setState({quantity: 0})
   }
+
+  setUpdateRedirect = () => {
+    this.setState({
+      updateRedirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.updateRedirect) {
+      return <Redirect to={`/updateBook/${this.props.match.params.bookId}`} />
+    }
+  }
+
+  handleDelete(id) {
+    this.props.removeBook(id)
+  }
+
   render() {
-    const {book} = this.props
+    const {book, isAdmin} = this.props
     const {author} = book
-    console.log('Book', this.props.book.author)
+    console.log('Book', this.props.book.reviews)
     return (
       <div>
         <h1>{book.title}</h1>
@@ -50,6 +70,22 @@ class SingleBook extends React.Component {
           // <Link to={`/authors/${author.id}`}>{author.fullName}</Link>
           }
         </p>
+        {isAdmin ? (
+          <div>
+            {' '}
+            <button type="submit" onClick={() => this.handleDelete(book.id)}>
+              Delete
+            </button>
+            <div>
+              {this.renderRedirect()}
+              <button type="submit" onClick={() => this.setUpdateRedirect()}>
+                Update Item
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div />
+        )}
         <div>
           Quantity:{' '}
           <input
@@ -62,6 +98,9 @@ class SingleBook extends React.Component {
         <button type="submit" onClick={this.handleAddToCart}>
           Add to Cart
         </button>
+        <br />
+        <br />
+        <Review book={book} />
       </div>
     )
   }
@@ -69,7 +108,8 @@ class SingleBook extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    book: state.books.singleBook
+    book: state.books.singleBook,
+    isAdmin: state.user.isAdmin
   }
 }
 

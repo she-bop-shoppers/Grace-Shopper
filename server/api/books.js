@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const {Book, Author, Genre} = require('../db/models')
+const {Book, Author, Genre, Review} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -28,6 +28,9 @@ router.get('/:id', async (req, res, next) => {
       include: [
         {
           model: Author
+        },
+        {
+          model: Review
         }
       ]
     })
@@ -54,6 +57,17 @@ router.post('/', isAdmin, async (req, res, next) => {
   } catch (err) {
     console.error(err)
   }
+})
+
+router.put('/:id', isAdmin, async (req, res, next) => {
+  const id = req.params.id
+  const book = await Book.findOne({
+    where: {
+      id
+    }
+  })
+  const updatedBook = await book.update(req.body)
+  res.json(updatedBook)
 })
 
 router.delete('/:id', isAdmin, async (req, res, next) => {
