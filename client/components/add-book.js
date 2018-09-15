@@ -26,6 +26,7 @@ class AddBook extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="add-form">
         <h3>ADD NEW BOOK</h3>
@@ -37,6 +38,7 @@ class AddBook extends React.Component {
               id="input-field"
               name="title"
               onChange={this.handleChange}
+              value={this.state.title}
             />
           </div>
 
@@ -47,6 +49,7 @@ class AddBook extends React.Component {
               id="input-field"
               name="price"
               onChange={this.handleChange}
+              value={this.state.price}
             />
           </div>
 
@@ -57,6 +60,7 @@ class AddBook extends React.Component {
               id="input-field"
               name="description"
               onChange={this.handleChange}
+              value={this.state.description}
             />
           </div>
 

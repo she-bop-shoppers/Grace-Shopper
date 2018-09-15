@@ -5,29 +5,37 @@ import {Link} from 'react-router-dom'
 import {logout} from '../reducers/user'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-
 import Typography from '@material-ui/core/Typography'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <div>
     <h1>Grace Shopper</h1>
     <AppBar>
-      {isLoggedIn ? (
-        <Toolbar>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </Toolbar>
-      ) : (
-        <Toolbar>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/cart">Cart</Link>
-        </Toolbar>
-      )}
+      <Toolbar>
+        {isLoggedIn ? (
+          <div>
+            <Link to="/home">Home</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>{' '}
+          </div>
+        ) : (
+          <div />
+        )}
+        {isAdmin ? (
+          <div>
+            <Link to="/addBook">Add Book</Link>
+          </div>
+        ) : (
+          <div />
+        )}
+        {/* The navbar will show these links before you log in */}
+        <Link to="/books">Books</Link>
+        <Link to="/genres">Genres</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Sign Up</Link>
+        <Link to="/cart">Cart</Link>
+      </Toolbar>
     </AppBar>
     <hr />
   </div>
@@ -38,7 +46,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.isAdmin
   }
 }
 
@@ -57,5 +66,6 @@ export default connect(mapState, mapDispatch)(Navbar)
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }
