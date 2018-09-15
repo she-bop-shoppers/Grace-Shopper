@@ -32,6 +32,11 @@ const addedBookToCart = book => ({type: ADD_BOOK, book})
 export const addNewBookToCart = book => {
   return dispatch => {
     try {
+      const prevValue = JSON.parse(localStorage.getItem(book.id))
+      if (prevValue) {
+        book.quantity = book.quantity + prevValue.quantity
+      }
+      book.subTotal = book.price * book.quantity
       localStorage.setItem(JSON.stringify(book.id), JSON.stringify(book))
       dispatch(addedBookToCart(book))
     } catch (err) {

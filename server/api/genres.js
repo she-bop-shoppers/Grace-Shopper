@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Genre, Book} = require('../db/models')
+const {Genre, Book, Author} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -23,7 +23,12 @@ router.get('/:id', async (req, res, next) => {
     const genre = await Genre.findById(id, {
       include: [
         {
-          model: Book
+          model: Book,
+          include: [
+            {
+              model: Author
+            }
+          ]
         }
       ]
     })

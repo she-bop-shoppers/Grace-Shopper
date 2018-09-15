@@ -1,9 +1,10 @@
 import React from 'react'
+import axios from 'axios'
 import {connect} from 'react-redux'
-import {addNewBook} from '../reducers/book'
+import {editedBook} from '../reducers/book'
 import BookForm from './book-form'
 
-class AddBook extends React.Component {
+class UpdateBook extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -16,6 +17,19 @@ class AddBook extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  async componentDidMount() {
+    const response = await axios.get(
+      `/api/books/${this.props.match.params.bookId}`
+    )
+    const book = response.data
+    this.setState({
+      title: book.title,
+      price: book.price,
+      description: book.description,
+      quantity: book.quantity
+    })
+  }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -24,14 +38,8 @@ class AddBook extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.addBook(this.state)
-    this.setState({
-      title: '',
-      price: 0,
-      description: '',
-      quantity: ''
-    })
-    alert('Book successfully added')
+    this.props.updateBook(this.props.match.params.bookId, this.state)
+    alert('Book successfully updated')
   }
 
   render() {
@@ -47,9 +55,9 @@ class AddBook extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {addBook: book => dispatch(addNewBook(book))}
+  return {updateBook: (bookId, book) => dispatch(editedBook(bookId, book))}
 }
 
-const ConnectedAddBook = connect(null, mapDispatchToProps)(AddBook)
+const ConnectedUpdateBook = connect(null, mapDispatchToProps)(UpdateBook)
 
-export default ConnectedAddBook
+export default ConnectedUpdateBook
