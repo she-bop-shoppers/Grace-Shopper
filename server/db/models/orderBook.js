@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const {Book} = require('./book')
 
 const OrderBook = db.define('orderBook', {
   quantity: {
@@ -15,3 +16,12 @@ const OrderBook = db.define('orderBook', {
   }
 })
 module.exports = OrderBook
+
+OrderBook.prototype.decrementQty = async function() {
+  try {
+    const book = await Book.findById(this.bookId)
+    book.quantity = book.quantity - this.quantity
+  } catch (error) {
+    console.log(error)
+  }
+}

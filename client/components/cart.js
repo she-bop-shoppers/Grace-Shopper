@@ -9,55 +9,48 @@ class Cart extends Component {
     this.handleDelete = this.handleDelete.bind(this)
   }
   componentDidMount() {
-    this.props.gotAllBook()
+    this.props.gotAllBooks()
   }
-  handleDelete(evt, bookId) {
-    console.log('this is delete', bookId)
+  handleDelete(bookId) {
     this.props.removeItem(bookId)
   }
 
   render() {
-    const book = this.props.book
-
-    console.log('the book from storage', book)
-    console.log('the book from storage', book)
-    const bookId = book.id
-    console.log('this is id', bookId)
-    return (
-      book && (
-        <div key={book.id}>
-          <h1>{book.title}</h1>
-          <img src={book.imageUrl} />
-          <p>{book.description}</p>
-          <p>Price: ${book.price}</p>
-          <div>
-            Quentity:
-            <select>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
-                return <option key={each}>{each}</option>
-              })}
-            </select>
-          </div>
-          <p>Subtotal: $</p>
-          <button
-            type="submit"
-            onClick={() => this.handleDelete(this.props.book.id)}
-          >
-            Delete
-          </button>
+    const books = this.props.books
+    if (books.length > 0) {
+      return (
+        <div>
+          {books.map(book => {
+            return (
+              <div key={book.id}>
+                <h1>{book.title}</h1>
+                <img src={book.imageUrl} />
+                <p>{book.description}</p>
+                <p>Price: ${book.price}</p>
+                <p>Quantity: {book.quantity}</p>
+                <p>Subtotal: ${book.quantity * book.price}</p>
+                <button
+                  type="submit"
+                  onClick={() => this.handleDelete(book.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            )
+          })}
         </div>
       )
-    )
+    } else return <div>You do not have any books in your cart ;)</div>
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  gotAllBook: () => dispatch(getBooksFromStorage()),
+  gotAllBooks: () => dispatch(getBooksFromStorage()),
   removeItem: bookId => dispatch(removeFromCart(bookId))
 })
 
 const mapStateToProps = state => ({
-  book: state.cart.book
+  books: state.cart.books
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))

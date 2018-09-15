@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../reducers/user'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
 const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <div>
@@ -33,6 +34,7 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
         <Link to="/genres">Genres</Link>
         <Link to="/login">Login</Link>
         <Link to="/signup">Sign Up</Link>
+        <Link to="/cart">Cart</Link>
       </Toolbar>
     </AppBar>
     <hr />

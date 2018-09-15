@@ -9,19 +9,35 @@ class SingleBook extends React.Component {
   constructor() {
     super()
     this.state = {
-      updateRedirect: false
+      updateRedirect: false,
+      quantity: 0
     }
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
   }
+
   componentDidMount() {
     const bookId = Number(this.props.match.params.bookId)
     this.props.singleBook(bookId)
   }
+
+  addQuantity(event) {
+    console.log('event', event.target.value)
+    this.setState({quantity: event.target.value})
+  }
+
   handleAddToCart() {
     const {book} = this.props
+    book.quantity = Number(this.state.quantity)
     this.props.addBook(book)
+    alert(
+      `You have "${book.quantity}" books with the title "${
+        book.title
+      }" in your cart`
+    )
+    this.setState({quantity: 0})
   }
+  
   setUpdateRedirect = () => {
     this.setState({
       updateRedirect: true
@@ -70,6 +86,18 @@ class SingleBook extends React.Component {
         ) : (
           <div />
         )}
+        <div>
+          Quantity:
+          <select onChange={this.addQuantity} value={this.state.quantity}>
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
+              return (
+                <option key={each} value={each + ''}>
+                  {each}
+                </option>
+              )
+            })}
+          </select>
+        </div>{' '}
         <button type="submit" onClick={this.handleAddToCart}>
           Add to Cart
         </button>
