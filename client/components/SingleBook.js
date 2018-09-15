@@ -20,7 +20,6 @@ class SingleBook extends React.Component {
   }
 
   addQuantity(event) {
-    console.log('event', event.target.value)
     this.setState({quantity: event.target.value})
   }
 
@@ -52,16 +51,13 @@ class SingleBook extends React.Component {
           }
         </p>
         <div>
-          Quantity:
-          <select onChange={this.addQuantity} value={this.state.quantity}>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(each => {
-              return (
-                <option key={each} value={each + ''}>
-                  {each}
-                </option>
-              )
-            })}
-          </select>
+          Quantity:{' '}
+          <input
+            onChange={this.addQuantity}
+            name="quantity"
+            value={this.state.quantity}
+            type="tel"
+          />
         </div>{' '}
         <button type="submit" onClick={this.handleAddToCart}>
           Add to Cart

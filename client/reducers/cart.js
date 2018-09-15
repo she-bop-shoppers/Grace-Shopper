@@ -8,6 +8,7 @@ import history from '../history'
 const GET_BOOKS = 'GET_BOOKS'
 const ADD_BOOK = 'ADD_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
+const UPDATE_CART = 'UPDATE_CART'
 
 /**
  * INITIAL STATE
@@ -24,6 +25,7 @@ const initState = {
 const getBooks = books => ({type: GET_BOOKS, books})
 const deleteFromCart = bookId => ({type: REMOVE_BOOK, bookId})
 const addedBookToCart = book => ({type: ADD_BOOK, book})
+const updateCart = book => ({type: UPDATE_CART, book})
 
 /**
  * THUNK CREATORS
@@ -45,11 +47,23 @@ export const addNewBookToCart = book => {
   }
 }
 
+export const updateCartItem = (quantity, book) => {
+  return dispatch => {
+    try {
+      book.quantity = quantity
+      book.subTotal = book.price * book.quantity
+      localStorage.setItem(JSON.stringify(book.id), JSON.stringify(book))
+      dispatch(updateCart(book))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 export const removeFromCart = bookId => {
   return async dispatch => {
     try {
       await localStorage.removeItem(JSON.stringify(bookId))
-      //JSON.stringify
       dispatch(deleteFromCart(bookId))
     } catch (err) {
       console.error(err)
@@ -83,6 +97,15 @@ export default function(state = initState, action) {
       return {
         ...state,
         books: [...state.books, action.book]
+      }
+    case UPDATE_CART:
+      return {
+        ...state,
+        books: [
+          ...state.books.map(
+            book => (action.book.id === book.id ? action.book : book)
+          )
+        ]
       }
     case GET_BOOKS:
       return {
