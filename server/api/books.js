@@ -28,10 +28,11 @@ router.get('/:id', async (req, res, next) => {
       include: [
         {
           model: Author
-        },
-        {
-          model: Review
         }
+        // },
+        // {
+        //   model: Review
+        // }
       ]
     })
     res.status(200).send(book)
