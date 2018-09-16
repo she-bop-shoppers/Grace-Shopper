@@ -26,6 +26,7 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
         {isAdmin ? (
           <div>
             <Link to="/addBook">Add Book</Link>
+            <Link to="/customerorders">Orders</Link>
           </div>
         ) : (
           <div />
