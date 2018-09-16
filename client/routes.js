@@ -15,6 +15,7 @@ import SingleAuthor from './components/SingleAuthor'
 import ConnectedUpdateBook from './components/update-book'
 import PastOrders from './components/pastOrders'
 import AllOrders from './components/customer-orders'
+import Inventory from './components/inventory'
 import {me} from './reducers/user'
 
 /**
@@ -47,6 +48,7 @@ class Routes extends Component {
             <Route path="/addBook" component={ConnectedAddBook} />
             <Route path="/pastorders" component={PastOrders} />
             <Route path="/customerorders" component={AllOrders} />
+            <Route path="/inventory" component={Inventory} />
             <Route
               path="/updateBook/:bookId"
               render={props => <ConnectedUpdateBook {...props} />}
