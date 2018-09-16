@@ -1,9 +1,18 @@
 const router = require('express').Router()
-const {Review, Book} = require('../db/models')
+const {Review, Book, User} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    const reviews = await Review.findAll({})
+    const reviews = await Review.findAll({
+      include: [
+        {
+          model: Book
+        },
+        {
+          model: User
+        }
+      ]
+    })
     res.status(200).send(reviews)
   } catch (error) {
     next(error)
@@ -17,6 +26,9 @@ router.get('/:id', async (req, res, next) => {
       include: [
         {
           model: Book
+        },
+        {
+          model: User
         }
       ]
     })
@@ -25,4 +37,14 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newReview = await Review.create(req.body)
+    res.status(201).send(newReview)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

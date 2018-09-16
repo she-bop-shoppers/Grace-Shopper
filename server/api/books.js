@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const {Book, Author, Genre} = require('../db/models')
+const {Book, Author, Genre, Review} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -28,6 +28,9 @@ router.get('/:id', async (req, res, next) => {
       include: [
         {
           model: Author
+        },
+        {
+          model: Review
         }
       ]
     })
