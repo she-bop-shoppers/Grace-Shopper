@@ -20,9 +20,7 @@ class SingleAuthor extends React.Component {
           {this.props.oneAuthor.books ? (
             this.props.oneAuthor.books.map(book => (
               <li key={book.id}>
-                <Link to={`/books/${book.id}`}>
-                  {book.title} by {book.authorId}
-                </Link>
+                <Link to={`/books/${book.id}`}>{book.title}</Link>
               </li>
             ))
           ) : (
