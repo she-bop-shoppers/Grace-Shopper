@@ -7,7 +7,12 @@ router.get('/', async (req, res, next) => {
     if (req.query) {
       const orders = await Order.findAll({
         where: req.query,
-        include: [{model: OrderBook}]
+        include: [
+          {
+            model: Book,
+            through: {OrderBook}
+          }
+        ]
       })
       res.status(200).send(orders)
     } else {
@@ -37,14 +42,15 @@ router.post('/', async (req, res, next) => {
     cart.forEach(item => {
       price += item.subTotal
     })
-    const orders = await Order.create({
-      totalPrice: price,
-      date: Date.now(),
-      userId: userId,
-      orderBook: cart,
-      include: [{model: OrderBook}]
-    })
-    res.status(200).send(orders)
+    const order = await Order.create(
+      {
+        totalPrice: price,
+        date: Date.now(),
+        orderBooks: cart
+      },
+      {include: [{model: OrderBook}]}
+    )
+    res.status(200).send(order)
   } catch (err) {
     next(err)
   }

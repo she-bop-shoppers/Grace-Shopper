@@ -68,16 +68,10 @@ export const getSingleOrder = id => {
 export const postNewOrder = order => {
   return async dispatch => {
     try {
-      const orderResponse = await axios.post('/api/orders', order)
-      const postedorder = orderResponse.data
+      order.map(book => (book.bookId = book.id))
+      const response = await axios.post('/api/orders', order)
+      const postedorder = response.data
       dispatch(addedNewOrder(postedorder))
-      order.forEach(async item => {
-        item.bookId = item.id
-        item.orderId = postedorder.id
-        const orderBooksRes = await axios.post('/api/orderBooks', item)
-        const posteditem = orderBooksRes.data
-        dispatch(addedNewItem(posteditem))
-      })
     } catch (err) {
       console.error(err)
     }
