@@ -378,141 +378,141 @@ const seed = async () => {
       date: Date.now(),
       text:
         "This book is absolutely breathtaking. Every page is filled with illustrations. It's just so beautiful. I love how they've come out with these books with the 3rd one on the way next month. It's an interesting take on the classic book from JK Rowling. It really has you picturing exactly what's going on with each page.",
-      userId: 1,
-      bookId: 4
+      userId: 1
+      //bookId: 4
     },
     {
       date: Date.now(),
       text:
         "I have to admit while parts of this novel where intriguing, most of it, I found difficult get through. The beginning until half way through was quite boring and if it hadn't been a required text for class I would've dropped it. On the other hand it was different and lacked the cliche main character that fights for freedom and justice, but then again that's the kind of character I like. I do recommend trying it for yourself as it wasn't a terrible read. I loved the ending though. It was open ended leaving you able to create an ending that you would like to have happened.",
-      userId: 2,
-      bookId: 2
+      userId: 2
+      // bookId: 2
     },
     {
       date: Date.now(),
       text:
         "Just when you think you have it all figured out, wham! You don't. I didn't see it coming. Amazing writing keeps you hooked from page 1. Gillian Flynn knows her stuff, I am a big fan and this will not disappoint. I loved Gone Girl and was so happy when they made it a movie. I am very excited to see the adaptation of Sharp Objects on HBO. I could not put this book down. It's one of those books where you have to force yourself to stop reading so you don't read it in 24 hours. I tried to take my time but only lasted 4 days. If you are a fan of thrillers with great plot twists, you will not be disappointed.",
-      userId: 3,
-      bookId: 3
+      userId: 3
+      // bookId: 3
     },
     {
       date: Date.now(),
       text:
         'I was sitting next to a young woman reading on a plane who was reading this. She told me that she liked it much better than the series. That it was well-written and hard to put down. She specifically mentioned that it had very little of the gratuitous sex that seems to pervade the TV show. On her recommendation, I bought the book and completely agree with everything she said.Even though it is difficult not to imagine the faces of the actors when reading the book, it is still an awesome read. Much more detailed than the series, but also enhanced by it to a certain extent. Brilliant writing.',
-      userId: 1,
-      bookId: 1
+      userId: 1
+      // bookId: 1
     },
     {
       date: Date.now(),
       text:
         'This book is amazing. It is very long and somewhat of a complex story so you need to be in the mood. It is definitely not a light read but it is so worth it. The historical and religious references throughout the book are so eye opening and definitely could be offense to the strongly religious type. I thoroughly enjoyed reading about pieces of artwork or places and then going to do a bit of research on my own. This book is suspenseful, thought provoking, and above all extremely entertaining. The ending is a huge surprise but the plot twists are abundant throughout the book and will keep you on your toes.',
-      userId: 2,
-      bookId: 5
+      userId: 2
+      // bookId: 5
     },
     {
       date: Date.now(),
       text:
         'Michael Crichton has the rare ability to produce stimulating fast-paced fiction mixed with intelligent technical description. Crichton is a doc so the science tends to revolve around medicine and biology and this one was written under a pseudonym while he was in med school. It won the Edgar award in 1969 before the name Michael Crichton meant anything. The book is a whodunit centered around an abortion that may or may not have been necessary. It takes place before Roe v Wade so it deals with the social reactions as well as detection aspects. All in all a fine read.',
-      userId: 3,
-      bookId: 6
+      userId: 3
+      // bookId: 6
     },
     {
       date: Date.now(),
       text:
         "To say that I didn't like this book would be putting it mildly,I only got a few chapters into it when I found my mind wondering what should I fix for dinner. I found the characters boring, I was very disappointed as I was really looking forward to reading a good book. What really got me was the interview Erin has with a girl in prison for arson. She took part in a riot in the streets of London. People were smashing windows and stealing from merchants. She makes the point that she is not belittling it, you can only taunt people with the things they can't have for so long. Can only push people so far until they push back. So its the merchants fault that they are doing a smash and grab? I decided that this was probably not the book for me. I'm sorry I spent the $. Should have listened to the reviews.",
-      userId: 1,
-      bookId: 7
+      userId: 1
+      // bookId: 7
     },
     {
       date: Date.now(),
       text:
         "What can you say about a classic? I'd never read these books all the way through before, and was determined to try, despite remembering what I had read as being tedious and somewhat purple-prose-ish. I apparently remembered wrong - coming back as an adult, these are beautiful books, very well-written and of course true epic fantasy. It may be that my tastes have changed, or just that I've matured, but these will definitely be reread many times.",
-      userId: 2,
-      bookId: 8
+      userId: 2
+      // bookId: 8
     },
     {
       date: Date.now(),
       text:
         "Very fun summer read! All of the characters in the first book, CrazyRrich Asians, and the continued nicely into this book. It is what I would call a beach read and sometimes that's all you want. It is what I would call a beach read and sometimes that's all you want I don't want to come away with his knowing that I would like to go to Asia and how beautiful all of these places sound . Also I live in an area where there is not much Chinese food so it makes me crave all of the things that I missed from where I lived before .",
-      userId: 3,
-      bookId: 9
+      userId: 3
+      // bookId: 9
     },
     {
       date: Date.now(),
       text:
         "Reading this book will possibly be one of the most masochistic things that you will ever do. This is because it is going to cause you real, visceral pain. You are going to cry. I say this as someone who never, ever cries at books, and yet this book brought me to tears. I don't know if I will ever be able to reread this, because it affected me so deeply the first time around that I don't know if I could handle another time. I think the closer you are to the issues in the book, the more it it is going to make you feel. This might be the only place that I would say to exercise caution, because this is not a book where all the problems and sadness are neatly wrapped up by the end. It ends on an incredibly satisfying note, but it is not a happy ending, and so if your life has been closely impacted by cancer at some point then this book might be a little too close to the issue, if this book had come out a couple of years ago I think I might not have been able to read it.",
-      userId: 1,
-      bookId: 10
+      userId: 1
+      // bookId: 10
     },
     {
       date: Date.now(),
       text:
         "This book is absolutely breathtaking. Every page is filled with illustrations. It's just so beautiful. I love how they've come out with these books with the 3rd one on the way next month. It's an interesting take on the classic book from JK Rowling. It really has you picturing exactly what's going on with each page.",
-      userId: 2,
-      bookId: 11
+      userId: 2
+      // bookId: 11
     },
     {
       date: Date.now(),
       text:
         "How to describe? Saying I loved this book isn't enough, but any analysis I could offer would be pale. After I turned the last page I had to take a break from starting a new book for several days because all the samples I surveyed did not grab me like what I had just finished. Beyond the alternating stories, which dovetail very well, the words are beautifully selected, and never tedious. I really cared about the characters, and no one is pure protagonist or the antithesis. Simply, Margaret Atwood is in a league of her own.",
-      userId: 3,
-      bookId: 12
+      userId: 3
+      // bookId: 12
     },
     {
       date: Date.now(),
       text:
         "This is a quick tour through the current state of astrophysics in 12 essays. Tyson infuses the subject with his usual dynamic enthusiasm and humor. The subject is not presented especially deep but it is useful for anyone wanting to get a better layman's understanding of the Big Bang (weird stuff), dark matter (weirder stuff), and dark energy (way weirder stuff). Tyson gives you a good appreciation of how chemistry and biology are part of astrophysics. He concludes with an essay on 'Reflections on the Cosmic Perspective' that shows even astrophysicists can have great wonder at the universe we live in. Recommended.",
-      userId: 1,
-      bookId: 13
+      userId: 1
+      // bookId: 13
     },
     {
       date: Date.now(),
       text:
         "My favorite book of all time. I've read 14 times and who knows how many more times I'll read it again! King creates a world where you feel the eyes of a being of unimaginable horror on you as you follow the lives of a group of childeren who come together to face a creature that has haunted their town and hunted it's children for years upon years. You will not find a better book that creates such a electric tingling atmosphere that you will catch yourself reading way past the hour you said you would put it down at.",
-      userId: 2,
-      bookId: 14
+      userId: 2
+      // bookId: 14
     },
     {
       date: Date.now(),
       text:
         "I don't typically write reviews about books. I've read close to 20 SK books in the last year and a half and over more in my life...this is so unlike his normal character as a writer that it's unnerving. I've read IT, the Stand, 'Salem's Lot, Carrie, Dark Tower series 1-7.5(?) - everything chronologically before this book and tons of newer stuff (I'm working back through his catalogue from start to finish). Nothing compares to this. Prepare for the darkest form of horror. I can't with good conscience recommend anyone to read this book. It gave me nightmares every night that I read it. I woke up thinking about it, and couldn't get it out of my head. I'm reading something else as fast as I can...can't wait to get back to the basic SK. Nothing else holds a candle to this.",
-      userId: 3,
-      bookId: 15
+      userId: 3
+      // bookId: 15
     },
     {
       date: Date.now(),
       text:
         'Perhaps I expected too much or something different from this book but I was entirely disappointed with it. I preordered it and looked forward to reading Siegel’s latest work but what I encountered was a 400 page book with excessive detail about research very little practical information. I am quite interested in neuroscience and it’s personal and clinical application but this book offered an extraordinary amount of unnecessary and boring detail with not nearly enough clinical application.',
-      userId: 1,
-      bookId: 16
+      userId: 1
+      // bookId: 16
     },
     {
       date: Date.now(),
       text:
         "I'm probably one of the very few people that didn't like this book, but I struggled with it. It was highly recommended to me and I asked one of my friends if she had read it and if she liked it. She hesitated telling me how she felt about the book, but came up with, 'Well, I didn't like the characters.' When I finished the book, that was the best way I could describe my impression too - I hated the characters!",
-      userId: 2,
-      bookId: 17
+      userId: 2
+      // bookId: 17
     },
     {
       date: Date.now(),
       text:
         "This is a great Goosebumps book with a very eerie story. I also love the episode based from the book. I remember when I was in third grade my library had this book, I took it home with me and read it and enjoyed it. I also remember shaking while reading it because it was so scary! Such great memories. I love all of the Goosebumps books, and I hope there's people out there who love Goosebumps as much as I do, they're great books, they're the PERFECT scary stories. Forget Stephen King's books, Goosebumps is more proper horror than adult horror. But that's just my opinion. Like I said on my review to Welcome to Dead House, you don't have to be a kid to love Goosebumps, you can love the books as an adult,too! I've always loved Goosebumps and I always will! Who ever says the books are dumb are just not used to them like I am.",
-      userId: 3,
-      bookId: 18
+      userId: 3
+      // bookId: 18
     },
     {
       date: Date.now(),
       text:
         "I bought book three of a three book series, but I didn't have a problem with the story line. Ms. Regan is a good writer, but she put in some outrageous situations for the heroine, Josie, who is the police chief. In one instance, a society dame wrestles Josie's gun from her, then a woman described as old, overweight, and soft beats Josie in hand-to-hand combat, and finally Josie gets thrown in a hole by the old woman. Really??? It really spoiled the book for me. And no one noticed that the two women really looked alike?",
-      userId: 1,
-      bookId: 19
+      userId: 1
+      // bookId: 19
     },
     {
       date: Date.now(),
       text:
         "This book is the perfect blend of reality and imagination. I applaud Michael Crichton- this concept is solid as well as reasonable. This book includes all of the character's perspectives, which I find a little confusing at times, but does an awesome job of telling the story. There is equality of all types, as there are two strong female characters, and the book takes place on an island near Costa Rica. The only thing is that this book includes lots of gore, people and animals dying, and a single sexual reference necessary for the storyline. I therefore recommend this to anyone ten years old and above.",
-      userId: 2,
-      bookId: 20
+      userId: 2
+      // bookId: 20
     }
   ]
   const users = [
@@ -599,6 +599,103 @@ const seed = async () => {
     },
     {book: 'Jurassic Park', genre: 'Thrillers & Suspense', author: 'Crichton'}
   ]
+  const reviewAssocs = [
+    {
+      review:
+        "I have to admit while parts of this novel where intriguing, most of it, I found difficult get through. The beginning until half way through was quite boring and if it hadn't been a required text for class I would've dropped it. On the other hand it was different and lacked the cliche main character that fights for freedom and justice, but then again that's the kind of character I like. I do recommend trying it for yourself as it wasn't a terrible read. I loved the ending though. It was open ended leaving you able to create an ending that you would like to have happened.",
+      book: "The Handmaid's Tale"
+    },
+    {
+      review:
+        "Just when you think you have it all figured out, wham! You don't. I didn't see it coming. Amazing writing keeps you hooked from page 1. Gillian Flynn knows her stuff, I am a big fan and this will not disappoint. I loved Gone Girl and was so happy when they made it a movie. I am very excited to see the adaptation of Sharp Objects on HBO. I could not put this book down. It's one of those books where you have to force yourself to stop reading so you don't read it in 24 hours. I tried to take my time but only lasted 4 days. If you are a fan of thrillers with great plot twists, you will not be disappointed.",
+      book: 'Sharp Objects'
+    },
+    {
+      review:
+        'I was sitting next to a young woman reading on a plane who was reading this. She told me that she liked it much better than the series. That it was well-written and hard to put down. She specifically mentioned that it had very little of the gratuitous sex that seems to pervade the TV show. On her recommendation, I bought the book and completely agree with everything she said.Even though it is difficult not to imagine the faces of the actors when reading the book, it is still an awesome read. Much more detailed than the series, but also enhanced by it to a certain extent. Brilliant writing.',
+      book: 'A Game of Thrones: A Song of Ice and Fire'
+    },
+    {
+      review:
+        'This book is amazing. It is very long and somewhat of a complex story so you need to be in the mood. It is definitely not a light read but it is so worth it. The historical and religious references throughout the book are so eye opening and definitely could be offense to the strongly religious type. I thoroughly enjoyed reading about pieces of artwork or places and then going to do a bit of research on my own. This book is suspenseful, thought provoking, and above all extremely entertaining. The ending is a huge surprise but the plot twists are abundant throughout the book and will keep you on your toes.',
+      book: 'DaVinci Code'
+    },
+    {
+      review:
+        'Michael Crichton has the rare ability to produce stimulating fast-paced fiction mixed with intelligent technical description. Crichton is a doc so the science tends to revolve around medicine and biology and this one was written under a pseudonym while he was in med school. It won the Edgar award in 1969 before the name Michael Crichton meant anything. The book is a whodunit centered around an abortion that may or may not have been necessary. It takes place before Roe v Wade so it deals with the social reactions as well as detection aspects. All in all a fine read.',
+      book: 'A Case of Need'
+    },
+    {
+      review:
+        "To say that I didn't like this book would be putting it mildly,I only got a few chapters into it when I found my mind wondering what should I fix for dinner. I found the characters boring, I was very disappointed as I was really looking forward to reading a good book. What really got me was the interview Erin has with a girl in prison for arson. She took part in a riot in the streets of London. People were smashing windows and stealing from merchants. She makes the point that she is not belittling it, you can only taunt people with the things they can't have for so long. Can only push people so far until they push back. So its the merchants fault that they are doing a smash and grab? I decided that this was probably not the book for me. I'm sorry I spent the $. Should have listened to the reviews.",
+      book: 'Something in the Water'
+    },
+    {
+      review:
+        "What can you say about a classic? I'd never read these books all the way through before, and was determined to try, despite remembering what I had read as being tedious and somewhat purple-prose-ish. I apparently remembered wrong - coming back as an adult, these are beautiful books, very well-written and of course true epic fantasy. It may be that my tastes have changed, or just that I've matured, but these will definitely be reread many times.",
+      book: 'Lord of the Rings'
+    },
+    {
+      review:
+        "Very fun summer read! All of the characters in the first book, CrazyRrich Asians, and the continued nicely into this book. It is what I would call a beach read and sometimes that's all you want. It is what I would call a beach read and sometimes that's all you want I don't want to come away with his knowing that I would like to go to Asia and how beautiful all of these places sound . Also I live in an area where there is not much Chinese food so it makes me crave all of the things that I missed from where I lived before .",
+      book: 'China Rich Girlfriend'
+    },
+    {
+      review:
+        "Reading this book will possibly be one of the most masochistic things that you will ever do. This is because it is going to cause you real, visceral pain. You are going to cry. I say this as someone who never, ever cries at books, and yet this book brought me to tears. I don't know if I will ever be able to reread this, because it affected me so deeply the first time around that I don't know if I could handle another time. I think the closer you are to the issues in the book, the more it it is going to make you feel. This might be the only place that I would say to exercise caution, because this is not a book where all the problems and sadness are neatly wrapped up by the end. It ends on an incredibly satisfying note, but it is not a happy ending, and so if your life has been closely impacted by cancer at some point then this book might be a little too close to the issue, if this book had come out a couple of years ago I think I might not have been able to read it.",
+      book: 'The Fault in Our Stars'
+    },
+    {
+      review:
+        "This book is absolutely breathtaking. Every page is filled with illustrations. It's just so beautiful. I love how they've come out with these books with the 3rd one on the way next month. It's an interesting take on the classic book from JK Rowling. It really has you picturing exactly what's going on with each page.",
+      book: 'Harry Potter and the Prisoner of Azkaban'
+    },
+    {
+      review:
+        "How to describe? Saying I loved this book isn't enough, but any analysis I could offer would be pale. After I turned the last page I had to take a break from starting a new book for several days because all the samples I surveyed did not grab me like what I had just finished. Beyond the alternating stories, which dovetail very well, the words are beautifully selected, and never tedious. I really cared about the characters, and no one is pure protagonist or the antithesis. Simply, Margaret Atwood is in a league of her own.",
+      book: 'The Blind Assasin'
+    },
+    {
+      review:
+        "This is a quick tour through the current state of astrophysics in 12 essays. Tyson infuses the subject with his usual dynamic enthusiasm and humor. The subject is not presented especially deep but it is useful for anyone wanting to get a better layman's understanding of the Big Bang (weird stuff), dark matter (weirder stuff), and dark energy (way weirder stuff). Tyson gives you a good appreciation of how chemistry and biology are part of astrophysics. He concludes with an essay on 'Reflections on the Cosmic Perspective' that shows even astrophysicists can have great wonder at the universe we live in. Recommended.",
+      book: 'Astrophysics for People in a Hurry'
+    },
+    {
+      review:
+        "My favorite book of all time. I've read 14 times and who knows how many more times I'll read it again! King creates a world where you feel the eyes of a being of unimaginable horror on you as you follow the lives of a group of childeren who come together to face a creature that has haunted their town and hunted it's children for years upon years. You will not find a better book that creates such a electric tingling atmosphere that you will catch yourself reading way past the hour you said you would put it down at.",
+      book: 'IT'
+    },
+    {
+      review:
+        "I don't typically write reviews about books. I've read close to 20 SK books in the last year and a half and over more in my life...this is so unlike his normal character as a writer that it's unnerving. I've read IT, the Stand, 'Salem's Lot, Carrie, Dark Tower series 1-7.5(?) - everything chronologically before this book and tons of newer stuff (I'm working back through his catalogue from start to finish). Nothing compares to this. Prepare for the darkest form of horror. I can't with good conscience recommend anyone to read this book. It gave me nightmares every night that I read it. I woke up thinking about it, and couldn't get it out of my head. I'm reading something else as fast as I can...can't wait to get back to the basic SK. Nothing else holds a candle to this.",
+      book: 'Pet Sematary'
+    },
+    {
+      review:
+        'Perhaps I expected too much or something different from this book but I was entirely disappointed with it. I preordered it and looked forward to reading Siegel’s latest work but what I encountered was a 400 page book with excessive detail about research very little practical information. I am quite interested in neuroscience and it’s personal and clinical application but this book offered an extraordinary amount of unnecessary and boring detail with not nearly enough clinical application.',
+      book: 'Aware: The Science and Practice of Presence'
+    },
+    {
+      review:
+        "I'm probably one of the very few people that didn't like this book, but I struggled with it. It was highly recommended to me and I asked one of my friends if she had read it and if she liked it. She hesitated telling me how she felt about the book, but came up with, 'Well, I didn't like the characters.' When I finished the book, that was the best way I could describe my impression too - I hated the characters!",
+      book: 'Gone Girl'
+    },
+    {
+      review:
+        "This is a great Goosebumps book with a very eerie story. I also love the episode based from the book. I remember when I was in third grade my library had this book, I took it home with me and read it and enjoyed it. I also remember shaking while reading it because it was so scary! Such great memories. I love all of the Goosebumps books, and I hope there's people out there who love Goosebumps as much as I do, they're great books, they're the PERFECT scary stories. Forget Stephen King's books, Goosebumps is more proper horror than adult horror. But that's just my opinion. Like I said on my review to Welcome to Dead House, you don't have to be a kid to love Goosebumps, you can love the books as an adult,too! I've always loved Goosebumps and I always will! Who ever says the books are dumb are just not used to them like I am.",
+      book: 'The Haunted Mask'
+    },
+    {
+      review:
+        "I bought book three of a three book series, but I didn't have a problem with the story line. Ms. Regan is a good writer, but she put in some outrageous situations for the heroine, Josie, who is the police chief. In one instance, a society dame wrestles Josie's gun from her, then a woman described as old, overweight, and soft beats Josie in hand-to-hand combat, and finally Josie gets thrown in a hole by the old woman. Really??? It really spoiled the book for me. And no one noticed that the two women really looked alike?",
+      book: "Her Mother's Grave"
+    },
+    {
+      review:
+        "This book is the perfect blend of reality and imagination. I applaud Michael Crichton- this concept is solid as well as reasonable. This book includes all of the character's perspectives, which I find a little confusing at times, but does an awesome job of telling the story. There is equality of all types, as there are two strong female characters, and the book takes place on an island near Costa Rica. The only thing is that this book includes lots of gore, people and animals dying, and a single sexual reference necessary for the storyline. I therefore recommend this to anyone ten years old and above.",
+      book: 'Jurassic Park'
+    }
+  ]
   await Promise.all(users.map(user => User.create(user)))
   await Promise.all(genres.map(genre => Genre.create(genre)))
   await Promise.all(authors.map(author => Author.create(author)))
@@ -632,6 +729,25 @@ const seed = async () => {
       //setAuthor and Genre on book
       await book.setAuthor(author)
       await book.setGenre(genre)
+    })
+  )
+  await Promise.all(
+    reviewAssocs.map(async association => {
+      //find book in association
+      const bookFound = Book.findOne({
+        where: {
+          title: association.book
+        }
+      })
+      //find review in association
+      const reviewFound = Review.findOne({
+        where: {
+          text: association.review
+        }
+      })
+      const [book, review] = await Promise.all([bookFound, reviewFound])
+      //setAuthor and Genre on book
+      await review.setBook(book)
     })
   )
 
