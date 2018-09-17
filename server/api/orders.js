@@ -7,7 +7,12 @@ router.get('/', async (req, res, next) => {
     if (req.query) {
       const orders = await Order.findAll({
         where: req.query,
-        include: [{model: OrderBook}]
+        include: [
+          {
+            model: Book,
+            through: {OrderBook}
+          }
+        ]
       })
       res.status(200).send(orders)
     } else {
@@ -40,7 +45,7 @@ router.post('/', async (req, res, next) => {
       {
         totalPrice: price,
         date: Date.now(),
-        orderBook: cart
+        orderBooks: cart
       },
       {include: [{model: OrderBook}]}
     )

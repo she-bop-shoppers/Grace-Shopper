@@ -61,6 +61,7 @@ export const getSingleOrder = id => {
 export const postNewOrder = order => {
   return async dispatch => {
     try {
+      order.map(book => (book.bookId = book.id))
       const response = await axios.post('/api/orders', order)
       const postedorder = response.data
       dispatch(addedNewOrder(postedorder))
