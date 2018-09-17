@@ -38,8 +38,8 @@ router.post('/', async (req, res, next) => {
     const orders = await Order.create({
       totalPrice: price,
       date: Date.now(),
-      cart,
-      include: [{model: Book}, {model: OrderBook}]
+      orderBook: cart,
+      include: [{model: OrderBook}]
     })
     res.status(200).send(orders)
   } catch (err) {

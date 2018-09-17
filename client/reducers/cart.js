@@ -92,8 +92,9 @@ export const removeAllItemsInCart = () => {
   return async dispatch => {
     try {
       const allBookIds = Object.keys(localStorage)
+      console.log('these are remove keys', allBookIds)
       await allBookIds.forEach(id => {
-        localStorage.removeItem(JSON.stringify(id))
+        return localStorage.removeItem(id)
       })
       dispatch(deleteAllItems())
     } catch (err) {

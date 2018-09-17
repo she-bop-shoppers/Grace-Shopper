@@ -16,7 +16,7 @@ class UserCart extends Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
-    this.handlePost = this.handlePost.bind(this)
+    this.handleCheckout = this.handleCheckout.bind(this)
   }
 
   componentDidMount() {
@@ -36,7 +36,7 @@ class UserCart extends Component {
     this.setState({quantity: 0})
   }
 
-  handlePost(newOrder) {
+  handleCheckout(newOrder) {
     console.log('inside handlePost', newOrder)
     this.props.addOrder(newOrder)
     this.props.emptyCart()
@@ -47,12 +47,12 @@ class UserCart extends Component {
     if (books.length > 0) {
       return (
         <div>
-          <button type="submit" onClick={() => this.handlePost(books)}>
+          <button type="submit" onClick={() => this.handleCheckout(books)}>
             Checkout
           </button>
           {books.map(book => {
             return (
-              <div key={book.title}>
+              <div key={book.id}>
                 <h1>{book.title}</h1>
                 <img src={book.imageUrl} />
                 <p>{book.description}</p>
