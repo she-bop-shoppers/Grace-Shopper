@@ -9,6 +9,7 @@ const GET_BOOKS = 'GET_BOOKS'
 const ADD_BOOK = 'ADD_BOOK'
 const REMOVE_BOOK = 'REMOVE_BOOK'
 const UPDATE_CART = 'UPDATE_CART'
+const EMPTY_CART = 'EMPTY_CART'
 
 /**
  * INITIAL STATE
@@ -26,6 +27,10 @@ const getBooks = books => ({type: GET_BOOKS, books})
 const deleteFromCart = bookId => ({type: REMOVE_BOOK, bookId})
 const addedBookToCart = book => ({type: ADD_BOOK, book})
 const updateCart = book => ({type: UPDATE_CART, book})
+const deleteAllItems = itemsIds => ({
+  type: EMPTY_CART,
+  itemsIds
+})
 
 /**
  * THUNK CREATORS
@@ -83,6 +88,19 @@ export const getBooksFromStorage = () => dispatch => {
   }
 }
 
+export const removeAllItemsInCart = () => {
+  return async dispatch => {
+    try {
+      const allBookIds = Object.keys(localStorage)
+      await allBookIds.forEach(id => {
+        localStorage.removeItem(JSON.stringify(id))
+      })
+      dispatch(deleteAllItems())
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
 /**
  * REDUCER
  */
@@ -111,6 +129,11 @@ export default function(state = initState, action) {
       return {
         ...state,
         books: action.books
+      }
+    case EMPTY_CART:
+      return {
+        ...state,
+        books: []
       }
     default:
       return state

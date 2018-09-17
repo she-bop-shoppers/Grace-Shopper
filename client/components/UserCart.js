@@ -4,8 +4,10 @@ import {connect} from 'react-redux'
 import {
   removeFromCart,
   getBooksFromStorage,
-  updateCartItem
+  updateCartItem,
+  removeAllItemsInCart
 } from '../reducers/cart'
+import {postNewOrder} from '../reducers/orders'
 
 class UserCart extends Component {
   constructor() {
@@ -14,6 +16,7 @@ class UserCart extends Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+    this.handlePost = this.handlePost.bind(this)
   }
 
   componentDidMount() {
@@ -33,14 +36,23 @@ class UserCart extends Component {
     this.setState({quantity: 0})
   }
 
+  handlePost(newOrder) {
+    console.log('inside handlePost', newOrder)
+    this.props.addOrder(newOrder)
+    this.props.emptyCart()
+  }
+
   render() {
     const books = this.props.books
     if (books.length > 0) {
       return (
         <div>
+          <button type="submit" onClick={() => this.handlePost(books)}>
+            Checkout
+          </button>
           {books.map(book => {
             return (
-              <div key={book.id}>
+              <div key={book.title}>
                 <h1>{book.title}</h1>
                 <img src={book.imageUrl} />
                 <p>{book.description}</p>
@@ -79,7 +91,9 @@ class UserCart extends Component {
 const mapDispatchToProps = dispatch => ({
   gotAllBooks: () => dispatch(getBooksFromStorage()),
   removeItem: bookId => dispatch(removeFromCart(bookId)),
-  updateItem: (quantity, book) => dispatch(updateCartItem(quantity, book))
+  updateItem: (quantity, book) => dispatch(updateCartItem(quantity, book)),
+  addOrder: newOrder => dispatch(postNewOrder(newOrder)),
+  emptyCart: () => dispatch(removeAllItemsInCart())
 })
 
 const mapStateToProps = state => ({
