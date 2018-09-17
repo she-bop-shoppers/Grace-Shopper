@@ -108,7 +108,7 @@ class SingleBook extends React.Component {
         <Review book={book} />
         <br />
         <br />
-        <AddReview />
+        <AddReview book={book} />
       </div>
     )
   }
