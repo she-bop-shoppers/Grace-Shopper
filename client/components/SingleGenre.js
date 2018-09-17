@@ -18,6 +18,7 @@ class SingleGenre extends React.Component {
           {this.props.oneGenre.books ? (
             this.props.oneGenre.books.map(book => (
               <li key={book.id}>
+                <img src={book.imageUrl} />
                 <Link to={`/books/${book.id}`}>
                   {book.title} by{' '}
                   {book.author.firstName + ' ' + book.author.lastName}

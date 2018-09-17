@@ -2,7 +2,6 @@ import React from 'react'
 import {fetchSingleBook} from '../reducers/book'
 import {addNewBookToCart} from '../reducers/cart'
 import Review from './Review'
-import AddReview from './AddReview'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
@@ -75,6 +74,7 @@ class SingleBook extends React.Component {
             <h1>Loading...</h1>
           )}
         </div>
+        <br />
         {isAdmin ? (
           <div>
             {' '}
@@ -100,15 +100,14 @@ class SingleBook extends React.Component {
             type="tel"
           />
         </div>{' '}
+        <br />
         <button type="submit" onClick={this.handleAddToCart}>
           Add to Cart
         </button>
         <br />
         <br />
         <Review book={book} />
-        <br />
-        <br />
-        <AddReview book={book} />
+
       </div>
     )
   }

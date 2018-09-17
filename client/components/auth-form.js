@@ -32,7 +32,11 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      {displayName !== 'Add User' ? (
+        <a href="/auth/google">{displayName} with Google</a>
+      ) : (
+        <h1 />
+      )}
     </div>
   )
 }
@@ -60,6 +64,14 @@ const mapSignup = state => {
   }
 }
 
+const mapAddUser = state => {
+  return {
+    name: 'adduser',
+    displayName: 'Add User',
+    error: state.user.error
+  }
+}
+
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
@@ -72,6 +84,7 @@ const mapDispatch = dispatch => {
   }
 }
 
+export const AddUser = connect(mapAddUser, mapDispatch)(AuthForm)
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
