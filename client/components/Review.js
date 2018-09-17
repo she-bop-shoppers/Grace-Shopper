@@ -11,13 +11,13 @@ class Review extends React.Component {
     console.log('book: ', book)
     const reviews = book.reviews
     // console.log('reviews: ', this.props.reviews)
-    const reviewsList = this.props.reviews
-    console.log('ReviewList: ', reviewsList)
+    // const reviewsList = this.props.reviews
+    // console.log('ReviewList: ', reviewsList)
 
-    let filteredList = reviewsList.filter(review => {
-      return review.book.id === review.BookId
-    })
-    console.log('Filtered List: ', filteredList)
+    // let filteredList = reviewsList.filter(review => {
+    //   return review.book.id === review.BookId
+    // })
+    // console.log('Filtered List: ', filteredList)
 
     return (
       <div>
