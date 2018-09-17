@@ -79,9 +79,11 @@ export const removeFromCart = bookId => {
 export const getBooksFromStorage = () => dispatch => {
   try {
     const allBookIds = Object.keys(localStorage)
+    console.log('BOOKIDS', allBookIds)
     const allBooks = allBookIds.map(id => {
       return JSON.parse(localStorage.getItem(id))
     })
+    console.log('ALLBOOKS', allBooks)
     dispatch(getBooks(allBooks))
   } catch (err) {
     console.error(err)
