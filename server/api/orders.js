@@ -32,19 +32,19 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const cart = req.body
+    const userId = req.user.id
     let price = 0
     cart.forEach(item => {
       price += item.subTotal
     })
-    const order = await Order.create(
-      {
-        totalPrice: price,
-        date: Date.now(),
-        orderBook: cart
-      },
-      {include: [{model: OrderBook}]}
-    )
-    res.status(200).send(order)
+    const orders = await Order.create({
+      totalPrice: price,
+      date: Date.now(),
+      userId: userId,
+      orderBook: cart,
+      include: [{model: OrderBook}]
+    })
+    res.status(200).send(orders)
   } catch (err) {
     next(err)
   }

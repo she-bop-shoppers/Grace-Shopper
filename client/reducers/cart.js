@@ -115,7 +115,10 @@ export default function(state = initState, action) {
     case ADD_BOOK:
       return {
         ...state,
-        books: [...state.books, action.book]
+        books: [
+          ...state.books.filter(x => x.id !== action.book.id),
+          action.book
+        ]
       }
     case UPDATE_CART:
       return {
