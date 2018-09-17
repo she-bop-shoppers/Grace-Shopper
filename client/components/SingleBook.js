@@ -2,7 +2,6 @@ import React from 'react'
 import {fetchSingleBook} from '../reducers/book'
 import {addNewBookToCart} from '../reducers/cart'
 import Review from './Review'
-import AddReview from './AddReview'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
@@ -106,9 +105,7 @@ class SingleBook extends React.Component {
         <br />
         <br />
         <Review book={book} />
-        <br />
-        <br />
-        <AddReview book={book} />
+
       </div>
     )
   }
