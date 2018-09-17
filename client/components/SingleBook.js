@@ -16,6 +16,7 @@ class SingleBook extends React.Component {
     }
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.addQuantity = this.addQuantity.bind(this)
   }
 
   componentDidMount() {
