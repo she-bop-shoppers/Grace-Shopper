@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 //import ReviewForm from './ReviewForm'
 import {postOneReview} from '../reducers/review'
+import {withRouter} from 'react-router-dom'
 
 class AddReview extends React.Component {
   constructor(props) {
@@ -25,9 +26,11 @@ class AddReview extends React.Component {
     const bookId = this.props.book.id
     const reviewDate = Date.now()
     const newReview = event.target.review.value
+    const isUser = this.props.isUser
+    console.log('User: ', isUser)
 
-    if (userName !== 'user.userName') {
-      alert('Only users may add Reviews')
+    if (userName !== isUser) {
+      alert('Only users may add reviews')
     } else {
       this.props.addReview(userName, newReview, bookId, reviewDate)
       // this.setState({
@@ -55,6 +58,12 @@ class AddReview extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isUser: state.user.userName
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     addReview: (userName, newReview, id, date) => {
@@ -68,4 +77,6 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
-export default connect(null, mapDispatchToProps)(AddReview)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(AddReview)
+)
