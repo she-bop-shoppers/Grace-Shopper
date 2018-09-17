@@ -16,6 +16,7 @@ class SingleBook extends React.Component {
     }
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.addQuantity = this.addQuantity.bind(this)
   }
 
   componentDidMount() {
@@ -58,7 +59,7 @@ class SingleBook extends React.Component {
   render() {
     const {book, isAdmin} = this.props
     const {author} = book
-    console.log('Book', this.props.book.reviews)
+
     return (
       <div>
         <h1>{book.title}</h1>
