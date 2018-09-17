@@ -5,14 +5,11 @@ import {Link} from 'react-router-dom'
 
 class SingleAuthor extends React.Component {
   componentDidMount() {
-    console.log('PROOOOPS', this.props.match.params)
     const id = Number(this.props.match.params.authorId)
     this.props.getOneAuthor(id)
-    console.log('Author id: ', id)
   }
 
   render() {
-    console.log('One author: ', this.props.oneAuthor.books)
     return (
       <div>
         <h1>{this.props.oneAuthor.fullName}</h1>
