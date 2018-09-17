@@ -38,6 +38,7 @@ router.post('/', async (req, res, next) => {
   try {
     const cart = req.body
     const userId = req.user.id
+    console.log(userId)
     let price = 0
     cart.forEach(item => {
       price += item.subTotal
@@ -45,6 +46,7 @@ router.post('/', async (req, res, next) => {
     const order = await Order.create(
       {
         totalPrice: price,
+        userId: userId,
         date: Date.now(),
         orderBooks: cart
       },
