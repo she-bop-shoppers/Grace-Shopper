@@ -10,9 +10,7 @@ class Review extends React.Component {
     const book = this.props.book
     console.log('book: ', book)
     const reviews = book.reviews
-    // console.log('reviews: ', this.props.reviews)
     const reviewsList = this.props.reviews
-    console.log('ReviewList: ', reviewsList)
 
     // if (!reviewsList) {
     //   return 'Loading . . .'
