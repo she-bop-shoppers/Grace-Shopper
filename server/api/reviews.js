@@ -41,6 +41,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const newReview = await Review.create(req.body)
+    console.log('API newReview: ', newReview)
     res.status(201).send(newReview)
   } catch (error) {
     next(error)
