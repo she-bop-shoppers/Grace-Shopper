@@ -6,10 +6,10 @@ import {postOneReview} from '../reducers/review'
 class AddReview extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      userName: '',
-      review: ''
-    }
+    // this.state = {
+    //   userName: '',
+    //   review: ''
+    // }
     //this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -24,15 +24,18 @@ class AddReview extends React.Component {
     const userName = event.target.userName.value
     const bookId = this.props.book.id
     const reviewDate = Date.now()
-    console.log('Username: ', userName)
     const newReview = event.target.review.value
-    console.log('New Review: ', newReview)
-    this.props.addReview(userName, newReview, bookId, reviewDate)
-    this.setState({
-      userName: '',
-      review: ''
-    })
-    alert('Review successfully added')
+
+    if (userName !== 'user.userName') {
+      alert('Only users may add Reviews')
+    } else {
+      this.props.addReview(userName, newReview, bookId, reviewDate)
+      // this.setState({
+      //   userName: '',
+      //   review: ''
+      // })
+      alert('Review successfully added')
+    }
   }
 
   render() {
