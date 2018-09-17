@@ -72,13 +72,6 @@ export const postNewOrder = order => {
       const response = await axios.post('/api/orders', order)
       const postedorder = response.data
       dispatch(addedNewOrder(postedorder))
-      order.forEach(async item => {
-        item.bookId = item.id
-        item.orderId = postedorder.id
-        const orderBooksRes = await axios.post('/api/orderBooks', item)
-        const posteditem = orderBooksRes.data
-        dispatch(addedNewItem(posteditem))
-      })
     } catch (err) {
       console.error(err)
     }
