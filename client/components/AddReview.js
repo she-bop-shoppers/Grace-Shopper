@@ -30,9 +30,6 @@ class AddReview extends React.Component {
   }
 
   render() {
-    // const style = {
-    //   height
-    // }
     return (
       <ReviewForm
         handleChange={this.handleChange}
