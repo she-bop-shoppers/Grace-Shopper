@@ -5,6 +5,7 @@ import history from '../history'
 // ACTION TYPES
 const GET_ORDERS = 'GET_ORDERS'
 const GET_SINGLE_ORDER = 'GET_SINGLE_ORDER'
+const POST_THE_ORDER = 'POST_THE_ORDER'
 // const REMOVE_order = 'REMOVE_order';
 // const ADD_order = 'ADD_order';
 
@@ -27,6 +28,10 @@ const getOneOrder = order => ({
 // 	type: ADD_order,
 // 	selectedorder: order
 // });
+const addedNewOrder = order => ({
+  type: POST_THE_ORDER,
+  order
+})
 
 // THUNK CREATORS
 export const getAllOrders = () => {
@@ -53,6 +58,18 @@ export const getSingleOrder = id => {
   }
 }
 
+export const postNewOrder = order => {
+  return async dispatch => {
+    try {
+      const response = await axios.post('/api/orders', order)
+      const postedorder = response.data
+      dispatch(addedNewOrder(postedorder))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 /**
  * REDUCER
  */
@@ -62,6 +79,9 @@ const orders = function(state = initialState, action) {
       return {...state, allOrders: action.allOrders}
     case GET_SINGLE_ORDER:
       return {...state, selectedOrder: action.selectedOrder}
+    case POST_THE_ORDER:
+      return {...state, allOrders: [...state.allOrders, action.order]}
+
     default:
       return state
   }
