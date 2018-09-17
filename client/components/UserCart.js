@@ -44,44 +44,50 @@ class UserCart extends Component {
 
   render() {
     const books = this.props.books
+    // const noDuplicates = books.filter(book=> )
+    console.log('BOOKS===>', books)
     if (books.length > 0) {
       return (
         <div>
           <button type="submit" onClick={() => this.handleCheckout(books)}>
             Checkout
           </button>
-          {books.map(book => {
-            return (
-              <div key={book.id}>
-                <h1>{book.title}</h1>
-                <img src={book.imageUrl} />
-                <p>{book.description}</p>
-                <p>Price: ${book.price}</p>
-                <p>Quantity: {book.quantity}</p>
-                <p>Subtotal: ${book.quantity * book.price}</p>
-                <div>
-                  Change Quantity:{' '}
-                  <input
-                    onChange={this.changeQuantity}
-                    name="quantity"
-                    value={this.state.quantity}
-                    type="tel"
-                  />{' '}
-                  <button type="submit" onClick={() => this.handleUpdate(book)}>
-                    Update quantity
-                  </button>{' '}
-                  <br />
-                  <br />
-                  <button
-                    type="submit"
-                    onClick={() => this.handleDelete(book.id)}
-                  >
-                    Delete Item
-                  </button>
+          {books &&
+            books.map(book => {
+              return (
+                <div key={book.id}>
+                  <h1>{book.title}</h1>
+                  <img src={book.imageUrl} />
+                  <p>{book.description}</p>
+                  <p>Price: ${book.price}</p>
+                  <p>Quantity: {book.quantity}</p>
+                  <p>Subtotal: ${book.quantity * book.price}</p>
+                  <div>
+                    Change Quantity:{' '}
+                    <input
+                      onChange={this.changeQuantity}
+                      name="quantity"
+                      value={this.state.quantity}
+                      type="tel"
+                    />{' '}
+                    <button
+                      type="submit"
+                      onClick={() => this.handleUpdate(book)}
+                    >
+                      Update quantity
+                    </button>{' '}
+                    <br />
+                    <br />
+                    <button
+                      type="submit"
+                      onClick={() => this.handleDelete(book.id)}
+                    >
+                      Delete Item
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
       )
     } else return <div>You do not have any books in your cart ;)</div>
