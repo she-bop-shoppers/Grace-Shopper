@@ -5,7 +5,7 @@ import Review from './Review'
 import AddReview from './AddReview'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 class SingleBook extends React.Component {
   constructor() {
@@ -59,19 +59,22 @@ class SingleBook extends React.Component {
   render() {
     const {book, isAdmin} = this.props
     const {author} = book
-
     return (
       <div>
         <h1>{book.title}</h1>
         <img src={book.imageUrl} />
         <p>{book.description}</p>
         <p>Price: ${book.price}</p>
-        <p>
+        <div>
           Author:{' '}
-          {author && author.fullName
-          // <Link to={`/authors/${author.id}`}>{author.fullName}</Link>
-          }
-        </p>
+          {author ? (
+            <Link to={`/authors/${author.id}`}>
+              {author && author.fullName}
+            </Link>
+          ) : (
+            <h1>Loading...</h1>
+          )}
+        </div>
         {isAdmin ? (
           <div>
             {' '}

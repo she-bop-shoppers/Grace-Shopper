@@ -12,10 +12,10 @@ class Review extends React.Component {
     const reviews = book.reviews
     const reviewsList = this.props.reviews
 
-    let filteredList = reviewsList.filter(review => {
-      return review.book.id === review.BookId
-    })
-    console.log('Filtered List: ', filteredList)
+    // let filteredList = reviewsList.filter(review => {
+    //   return review.book.id === review.BookId
+    // })
+    // console.log('Filtered List: ', filteredList)
 
     return (
       <div>
