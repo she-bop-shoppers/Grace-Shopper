@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import {postOneReview} from '../reducers/review'
 
 class AddReview extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       userName: '',
       review: ''
@@ -22,10 +22,12 @@ class AddReview extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     const userName = event.target.userName.value
+    const bookId = this.props.book.id
+    const reviewDate = Date.now()
     console.log('Username: ', userName)
     const newReview = event.target.review.value
     console.log('New Review: ', newReview)
-    this.props.addReview(userName, newReview)
+    this.props.addReview(userName, newReview, bookId, reviewDate)
     this.setState({
       userName: '',
       review: ''
@@ -52,10 +54,12 @@ class AddReview extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addReview: (userName, newReview) => {
+    addReview: (userName, newReview, id, date) => {
       const addReview = {
         userName: userName,
-        text: newReview
+        text: newReview,
+        bookId: id,
+        date: date
       }
       dispatch(postOneReview(addReview))
     }

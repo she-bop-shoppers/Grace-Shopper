@@ -75,6 +75,7 @@ class SingleBook extends React.Component {
             <h1>Loading...</h1>
           )}
         </div>
+        <br />
         {isAdmin ? (
           <div>
             {' '}
@@ -100,6 +101,7 @@ class SingleBook extends React.Component {
             type="tel"
           />
         </div>{' '}
+        <br />
         <button type="submit" onClick={this.handleAddToCart}>
           Add to Cart
         </button>
