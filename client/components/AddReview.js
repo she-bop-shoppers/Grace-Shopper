@@ -3,22 +3,30 @@ import {connect} from 'react-redux'
 //import ReviewForm from './ReviewForm'
 import {postOneReview} from '../reducers/review'
 import {withRouter} from 'react-router-dom'
+import StarRatings from 'react-star-ratings'
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   userName: '',
-    //   review: ''
-    // }
-    //this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      rating: 0,
+      review: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.changeRating = this.changeRating.bind(this)
   }
-  // handleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  changeRating(newRating) {
+    this.setState({
+      rating: newRating
+    })
+  }
 
   handleSubmit(event) {
     event.preventDefault()
@@ -26,9 +34,19 @@ class AddReview extends React.Component {
 
     const bookId = this.props.book.id
     const reviewDate = Date.now()
-    const newReview = event.target.review.value
+    const newReview = this.state.review
     const user = this.props.user
-    this.props.addReview(user.id, newReview, bookId, reviewDate)
+    this.props.addReview(
+      this.state.rating,
+      user.id,
+      newReview,
+      bookId,
+      reviewDate
+    )
+    this.setState({
+      rating: 0,
+      review: ''
+    })
   }
 
   render() {
@@ -37,11 +55,37 @@ class AddReview extends React.Component {
       <div>
         {Object.keys(user).length ? (
           <form onSubmit={this.handleSubmit}>
-            <div className="form-input">
-              <label htmlFor="review">Review:</label>
-              <textarea type="text" id="input-field" name="review" />
-            </div>
-            <button type="submit">Submit</button>
+            <section className="add-review">
+              <div className="form-input">
+                <label htmlFor="review">
+                  <br />
+                  <br />
+
+                  <h3>
+                    Review <em>{this.props.book.title}</em>
+                  </h3>
+                </label>
+                <br />
+                <StarRatings
+                  rating={this.state.rating}
+                  starRatedColor="red"
+                  starEmptyColor="coral"
+                  starDimension="25px"
+                  changeRating={this.changeRating}
+                  numberOfStars={5}
+                  name="rating"
+                />
+                <textarea
+                  type="text"
+                  id="input-field"
+                  name="review"
+                  onChange={this.handleChange}
+                  value={this.state.review}
+                />
+              </div>
+              <button type="submit">Submit</button>
+              <br />
+            </section>
           </form>
         ) : (
           <div />
@@ -59,8 +103,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addReview: (userId, newReview, id, date) => {
+    addReview: (rating, userId, newReview, id, date) => {
       const addReview = {
+        rating: rating,
         userId: userId,
         text: newReview,
         bookId: id,

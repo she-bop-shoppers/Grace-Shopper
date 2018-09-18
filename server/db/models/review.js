@@ -7,6 +7,9 @@ const Review = db.define('review', {
   },
   text: {
     type: Sequelize.TEXT
+  },
+  rating: {
+    type: Sequelize.INTEGER
   }
 })
 module.exports = Review
