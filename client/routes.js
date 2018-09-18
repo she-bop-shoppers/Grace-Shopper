@@ -43,7 +43,7 @@ class Routes extends Component {
         <Route exact path="/cart" component={UserCart} />
         <Route path="/authors/:authorId" component={SingleAuthor} />
         <Route exact path="/genres" component={AllGenres} />
-        <Route path="/genres/:genreId" component={SingleGenre} />
+        <Route exact path="/genres/:genreId" component={SingleGenre} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

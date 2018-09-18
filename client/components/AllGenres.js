@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {getGenres} from '../reducers/genres'
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
@@ -13,14 +13,29 @@ const styles = {
     color: 'white',
     textAlign: 'center',
     padding: '14px 16px',
-    fontFamily: 'sans-serif',
+    fontFamily: 'Lato',
+    fontSize: '1rem',
     textTransform: 'capitalize'
   }
 }
 
 class AllGenres extends React.Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    reRender: false
+  }
+
+  handleGenreClick = () => {
+    if (state.reRender) {
+      this.setState({
+        reRender: false
+      })
+    }
+    if (!state.reRender) {
+      his.setState({
+        reRender: true
+      })
+    }
   }
 
   handleClick = event => {
@@ -56,7 +71,12 @@ class AllGenres extends React.Component {
           >
             {this.props.genres.map(genre => (
               <MenuItem key={genre.id}>
-                <Link to={`/genres/${genre.id}`}>{genre.name}</Link>
+                <Link
+                  to={`/genres/${genre.id}`}
+                  onClick={this.handleGenreClick}
+                >
+                  {genre.name}
+                </Link>
               </MenuItem>
             ))}
           </Menu>
@@ -80,6 +100,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withStyles(styles)(AllGenres)
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AllGenres))
 )
