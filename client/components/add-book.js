@@ -35,7 +35,6 @@ class AddBook extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <BookForm
         handleChange={this.handleChange}
