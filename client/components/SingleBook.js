@@ -5,6 +5,7 @@ import Review from './Review'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
+import AddReview from './AddReview'
 
 class SingleBook extends React.Component {
   constructor() {
@@ -60,54 +61,69 @@ class SingleBook extends React.Component {
     const {author} = book
     return (
       <div>
-        <h1>{book.title}</h1>
-        <img src={book.imageUrl} />
-        <p>{book.description}</p>
-        <p>Price: ${book.price}</p>
-        <div>
-          Author:{' '}
-          {author ? (
-            <Link to={`/authors/${author.id}`}>
-              {author && author.fullName}
-            </Link>
-          ) : (
-            <h1>Loading...</h1>
-          )}
-        </div>
-        <br />
-        {isAdmin ? (
-          <div>
-            {' '}
-            <button type="submit" onClick={() => this.handleDelete(book.id)}>
-              Delete
-            </button>
-            <div>
-              {this.renderRedirect()}
-              <button type="submit" onClick={() => this.setUpdateRedirect()}>
-                Update Item
-              </button>
-            </div>
+        <section className="product">
+          <div id="product-image">
+            <img src={book.imageUrl} />
           </div>
-        ) : (
-          <div />
-        )}
-        <div>
-          Quantity:{' '}
-          <input
-            onChange={this.addQuantity}
-            name="quantity"
-            value={this.state.quantity}
-            type="tel"
-          />
-        </div>{' '}
-        <br />
-        <button type="submit" onClick={this.handleAddToCart}>
-          Add to Cart
-        </button>
+          <div id="product-description">
+            <h1>{book.title}</h1>
+            <p>{book.description}</p>
+            <p>Price: ${book.price}</p>
+            <div>
+              Author:{' '}
+              {author ? (
+                <Link to={`/authors/${author.id}`}>
+                  {author && author.fullName}
+                </Link>
+              ) : (
+                <h1>Loading...</h1>
+              )}
+            </div>
+            <br />
+            {isAdmin ? (
+              <div>
+                {' '}
+                <button
+                  type="submit"
+                  onClick={() => this.handleDelete(book.id)}
+                >
+                  Delete
+                </button>
+                <br />
+                <br />
+                <div>
+                  {this.renderRedirect()}
+                  <button
+                    type="submit"
+                    onClick={() => this.setUpdateRedirect()}
+                  >
+                    Update Item
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div />
+            )}
+            <div>
+              <br />
+              Quantity:{' '}
+              <input
+                onChange={this.addQuantity}
+                name="quantity"
+                value={this.state.quantity}
+                type="tel"
+              />
+            </div>{' '}
+            <br />
+            <button type="submit" onClick={this.handleAddToCart}>
+              Add to Cart
+            </button>
+          </div>
+        </section>
         <br />
         <br />
         <Review book={book} />
-
+        <AddReview book={book} />
       </div>
     )
   }

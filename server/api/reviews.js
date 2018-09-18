@@ -48,4 +48,25 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+const isAdmin = (req, res, next) => {
+  if (!req.user.isAdmin) {
+    const error = new Error('You are not authorized to complete this action')
+    error.status = 401
+    return next(error)
+  } else {
+    next()
+  }
+}
+
+router.delete('/:id', isAdmin, async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const deletedReview = await Review.findById(id)
+    await deletedReview.destroy()
+    res.status(204).end()
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

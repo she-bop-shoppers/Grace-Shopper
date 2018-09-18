@@ -3,7 +3,14 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {getBooks} from '../reducers/book'
 import {Redirect} from 'react-router'
-import Select from '@material-ui/core/Select'
+import {
+  Select,
+  TextField,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Button
+} from '@material-ui/core'
 
 /**
  * COMPONENT
@@ -12,7 +19,8 @@ class BooksQuery extends React.Component {
   constructor() {
     super()
     this.state = {
-      type: '--Please choose an option--',
+      type: '--Please choose an MenuItem--',
+
       value: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -46,7 +54,7 @@ class BooksQuery extends React.Component {
     }
     this.props.getBooks(this.state)
     this.setState({
-      type: '--Please choose an option--',
+      type: '--Please choose an MenuItem--',
       value: ''
     })
   }
@@ -70,35 +78,48 @@ class BooksQuery extends React.Component {
 
     return (
       <div>
-        <h3>Search</h3>
-        <form onSubmit={this.handleSubmit}>
-          <div className="search-select">
-            <label htmlFor="search-select">Search by:</label>
-            <select
-              id="search-select"
+        <form
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justify: 'flex-end'
+          }}
+          onSubmit={this.handleSubmit}
+        >
+          <FormControl>
+            {/* <div className="search-select"> */}
+            <InputLabel htmlFor="search-select" />
+            <Select
+              style={{padding: 0}}
+              // id="search-select"
               value={this.state.type}
               onChange={this.handleSelect}
-              placeholder="--Please choose an option--"
+              inputProps={{
+                name: 'Genre',
+                id: 'search-select'
+              }}
             >
-              <option value="">--Please choose an option--</option>
-              <option value="genreId">Genre</option>
-              <option value="title">Title</option>
-              <option value="authorId">Author (last name)</option>
-            </select>
-          </div>
+              <MenuItem value="genreId">Genre</MenuItem>
+              <MenuItem value="title">Title</MenuItem>
+              <MenuItem value="authorId">Author (last name)</MenuItem>
+            </Select>
+          </FormControl>
 
-          <div className="search-input">
-            <label htmlFor="search-input">Search for:</label>
-            <input
+          <FormControl>
+            <InputLabel htmlFor="search-input" />
+            <TextField
+              style={{padding: 0}}
               type="text"
               id="search-input"
               name="searchedText"
+              placeholder="Search"
+              margin="normal"
               value={this.state.value}
               onChange={this.handleChange}
             />
-          </div>
+          </FormControl>
 
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
     )

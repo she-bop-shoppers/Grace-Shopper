@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getBooks, removeABook} from '../reducers/book'
 import BooksQuery from './books-query'
-import ConnectedAddBook from './add-book'
+import {Grid, Card, Button, CardMedia} from '@material-ui/core'
 
 class AllBooks extends Component {
   constructor() {
@@ -52,54 +52,63 @@ class AllBooks extends Component {
 
     return (
       <div>
-        <BooksQuery />
         <h1>BOOKS</h1>
-        <ul>
-          {isAdmin ? (
-            <div>
-              {this.renderRedirect()}
-              <button type="submit" onClick={this.setAddRedirect}>
-                Add Book Item
-              </button>
-            </div>
-          ) : (
-            <div />
-          )}
+        <BooksQuery />
+        {isAdmin ? (
+          <div>
+            {this.renderRedirect()}
+            <Button type="submit" onClick={this.setAddRedirect}>
+              Add Book Item
+            </Button>
+          </div>
+        ) : (
+          <div />
+        )}
+        <Grid container justify="center" spacing={24} style={{padding: 24}}>
           {books && books.length ? (
             books.map(book => {
               return (
-                <li className="column" key={book.id}>
-                  <Link to={`/books/${book.id}`}>{book.title}</Link>{' '}
-                  <img src={book.imageUrl} />
-                  {isAdmin ? (
-                    <div>
-                      {' '}
-                      <button
-                        type="submit"
-                        onClick={() => this.handleDelete(book.id)}
-                      >
-                        Delete
-                      </button>
+                <Grid item xs={12} sm={6} lg={4} xl={3} key={book.id}>
+                  <Card style={{height: '36vw', width: '22vw'}}>
+                    <Link to={`/books/${book.id}`}>
+                      <CardMedia
+                        style={{
+                          height: '100%',
+                          width: '100%'
+                        }}
+                        image={book.imageUrl}
+                      />
+                    </Link>
+                    {isAdmin ? (
                       <div>
-                        {this.renderRedirect()}
+                        {' '}
                         <button
                           type="submit"
-                          onClick={() => this.setUpdateRedirect(book.id)}
+                          onClick={() => this.handleDelete(book.id)}
                         >
-                          Update Item
+                          Delete
                         </button>
+                        <div>
+                          {this.renderRedirect()}
+                          <button
+                            type="submit"
+                            onClick={() => this.setUpdateRedirect(book.id)}
+                          >
+                            Update Item
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div />
-                  )}
-                </li>
+                    ) : (
+                      <div />
+                    )}{' '}
+                  </Card>
+                </Grid>
               )
             })
           ) : (
             <h1>No Matching Results</h1>
           )}
-        </ul>
+        </Grid>
       </div>
     )
   }

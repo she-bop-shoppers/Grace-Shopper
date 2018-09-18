@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const {Order, OrderBook, Book} = require('../db/models')
+const {Order, OrderBook, Book, User} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -37,7 +37,11 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const cart = req.body
-    const userId = req.user.id
+    const user = await User.create({email: 'guest@user.com'})
+    let userId = user.id
+    if (req.user) {
+      userId = req.user.id
+    }
     console.log(userId)
     let price = 0
     cart.forEach(item => {

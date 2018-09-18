@@ -3,43 +3,57 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../reducers/user'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import {AppBar, Toolbar, Typography, Tab, Tabs} from '@material-ui/core'
+import Admin from './admin'
+import Genres from './AllGenres'
 
 const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <div>
-    <h1>Grace Shopper</h1>
-    <AppBar>
-      <Toolbar>
-        {isLoggedIn ? (
-          <div>
-            <Link to="/home">Home</Link>
-            <a href="#" onClick={handleClick}>
-              Logout
-            </a>{' '}
-            <Link to="/pastorders">Past Orders</Link>
-          </div>
-        ) : (
-          <div />
-        )}
-        {isAdmin ? (
-          <div>
-            <Link to="/addBook">Add Book</Link>
-            <Link to="/customerorders">Orders</Link>
-          </div>
-        ) : (
-          <div />
-        )}
-        {/* The navbar will show these links before you log in */}
-        <Link to="/books">Books</Link>
-        <Link to="/genres">Genres</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/cart">Cart</Link>
-      </Toolbar>
-    </AppBar>
-    <hr />
+    <nav>
+      {isLoggedIn ? (
+        <div>
+          <ul>
+            <li>
+              <Link to="/home">HOME</Link>
+            </li>
+            <li>
+              <Link to="/books">BOOKS</Link>
+            </li>
+            <Genres />
+            <li>
+              <Link to="/pastorders">ORDERS</Link>
+            </li>
+            <li>
+              <Link to="/cart">CART</Link>
+            </li>
+            {isAdmin ? <Admin /> : <li />}
+            <li>
+              <a href="#" onClick={handleClick}>
+                LOGOUT
+              </a>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <div>
+          <ul>
+            <li>
+              <Link to="/books">BOOKS</Link>
+            </li>
+            <Genres />
+            <li>
+              <Link to="/cart">CART</Link>
+            </li>
+            <li>
+              <Link to="/login">LOGIN</Link>
+            </li>
+            <li>
+              <Link to="/signup">SIGN UP</Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </nav>
   </div>
 )
 
