@@ -17,6 +17,7 @@ import PastOrders from './components/pastOrders'
 import AllOrders from './components/customer-orders'
 import Inventory from './components/inventory'
 import ConnectedAllUsers from './components/users'
+import SingleOrder from './components/order-details'
 import {me} from './reducers/user'
 
 /**
@@ -48,6 +49,7 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route path="/addBook" component={ConnectedAddBook} />
             <Route path="/pastorders" component={PastOrders} />
+            <Route path="/orders/:id" component={SingleOrder} />
             <Route path="/customerorders" component={AllOrders} />
             <Route path="/inventory" component={Inventory} />
             <Route path="/users" component={ConnectedAllUsers} />

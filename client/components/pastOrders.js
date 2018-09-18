@@ -12,20 +12,20 @@ class PastOrders extends Component {
     const {orders, userId} = this.props
     console.log('ORDERS', orders)
     return (
-      <ul>
+      <div>
         {orders &&
           orders.filter(order => order.userId === userId).map(order => {
             return (
               <div className="column" key={order.id}>
-                <li>
-                  <Link to={`/Orders/${order.id}`}>
-                    {order.date} {order.price}
-                  </Link>{' '}
-                </li>
+                <h1>
+                  Order Placed: {order.date}
+                  Total: ${order.totalPrice}
+                </h1>
+                <Link to={`/orders/${order.id}`}>Order Details</Link>{' '}
               </div>
             )
           })}
-      </ul>
+      </div>
     )
   }
 }
