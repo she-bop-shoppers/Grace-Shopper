@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchReviews, deleteReview} from '../reducers/review'
+import StarRatings from 'react-star-ratings'
 
 class Review extends React.Component {
   constructor() {
@@ -23,39 +24,49 @@ class Review extends React.Component {
 
     return (
       <div>
-        <h2>
-          Reviews for <em>{book.title}</em>
-        </h2>
-        <div>
-          {reviews && reviews.length ? (
-            reviews.map(review => {
-              return (
-                <div key={review.id}>
-                  <p>"{review.text}"</p>
-                  {this.props.isAdmin ? (
-                    <div>
-                      <button
-                        type="submit"
-                        onClick={() => this.handleDelete(review.id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  ) : (
-                    <div />
-                  )}
-                </div>
-              )
-            })
-          ) : (
-            <div>
-              <h4>
-                There are no reviews for this book. Would you like to be the
-                first to add a review?
-              </h4>
-            </div>
-          )}
-        </div>
+        <section className="review-product">
+          <div id="title">
+            <h2>
+              Reviews for <em>{book.title}</em>
+            </h2>
+          </div>
+
+          <div>
+            {reviews && reviews.length ? (
+              reviews.map(review => {
+                return (
+                  <div key={review.id}>
+                    <p id="review-text">"{review.text}"</p>
+                    <StarRatings
+                      starEmptyColor="red"
+                      starDimension="25px"
+                      numberOfStars={review.rating}
+                    />
+                    {this.props.isAdmin ? (
+                      <div>
+                        <button
+                          type="submit"
+                          onClick={() => this.handleDelete(review.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    ) : (
+                      <div />
+                    )}
+                  </div>
+                )
+              })
+            ) : (
+              <div>
+                <h4>
+                  There are no reviews for this book. Would you like to be the
+                  first to add a review?
+                </h4>
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     )
   }
