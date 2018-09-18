@@ -68,3 +68,11 @@ td {
 table {
   width: 100%;
 }
+
+.checkout {
+  height: 50 px;
+  width: 300px;
+  padding: 7px;
+  background-color: lightblue;
+  margin-bottom: 2px;
+}

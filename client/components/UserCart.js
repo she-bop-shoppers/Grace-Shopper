@@ -8,6 +8,7 @@ import {
   removeAllItemsInCart
 } from '../reducers/cart'
 import {postNewOrder} from '../reducers/orders'
+import {Elements, StripeProvider} from 'react-stripe-elements'
 import Checkout from './Checkout'
 
 class UserCart extends Component {
@@ -45,15 +46,16 @@ class UserCart extends Component {
 
   render() {
     const books = this.props.books
-    // const noDuplicates = books.filter(book=> )
-    console.log('BOOKS===>', books)
     if (books.length > 0) {
       return (
         <div>
-          <Checkout
-            email="bookhaven@hoppers.com"
-            address="5 hangover, NY"
-          />
+          <StripeProvider apiKey="pk_test_uNT8KotXPkQTYMWkg7F1q2C3">
+            <div className="checkout">
+              <Elements>
+                <Checkout />
+              </Elements>
+            </div>
+          </StripeProvider>
           <button type="submit" onClick={() => this.handleCheckout(books)}>
             Checkout
           </button>
