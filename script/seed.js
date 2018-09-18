@@ -722,10 +722,17 @@ const seed = async () => {
           lastName: association.author
         }
       })
-      const [book, genre, author] = await Promise.all([
+      //find review in association
+      const reviewFound = Review.findOne({
+        where: {
+          text: association.review
+        }
+      })
+      const [book, genre, author, review] = await Promise.all([
         bookFound,
         genreFound,
-        authorFound
+        authorFound,
+        reviewFound
       ])
       //setAuthor and Genre on book
       await book.setAuthor(author)
@@ -752,25 +759,21 @@ const seed = async () => {
     })
   )
   console.log('seeding success!')
-  await db.close()
 }
 
-// We've separated the `seed` function from the `runSeed` function.
+// We've separated the `seed` function from running the seed.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
-seed().catch(err => {
-  console.error('Oh noes! Something went wrong!')
-  console.error(err)
-  db.close()
-})
-
-//
-// // Execute the `seed` function, IF we ran this module directly (`node seed`).
-// // `Async` functions always return a promise, so we can use `catch` to handle
-// // any errors that might occur inside of `seed`.
-// if (module === require.main) {
-//   runSeed()
-// }
+// Execute the `seed` function ONLY IF we ran this module directly (`node seed`).
+// `Async` functions always return a promise, so we can use `catch` to handle
+// any errors that might occur inside of `seed`.
+if (module === require.main) {
+  seed().catch(err => {
+    console.error('Oh noes! Something went wrong!')
+    console.error(err)
+    db.close()
+  })
+}
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed
