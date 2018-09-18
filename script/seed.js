@@ -497,6 +497,7 @@ const reviews = [
   },
   {
     date: Date.now(),
+    rating: 5,
     text:
       "This book is the perfect blend of reality and imagination. I applaud Michael Crichton- this concept is solid as well as reasonable. This book includes all of the character's perspectives, which I find a little confusing at times, but does an awesome job of telling the story. There is equality of all types, as there are two strong female characters, and the book takes place on an island near Costa Rica. The only thing is that this book includes lots of gore, people and animals dying, and a single sexual reference necessary for the storyline. I therefore recommend this to anyone ten years old and above.",
     userId: 2
@@ -541,6 +542,36 @@ const users = [
     date: Date.now()
   }
 ]
+
+  const users = [
+    {
+      firstName: 'Gayathri',
+      lastName: 'Subramanian',
+      email: 'sweetestperson@ever.com',
+      isAdmin: true,
+      isActive: true,
+      userName: 'Gayathri',
+      date: Date.now()
+    },
+    {
+      firstName: 'Soheila',
+      lastName: 'Bayat',
+      email: 'legally@incharge.com',
+      isAdmin: true,
+      isActive: true,
+      userName: 'Soheila',
+      date: Date.now()
+    },
+    {
+      firstName: 'Jillian',
+      lastName: 'Mclaren',
+      email: 'absolutely@fabulous.com',
+      isAdmin: true,
+      isActive: true,
+      userName: 'Jillian',
+      date: Date.now()
+    }
+  ]
 
 const associations = [
   {
