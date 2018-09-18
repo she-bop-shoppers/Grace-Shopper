@@ -28,23 +28,11 @@ class AddReview extends React.Component {
     const reviewDate = Date.now()
     const newReview = event.target.review.value
     const user = this.props.user
-
-    if (!user) {
-      alert('Only users may add reviews')
-    } else {
-      this.props.addReview(user.id, newReview, bookId, reviewDate)
-      // this.setState({
-      //   userName: '',
-      //   review: ''
-      // })
-      //alert('Review successfully added')
-    }
+    this.props.addReview(user.id, newReview, bookId, reviewDate)
   }
 
   render() {
     const user = this.props.user
-
-    console.log('User: ', user)
     return (
       <div>
         {Object.keys(user).length ? (
