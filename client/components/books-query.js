@@ -20,6 +20,7 @@ class BooksQuery extends React.Component {
     super()
     this.state = {
       type: '--Please choose an MenuItem--',
+
       value: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -89,7 +90,7 @@ class BooksQuery extends React.Component {
             {/* <div className="search-select"> */}
             <InputLabel htmlFor="search-select" />
             <Select
-              style={{padding: 5}}
+              style={{padding: 0}}
               // id="search-select"
               value={this.state.type}
               onChange={this.handleSelect}
@@ -107,7 +108,7 @@ class BooksQuery extends React.Component {
           <FormControl>
             <InputLabel htmlFor="search-input" />
             <TextField
-              style={{padding: 5}}
+              style={{padding: 0}}
               type="text"
               id="search-input"
               name="searchedText"

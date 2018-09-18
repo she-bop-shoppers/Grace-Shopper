@@ -4,15 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getBooks, removeABook} from '../reducers/book'
 import BooksQuery from './books-query'
-import {
-  Grid,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  withStyles
-} from '@material-ui/core'
+import {Grid, Card, Button, CardMedia} from '@material-ui/core'
 
 class AllBooks extends Component {
   constructor() {
@@ -62,41 +54,30 @@ class AllBooks extends Component {
       <div>
         <h1>BOOKS</h1>
         <BooksQuery />
+        {isAdmin ? (
+          <div>
+            {this.renderRedirect()}
+            <Button type="submit" onClick={this.setAddRedirect}>
+              Add Book Item
+            </Button>
+          </div>
+        ) : (
+          <div />
+        )}
         <Grid container justify="center" spacing={24} style={{padding: 24}}>
-          {isAdmin ? (
-            <div>
-              {this.renderRedirect()}
-              <button type="submit" onClick={this.setAddRedirect}>
-                Add Book Item
-              </button>
-            </div>
-          ) : (
-            <div />
-          )}
           {books && books.length ? (
             books.map(book => {
               return (
                 <Grid item xs={12} sm={6} lg={4} xl={3} key={book.id}>
-                  <Card
-                    style={{height: '36vw', width: '22vw'}}
-                    flexDirection="column"
-                  >
+                  <Card style={{height: '36vw', width: '22vw'}}>
                     <Link to={`/books/${book.id}`}>
                       <CardMedia
                         style={{
                           height: '100%',
                           width: '100%'
-                          // padding: '56.00%'
                         }}
-                        // title={book.title}
                         image={book.imageUrl}
                       />
-                      {/* <CardContent>
-                        <Typography gutterTop variant="headline" component="h2">
-                          {book.title}
-                        </Typography>
-                        <img className="bookImage" src={book.imageUrl} />
-                      </CardContent> */}
                     </Link>
                     {isAdmin ? (
                       <div>

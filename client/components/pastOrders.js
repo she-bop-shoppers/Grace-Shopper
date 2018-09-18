@@ -18,8 +18,7 @@ class PastOrders extends Component {
             return (
               <div className="column" key={order.id}>
                 <h1>
-                  Order Placed: {order.date}
-                  Total: ${order.totalPrice}
+                  Order Placed: {order.date} Total: ${order.totalPrice}
                 </h1>
                 <Link to={`/orders/${order.id}`}>Order Details</Link>{' '}
               </div>
