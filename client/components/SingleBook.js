@@ -5,6 +5,7 @@ import Review from './Review'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
+import AddReview from './AddReview'
 
 class SingleBook extends React.Component {
   constructor() {
@@ -81,6 +82,8 @@ class SingleBook extends React.Component {
             <button type="submit" onClick={() => this.handleDelete(book.id)}>
               Delete
             </button>
+            <br />
+            <br />
             <div>
               {this.renderRedirect()}
               <button type="submit" onClick={() => this.setUpdateRedirect()}>
@@ -92,6 +95,7 @@ class SingleBook extends React.Component {
           <div />
         )}
         <div>
+          <br />
           Quantity:{' '}
           <input
             onChange={this.addQuantity}
@@ -107,7 +111,7 @@ class SingleBook extends React.Component {
         <br />
         <br />
         <Review book={book} />
-
+        <AddReview book={book} />
       </div>
     )
   }

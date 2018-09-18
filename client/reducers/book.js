@@ -43,6 +43,29 @@ export const editedBook = (bookId, reqBody) => {
   }
 }
 
+/**
+ * thunk named createReviewForBook = (id, reviewContent) =>
+ *   axios.put for the review
+ *   on success dispatch HERE an action, maybe called
+ *   addReviewToBookReviews which has on the action the book
+ *   id and the review object
+ * then here... when you fetchBooks, the endpoint should
+ * include reviews (it probably already does)...
+ * so then your book objects already probably have an array of reviews..
+ * so... in case("ADD_REVIEW_TO_BOOK_REVIEWS") just push into
+ * that books reviews array, the new one
+ */
+
+/**
+ * ORRRRRRR....
+ * keep the reviewReducer... use it to create reviews
+ * once it's done (in the thunk) dispatch an action that has
+ * a switch case in BOOK.js (this file)...
+ * for example dispatch({ type: "ADD_REVIEW_TO_BOOK", payload: review })
+ * so here... case "ADD_REVIEW_TO_BOOK" can see that dispatched
+ * action from review.js
+ */
+
 export const addNewBook = book => {
   return async dispatch => {
     try {
@@ -88,6 +111,7 @@ export const fetchSingleBook = id => {
     try {
       const {data} = await axios.get('/api/books/' + id)
       const action = getSingleBook(data)
+      console.log('Singlebook data: ', data)
       dispatch(action)
     } catch (error) {
       console.log(error)

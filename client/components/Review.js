@@ -8,14 +8,8 @@ class Review extends React.Component {
   }
   render() {
     const book = this.props.book
-    console.log('book: ', book)
-    const reviews = book.reviews
     const reviewsList = this.props.reviews
-
-    // let filteredList = reviewsList.filter(review => {
-    //   return review.book.id === review.BookId
-    // })
-    // console.log('Filtered List: ', filteredList)
+    let reviews = reviewsList.filter(review => book.id === review.bookId)
 
     return (
       <div>

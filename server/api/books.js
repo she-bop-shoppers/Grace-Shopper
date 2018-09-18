@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
     if (req.query) {
       const books = await Book.findAll({
         where: req.query,
-        include: [{model: Author}, {model: Genre}]
+        include: [{model: Author}, {model: Genre}, {model: Review}]
       })
       res.status(200).send(books)
     } else {
