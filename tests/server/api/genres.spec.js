@@ -32,12 +32,12 @@ describe('Genre routes', () => {
       const genre = await Genre.findOne({
         where: {name: 'Fantasy'}
       })
-      const genreId = genre.id
+      //console.log('in the GET /api/genres/:id spec, genre is', genre.id, 'typeof genreid', typeof genre.id)
       const res = await request(app)
-        .get(`/api/books/${genreId}`)
+        .get(`/api/books/${genre.id}`)
         .expect(200)
 
-      expect(res.body).to.be.an('array')
+      expect(res.body).to.be.an('object')
       expect(res.body[0].name).to.be.equal(name)
     })
   }) // end describe('/api/books')
