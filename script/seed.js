@@ -543,35 +543,35 @@ const users = [
   }
 ]
 
-  const users = [
-    {
-      firstName: 'Gayathri',
-      lastName: 'Subramanian',
-      email: 'sweetestperson@ever.com',
-      isAdmin: true,
-      isActive: true,
-      userName: 'Gayathri',
-      date: Date.now()
-    },
-    {
-      firstName: 'Soheila',
-      lastName: 'Bayat',
-      email: 'legally@incharge.com',
-      isAdmin: true,
-      isActive: true,
-      userName: 'Soheila',
-      date: Date.now()
-    },
-    {
-      firstName: 'Jillian',
-      lastName: 'Mclaren',
-      email: 'absolutely@fabulous.com',
-      isAdmin: true,
-      isActive: true,
-      userName: 'Jillian',
-      date: Date.now()
-    }
-  ]
+const users = [
+  {
+    firstName: 'Gayathri',
+    lastName: 'Subramanian',
+    email: 'sweetestperson@ever.com',
+    isAdmin: true,
+    isActive: true,
+    userName: 'Gayathri',
+    date: Date.now()
+  },
+  {
+    firstName: 'Soheila',
+    lastName: 'Bayat',
+    email: 'legally@incharge.com',
+    isAdmin: true,
+    isActive: true,
+    userName: 'Soheila',
+    date: Date.now()
+  },
+  {
+    firstName: 'Jillian',
+    lastName: 'Mclaren',
+    email: 'absolutely@fabulous.com',
+    isAdmin: true,
+    isActive: true,
+    userName: 'Jillian',
+    date: Date.now()
+  }
+]
 
 const associations = [
   {
@@ -753,17 +753,10 @@ const seed = async () => {
           lastName: association.author
         }
       })
-      //find review in association
-      const reviewFound = Review.findOne({
-        where: {
-          text: association.review
-        }
-      })
-      const [book, genre, author, review] = await Promise.all([
+      const [book, genre, author] = await Promise.all([
         bookFound,
         genreFound,
-        authorFound,
-        reviewFound
+        authorFound
       ])
       //setAuthor and Genre on book
       await book.setAuthor(author)
