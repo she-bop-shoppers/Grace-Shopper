@@ -10,8 +10,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
-//const configureServer = require('./checkout/server');
-//const configureRoutes = require('./checkout/routes');
+const stripe = require('stripe')('sk_test_8WP9UDDEVHt2LZs0EZNWgDVM')
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -21,11 +20,6 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 if (process.env.NODE_ENV !== 'production') require('../secrets')
-
-const SERVER_CONFIGS = {
-  PRODUCTION: process.env.NODE_ENV === 'production',
-  PORT: process.env.PORT || PORT
-}
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
@@ -46,6 +40,7 @@ const createApp = () => {
   // body parsing middleware
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
+  app.use(require('body-parser').text())
 
   // compression middleware
   app.use(compression())
@@ -63,6 +58,20 @@ const createApp = () => {
   app.use(passport.session())
 
   // auth and api routes
+  app.post('/charge', async (req, res) => {
+    try {
+      let {status} = await stripe.charges.create({
+        amount: 2000,
+        currency: 'usd',
+        description: 'An example charge',
+        source: req.body
+      })
+
+      res.json({status})
+    } catch (err) {
+      res.status(500).end()
+    }
+  })
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
@@ -98,10 +107,8 @@ const createApp = () => {
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(
-    SERVER_CONFIGS.PORT,
-    () => console.log(`Mixing it up on port ${PORT}`),
-    console.log('Server running on port: Stripe: ' + SERVER_CONFIGS.PORT)
+  const server = app.listen(PORT, () =>
+    console.log(`Mixing it up on port ${PORT}`)
   )
 
   // set up our socket control center

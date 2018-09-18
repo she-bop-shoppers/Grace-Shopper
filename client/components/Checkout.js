@@ -1,69 +1,38 @@
-import React, {Component} from 'react'
-import {CardElement, injectStripe} from 'react-stripe-elements'
+import React from 'react'
+import axios from 'axios'
+import StripeCheckout from 'react-stripe-checkout'
 
-class Checkout extends Component {
-  constructor(props) {
-    super(props)
-    this.submit = this.submit.bind(this)
-  }
+const CURRENCY = 'EUR'
 
-  async submit(ev) {
-    // User clicked submit
-  }
+const fromEuroToCent = amount => amount * 100
 
-  render() {
-    return (
-      <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
-        <CardElement />
-        <button onClick={this.submit} type="submit">
-          Send
-        </button>
-      </div>
-    )
-  }
+const successPayment = data => {
+  alert('Payment Successful')
 }
 
-export default injectStripe(Checkout)
+const errorPayment = data => {
+  alert('Payment Error')
+}
 
-// import React from 'react';
-// import axios from 'axios';
-// import StripeCheckout from 'react-stripe-checkout';
+const onToken = (amount, description) => token =>
+  axios
+    .post('/charge', {
+      description,
+      source: token.id,
+      currency: CURRENCY,
+      amount: fromEuroToCent(amount)
+    })
+    .then(successPayment)
+    .catch(errorPayment)
 
-// import { STRIPE_PUBLISHABLE, PAYMENT_SERVER_URL } from './Stripe';
+const Checkout = ({email, address, amount}) => (
+  <StripeCheckout
+    email={email}
+    address={address}
+    amount={fromEuroToCent(amount)}
+    token={onToken(amount, address)}
+    currency={CURRENCY}
+  />
+)
 
-// const CURRENCY = 'EUR';
-
-// const fromEuroToCent = (amount) => amount * 100;
-
-// const successPayment = (data) => {
-// 	alert('Payment Successful');
-// };
-
-// const errorPayment = (data) => {
-// 	alert('Payment Error');
-// };
-
-// const onToken = (amount, description) => (token) =>
-// 	axios
-// 		.post(PAYMENT_SERVER_URL, {
-// 			description,
-// 			source: token.id,
-// 			currency: CURRENCY,
-// 			amount: fromEuroToCent(amount)
-// 		})
-// 		.then(successPayment)
-// 		.catch(errorPayment);
-
-// const Checkout = ({ email, address, amount }) => (
-// 	<StripeCheckout
-// 		email={email}
-// 		address={address}
-// 		amount={fromEuroToCent(amount)}
-// 		token={onToken(amount, address)}
-// 		currency={CURRENCY}
-// 		stripeKey={STRIPE_PUBLISHABLE}
-// 	/>
-// );
-
-// export default Checkout;
+export default Checkout
