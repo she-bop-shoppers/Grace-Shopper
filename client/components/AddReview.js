@@ -22,53 +22,58 @@ class AddReview extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const userName = event.target.userName.value
+    console.log('Props: ', this.props.book)
+
     const bookId = this.props.book.id
     const reviewDate = Date.now()
     const newReview = event.target.review.value
-    const isUser = this.props.isUser
-    console.log('User: ', isUser)
+    const user = this.props.user
 
-    if (userName !== isUser) {
+    if (!user) {
       alert('Only users may add reviews')
     } else {
-      this.props.addReview(userName, newReview, bookId, reviewDate)
+      this.props.addReview(user.id, newReview, bookId, reviewDate)
       // this.setState({
       //   userName: '',
       //   review: ''
       // })
-      alert('Review successfully added')
+      //alert('Review successfully added')
     }
   }
 
   render() {
+    const user = this.props.user
+
+    console.log('User: ', user)
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-input">
-          <label htmlFor="userName">Username:</label>
-          <input type="text" id="input-field" name="userName" />
-        </div>
-        <div className="form-input">
-          <label htmlFor="review">Review:</label>
-          <textarea type="text" id="input-field" name="review" />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <div>
+        {Object.keys(user).length ? (
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-input">
+              <label htmlFor="review">Review:</label>
+              <textarea type="text" id="input-field" name="review" />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        ) : (
+          <div />
+        )}
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    isUser: state.user.userName
+    user: state.user
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addReview: (userName, newReview, id, date) => {
+    addReview: (userId, newReview, id, date) => {
       const addReview = {
-        userName: userName,
+        userId: userId,
         text: newReview,
         bookId: id,
         date: date
