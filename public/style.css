@@ -74,7 +74,6 @@ table {
   width: 225px;
 }
 
-
 .appbar {
   display: flex;
   flex-direction: row;
@@ -113,7 +112,7 @@ nav li a:hover {
   padding: 14px 16px;
   text-decoration: none;
   font-family: sans-serif;
-
+}
 
 #title {
   text-align: center;
@@ -125,10 +124,10 @@ section.product {
 
 #product-description {
   position: absolute;
-  top: 100px;
-  right: 40px;
-  width: 600px;
-  margin-right: 45px;
+  top: 8em;
+  right: 4em;
+  width: 20em;
+  margin-right: 4.5em;
 }
 
 #product-image {
