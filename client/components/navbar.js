@@ -38,17 +38,17 @@ const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
         <div>
           <ul>
             <li>
-              <Link to="/books">Books</Link>
+              <Link to="/books">BOOKS</Link>
             </li>
             <Genres />
             <li>
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart">CART</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login">LOGIN</Link>
             </li>
             <li>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup">SIGN UP</Link>
             </li>
           </ul>
         </div>
