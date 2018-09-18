@@ -8,6 +8,7 @@ import {
   removeAllItemsInCart
 } from '../reducers/cart'
 import {postNewOrder} from '../reducers/orders'
+import Checkout from './Checkout'
 
 class UserCart extends Component {
   constructor() {
@@ -49,6 +50,10 @@ class UserCart extends Component {
     if (books.length > 0) {
       return (
         <div>
+          <Checkout
+            email="bookhaven@hoppers.com"
+            address="5 hangover, NY"
+          />
           <button type="submit" onClick={() => this.handleCheckout(books)}>
             Checkout
           </button>
