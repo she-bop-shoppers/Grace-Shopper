@@ -543,36 +543,6 @@ const users = [
   }
 ]
 
-const users = [
-  {
-    firstName: 'Gayathri',
-    lastName: 'Subramanian',
-    email: 'sweetestperson@ever.com',
-    isAdmin: true,
-    isActive: true,
-    userName: 'Gayathri',
-    date: Date.now()
-  },
-  {
-    firstName: 'Soheila',
-    lastName: 'Bayat',
-    email: 'legally@incharge.com',
-    isAdmin: true,
-    isActive: true,
-    userName: 'Soheila',
-    date: Date.now()
-  },
-  {
-    firstName: 'Jillian',
-    lastName: 'Mclaren',
-    email: 'absolutely@fabulous.com',
-    isAdmin: true,
-    isActive: true,
-    userName: 'Jillian',
-    date: Date.now()
-  }
-]
-
 const associations = [
   {
     book: 'Harry Potter and the Goblet of Fire',
