@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSingleGenre} from '../reducers/genres'
 import {Link} from 'react-router-dom'
+import {Grid, Card, CardMedia} from '@material-ui/core'
 
 class SingleGenre extends React.Component {
   componentDidMount() {
@@ -14,21 +15,27 @@ class SingleGenre extends React.Component {
     return (
       <div>
         <h1>{this.props.oneGenre.name}</h1>
-        <ul>
+        <Grid container justify="center" spacing={24} style={{padding: 24}}>
           {this.props.oneGenre.books ? (
             this.props.oneGenre.books.map(book => (
-              <li key={book.id}>
-                <img src={book.imageUrl} />
-                <Link to={`/books/${book.id}`}>
-                  {book.title} by{' '}
-                  {book.author.firstName + ' ' + book.author.lastName}
-                </Link>
-              </li>
+              <Grid item xs={12} sm={6} lg={4} xl={3} key={book.id}>
+                <Card style={{height: '36vw', width: '22vw'}}>
+                  <Link to={`/books/${book.id}`}>
+                    <CardMedia
+                      style={{
+                        height: '100%',
+                        width: '100%'
+                      }}
+                      image={book.imageUrl}
+                    />
+                  </Link>
+                </Card>
+              </Grid>
             ))
           ) : (
             <li>Loading . . .</li>
           )}
-        </ul>
+        </Grid>
       </div>
     )
   }
