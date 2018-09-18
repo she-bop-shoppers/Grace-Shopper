@@ -11,6 +11,7 @@ Order.belongsTo(User)
 User.hasMany(Order)
 
 Order.belongsToMany(Book, {through: OrderBook})
+Order.hasMany(OrderBook)
 Book.belongsToMany(Order, {through: OrderBook})
 
 Review.belongsTo(User)

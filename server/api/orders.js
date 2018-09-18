@@ -1,12 +1,18 @@
 const router = require('express').Router()
 
-const {Order, Book, OrderBook} = require('../db/models')
+const {Order, OrderBook, Book} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
     if (req.query) {
       const orders = await Order.findAll({
-        where: req.query
+        where: req.query,
+        include: [
+          {
+            model: Book,
+            through: {OrderBook}
+          }
+        ]
       })
       res.status(200).send(orders)
     } else {
@@ -30,22 +36,23 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log('USER', req.user.id)
-
     const cart = req.body
     const userId = req.user.id
+    console.log(userId)
     let price = 0
     cart.forEach(item => {
       price += item.subTotal
     })
-    const orders = await Order.create({
-      totalPrice: price,
-      date: Date.now(),
-      userId: userId,
-      orderBook: cart,
-      include: [{model: OrderBook}]
-    })
-    res.status(200).send(orders)
+    const order = await Order.create(
+      {
+        totalPrice: price,
+        userId: userId,
+        date: Date.now(),
+        orderBooks: cart
+      },
+      {include: [{model: OrderBook}]}
+    )
+    res.status(200).send(order)
   } catch (err) {
     next(err)
   }

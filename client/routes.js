@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Login, Signup, UserHome, AddUser} from './components'
 import ConnectedAllBooks from './components/allBooks'
 import ConnectedAddBook from './components/add-book'
 import ConnectedBooksQuery from './components/books-query'
@@ -16,6 +16,7 @@ import ConnectedUpdateBook from './components/update-book'
 import PastOrders from './components/pastOrders'
 import AllOrders from './components/customer-orders'
 import Inventory from './components/inventory'
+import ConnectedAllUsers from './components/users'
 import {me} from './reducers/user'
 
 /**
@@ -49,6 +50,8 @@ class Routes extends Component {
             <Route path="/pastorders" component={PastOrders} />
             <Route path="/customerorders" component={AllOrders} />
             <Route path="/inventory" component={Inventory} />
+            <Route path="/users" component={ConnectedAllUsers} />
+            <Route path="/addUser" component={AddUser} />
             <Route
               path="/updateBook/:bookId"
               render={props => <ConnectedUpdateBook {...props} />}

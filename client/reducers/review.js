@@ -14,7 +14,7 @@ const ADD_ONE_REVIEW = 'ADD_ONE_REVIEW'
 //ACTION CREATORS
 const getReviews = reviews => ({type: GET_REVIEWS, reviews})
 const getOneReview = review => ({type: GET_ONE_REVIEW, review: review})
-const addOneReview = newReview => ({type: ADD_ONE_REVIEW, review: newReview})
+const addOneReview = newReview => ({type: ADD_ONE_REVIEW, payload: newReview})
 
 //THUNK CREATOR
 export const fetchReviews = () => {
@@ -44,7 +44,9 @@ export const singleBookReviews = id => {
 export const postOneReview = newReview => {
   return async dispatch => {
     try {
-      const {data} = await axios.post('api/reviews/', newReview)
+      console.log('New review: ', newReview)
+      const {data} = await axios.post('/api/reviews/', newReview)
+      console.log('Data: ', data)
       const action = addOneReview(data)
       dispatch(action)
     } catch (error) {
@@ -58,7 +60,10 @@ export default function(state = initState, action) {
     case GET_REVIEWS:
       return {...state, reviews: action.reviews}
     case ADD_ONE_REVIEW:
-      return {...state, reviews: [...state, action.review]}
+      return {
+        ...state,
+        reviews: [...state.reviews, action.payload]
+      }
     default:
       return state
   }

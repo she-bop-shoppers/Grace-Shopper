@@ -79,9 +79,11 @@ export const removeFromCart = bookId => {
 export const getBooksFromStorage = () => dispatch => {
   try {
     const allBookIds = Object.keys(localStorage)
+  
     const allBooks = allBookIds.map(id => {
       return JSON.parse(localStorage.getItem(id))
     })
+   
     dispatch(getBooks(allBooks))
   } catch (err) {
     console.error(err)
@@ -92,7 +94,7 @@ export const removeAllItemsInCart = () => {
   return async dispatch => {
     try {
       const allBookIds = Object.keys(localStorage)
-      console.log('these are remove keys', allBookIds)
+      
       await allBookIds.forEach(id => {
         return localStorage.removeItem(id)
       })
