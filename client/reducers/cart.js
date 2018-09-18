@@ -78,12 +78,14 @@ export const removeFromCart = bookId => {
 
 export const getBooksFromStorage = () => dispatch => {
   try {
-    const allBookIds = Object.keys(localStorage)
-  
+    let allBookIds = Object.keys(localStorage)
+    allBookIds = allBookIds.filter(key => key !== 'lsid')
+
+    console.log('this is redux', allBookIds)
     const allBooks = allBookIds.map(id => {
       return JSON.parse(localStorage.getItem(id))
     })
-   
+
     dispatch(getBooks(allBooks))
   } catch (err) {
     console.error(err)
@@ -94,7 +96,7 @@ export const removeAllItemsInCart = () => {
   return async dispatch => {
     try {
       const allBookIds = Object.keys(localStorage)
-      
+
       await allBookIds.forEach(id => {
         return localStorage.removeItem(id)
       })
