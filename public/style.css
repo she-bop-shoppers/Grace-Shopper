@@ -68,3 +68,8 @@ td {
 table {
   width: 100%;
 }
+
+.bookImage {
+  height: 375px;
+  width: 225px;
+}
