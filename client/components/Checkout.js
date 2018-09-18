@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
+// import Stripe from 'stripe';
 
-const CURRENCY = 'EUR'
+const CURRENCY = 'USD'
 
-const fromEuroToCent = amount => amount * 100
+//const fromEuroToCent = (amount) => amount * 100;
 
 const successPayment = data => {
   alert('Payment Successful')
@@ -14,25 +15,34 @@ const errorPayment = data => {
   alert('Payment Error')
 }
 
-const onToken = (amount, description) => token =>
+const onToken = (amount, email) => token =>
   axios
-    .post('/charge', {
-      description,
+    .post('http://localhost:8080', {
       source: token.id,
       currency: CURRENCY,
-      amount: fromEuroToCent(amount)
+      email: email,
+      amount: amount
+      // stripeKey: 'pk_test_YAlUZYaNl5zFPT7p9mIRXArS'
     })
     .then(successPayment)
     .catch(errorPayment)
 
-const Checkout = ({email, address, amount}) => (
-  <StripeCheckout
-    email={email}
-    address={address}
-    amount={fromEuroToCent(amount)}
-    token={onToken(amount, address)}
-    currency={CURRENCY}
-  />
-)
+const Checkout = props => {
+  let totalPrice = 0
+  props.books.forEach(book => {
+    totalPrice += book.quantity * book.price
+  })
+  totalPrice *= 100
+  console.log('this is book price', totalPrice)
+  return (
+    <StripeCheckout
+      email={props.email}
+      amount={totalPrice}
+      token={onToken(totalPrice, props.email)}
+      stripeKey="pk_test_YAlUZYaNl5zFPT7p9mIRXArS"
+      currency={CURRENCY}
+    />
+  )
+}
 
 export default Checkout

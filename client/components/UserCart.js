@@ -50,9 +50,9 @@ class UserCart extends Component {
       return (
         <div>
           <StripeProvider apiKey="pk_test_uNT8KotXPkQTYMWkg7F1q2C3">
-            <div className="checkout">
+            <div>
               <Elements>
-                <Checkout />
+                <Checkout books={books} email={this.props.email} />
               </Elements>
             </div>
           </StripeProvider>
@@ -110,7 +110,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  books: state.cart.books
+  books: state.cart.books,
+  email: state.user.email
 })
 
 export default withRouter(
