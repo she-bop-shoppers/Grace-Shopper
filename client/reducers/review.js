@@ -10,11 +10,16 @@ const initState = {
 const GET_REVIEWS = 'GET_REVIEWS'
 const GET_ONE_REVIEW = 'GET_ONE_REVIEW'
 const ADD_ONE_REVIEW = 'ADD_ONE_REVIEW'
+const DELETE_REVIEW = 'DELETE_REVIEW'
 
 //ACTION CREATORS
 const getReviews = reviews => ({type: GET_REVIEWS, reviews})
 const getOneReview = review => ({type: GET_ONE_REVIEW, review: review})
 const addOneReview = newReview => ({type: ADD_ONE_REVIEW, payload: newReview})
+const deleteOneReview = reviewId => ({
+  type: DELETE_REVIEW,
+  payload: reviewId
+})
 
 //THUNK CREATOR
 export const fetchReviews = () => {
@@ -55,6 +60,17 @@ export const postOneReview = newReview => {
   }
 }
 
+export const deleteReview = reviewId => {
+  return async dispatch => {
+    try {
+      await axios.delete(`/api/reviews/${reviewId}`)
+      dispatch(deleteOneReview(reviewId))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 export default function(state = initState, action) {
   switch (action.type) {
     case GET_REVIEWS:
@@ -63,6 +79,11 @@ export default function(state = initState, action) {
       return {
         ...state,
         reviews: [...state.reviews, action.payload]
+      }
+    case DELETE_REVIEW:
+      return {
+        ...state,
+        reviews: state.reviews.filter(review => action.payload !== review.id)
       }
     default:
       return state
