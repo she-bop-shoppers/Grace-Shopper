@@ -49,9 +49,7 @@ export const singleBookReviews = id => {
 export const postOneReview = newReview => {
   return async dispatch => {
     try {
-      console.log('New review: ', newReview)
       const {data} = await axios.post('/api/reviews/', newReview)
-      console.log('Data: ', data)
       const action = addOneReview(data)
       dispatch(action)
     } catch (error) {
