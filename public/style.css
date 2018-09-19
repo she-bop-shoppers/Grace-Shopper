@@ -47,6 +47,7 @@ button {
   border-radius: 5px;
   background-color: rgb(144, 144, 226);
   font-size: 15px;
+  margin: 5px;
 }
 
 .column {
@@ -67,6 +68,15 @@ td {
 }
 table {
   width: 100%;
+}
+
+
+.checkout {
+  height: 50 px;
+  width: 300px;
+  padding: 7px;
+  background-color: lightblue;
+  margin-bottom: 2px;
 }
 
 .bookImage {
@@ -125,8 +135,15 @@ nav li a:hover {
 }
 
 #product-description {
+
   width: 500px;
   margin-right: 45px;
+
+  position: absolute;
+  top: 8em;
+  right: 4em;
+
+
 }
 
 #product-image {

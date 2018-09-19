@@ -8,6 +8,8 @@ import {
   removeAllItemsInCart
 } from '../reducers/cart'
 import {postNewOrder} from '../reducers/orders'
+import {Elements, StripeProvider} from 'react-stripe-elements'
+import Checkout from './Checkout'
 
 class UserCart extends Component {
   constructor() {
@@ -44,11 +46,16 @@ class UserCart extends Component {
 
   render() {
     const books = this.props.books
-    // const noDuplicates = books.filter(book=> )
-    console.log('BOOKS===>', books)
     if (books.length > 0) {
       return (
         <div>
+          <StripeProvider apiKey="pk_test_uNT8KotXPkQTYMWkg7F1q2C3">
+            <div>
+              <Elements>
+                <Checkout books={books} email={this.props.email} />
+              </Elements>
+            </div>
+          </StripeProvider>
           <button type="submit" onClick={() => this.handleCheckout(books)}>
             Checkout
           </button>
@@ -103,7 +110,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  books: state.cart.books
+  books: state.cart.books,
+  email: state.user.email
 })
 
 export default withRouter(

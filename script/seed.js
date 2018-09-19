@@ -753,6 +753,7 @@ const seed = async () => {
     })
   )
   console.log('seeding success!')
+  db.close()
 }
 
 // We've separated the `seed` function from running the seed.
