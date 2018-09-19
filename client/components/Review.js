@@ -35,7 +35,7 @@ class Review extends React.Component {
             {reviews && reviews.length ? (
               reviews.map(review => {
                 return (
-                  <div key={review.id}>
+                  <div id="stars-and-text" key={review.id}>
                     <p id="review-text">"{review.text}"</p>
                     <StarRatings
                       starEmptyColor="red"
