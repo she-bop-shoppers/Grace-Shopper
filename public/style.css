@@ -139,7 +139,7 @@ nav li a:hover {
 }
 
 #product-image {
-  margin: 45px 200px;
+  margin: 2em 4.5em;
 }
 
 button {
@@ -159,11 +159,16 @@ button:hover {
   -o-transform: scale(1.2);
 }
 
+#stars-and-text {
+  margin-left: 3em;
+}
+
 #review-text {
-  width: 900px;
+  width: 400px;
 }
 
 textarea {
+  display: block;
   width: 900px;
   height: 20px;
   margin: 0 0 50px 20px;
@@ -208,3 +213,4 @@ blockquote {
 #linkNoMarg {
   margin: 0px;
 }
+

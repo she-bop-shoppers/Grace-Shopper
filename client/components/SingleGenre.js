@@ -11,7 +11,6 @@ class SingleGenre extends React.Component {
   }
 
   render() {
-    console.log('Single genre: ', this.props.oneGenre.books)
     return (
       <div>
         <h1>{this.props.oneGenre.name}</h1>

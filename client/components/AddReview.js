@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-//import ReviewForm from './ReviewForm'
 import {postOneReview} from '../reducers/review'
 import {withRouter} from 'react-router-dom'
 import StarRatings from 'react-star-ratings'
@@ -30,8 +29,6 @@ class AddReview extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log('Props: ', this.props.book)
-
     const bookId = this.props.book.id
     const reviewDate = Date.now()
     const newReview = this.state.review
@@ -68,6 +65,7 @@ class AddReview extends React.Component {
                 <br />
                 <StarRatings
                   rating={this.state.rating}
+                  id="star-ratings"
                   starRatedColor="red"
                   starEmptyColor="coral"
                   starDimension="25px"
