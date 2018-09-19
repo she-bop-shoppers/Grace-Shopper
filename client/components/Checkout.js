@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
 // import Stripe from 'stripe';
-
+const port = 'http://localhost:8080'
 const CURRENCY = 'USD'
 
 //const fromEuroToCent = (amount) => amount * 100;
@@ -17,7 +17,7 @@ const errorPayment = data => {
 
 const onToken = (amount, email) => token =>
   axios
-    .post('http://localhost:8080', {
+    .post('https://bookhaven.herokuapp.com', {
       source: token.id,
       currency: CURRENCY,
       email: email,
