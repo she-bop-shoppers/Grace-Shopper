@@ -32,7 +32,7 @@ class AllGenres extends React.Component {
       })
     }
     if (!state.reRender) {
-      his.setState({
+      this.setState({
         reRender: true
       })
     }

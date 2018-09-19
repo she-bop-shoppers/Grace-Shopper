@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {
   removeFromCart,
@@ -97,7 +97,16 @@ class UserCart extends Component {
             })}
         </div>
       )
-    } else return <div>You do not have any books in your cart ;)</div>
+    } else
+      return (
+        <div>
+          Oh no! Your cart is currently empty...click{' '}
+          <Link className="linkNoMarg" to="/books">
+            here
+          </Link>{' '}
+          to browse for your next read.
+        </div>
+      )
   }
 }
 

@@ -52,7 +52,7 @@ class AllBooks extends Component {
 
     return (
       <div>
-        <h1>BOOKS</h1>
+        <h1 id="logo">BOOK HAVEN</h1>
         <BooksQuery />
         {isAdmin ? (
           <div>

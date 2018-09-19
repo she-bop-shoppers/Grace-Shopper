@@ -90,6 +90,7 @@ class BooksQuery extends React.Component {
             {/* <div className="search-select"> */}
             <InputLabel htmlFor="search-select" />
             <Select
+              disableUnderline={true}
               style={{padding: 0}}
               // id="search-select"
               value={this.state.type}
@@ -112,7 +113,7 @@ class BooksQuery extends React.Component {
               type="text"
               id="search-input"
               name="searchedText"
-              placeholder="Search"
+              placeholder="Search for your next distraction"
               margin="normal"
               value={this.state.value}
               onChange={this.handleChange}

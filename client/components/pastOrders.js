@@ -17,10 +17,13 @@ class PastOrders extends Component {
           orders.filter(order => order.userId === userId).map(order => {
             return (
               <div className="column" key={order.id}>
-                <h1>
-                  Order Placed: {order.date} Total: ${order.totalPrice}
-                </h1>
-                <Link to={`/orders/${order.id}`}>Order Details</Link>{' '}
+                <ul>
+                  {' '}
+                  <h2> Order #{order.id}</h2>
+                  <li> Date: {order.date}</li>{' '}
+                  <li> Total: ${order.totalPrice}</li>
+                  <Link to={`/orders/${order.id}`}>Order Details</Link>{' '}
+                </ul>
               </div>
             )
           })}
