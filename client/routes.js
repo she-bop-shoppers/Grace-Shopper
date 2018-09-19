@@ -19,6 +19,7 @@ import Inventory from './components/inventory'
 import ConnectedAllUsers from './components/users'
 import SingleOrder from './components/order-details'
 import Admin from './components/admin'
+import UpdateUser from './components/update-user'
 import {me} from './reducers/user'
 
 /**
@@ -43,7 +44,7 @@ class Routes extends Component {
         <Route exact path="/cart" component={UserCart} />
         <Route path="/authors/:authorId" component={SingleAuthor} />
         <Route exact path="/genres" component={AllGenres} />
-        <Route path="/genres/:genreId" component={SingleGenre} />
+        <Route exact path="/genres/:genreId" component={SingleGenre} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -54,6 +55,7 @@ class Routes extends Component {
             <Route path="/customerorders" component={AllOrders} />
             <Route path="/inventory" component={Inventory} />
             <Route path="/users" component={ConnectedAllUsers} />
+            <Route path="/updateUser/:id" component={UpdateUser} />
             <Route path="/addUser" component={AddUser} />
             <Route path="/admin" component={Admin} />
             <Route

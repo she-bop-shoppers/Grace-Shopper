@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {getBooks, removeABook} from '../reducers/book'
 import BooksQuery from './books-query'
 import {Grid, Card, Button, CardMedia} from '@material-ui/core'
@@ -52,7 +52,7 @@ class AllBooks extends Component {
 
     return (
       <div>
-        <h1>BOOKS</h1>
+        <h1 id="logo">BOOK HAVEN</h1>
         <BooksQuery />
         {isAdmin ? (
           <div>
@@ -125,6 +125,8 @@ const mapStateToProps = state => {
   return {books: state.books.allBooks, isAdmin: state.user.isAdmin}
 }
 
-const ConnectedAllBooks = connect(mapStateToProps, mapDispatchToProps)(AllBooks)
+const ConnectedAllBooks = withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(AllBooks)
+)
 
 export default ConnectedAllBooks

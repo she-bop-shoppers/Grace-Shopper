@@ -32,3 +32,14 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
+router.put('/:id', async (req, res, next) => {
+  const id = req.params.id
+  const user = await User.findOne({
+    where: {
+      id
+    }
+  })
+  const updatedUser = await user.update(req.body)
+  res.json(updatedUser)
+})

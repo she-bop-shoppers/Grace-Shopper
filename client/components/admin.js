@@ -11,7 +11,8 @@ const styles = {
     color: 'white',
     textAlign: 'center',
     padding: '14px 16px',
-    fontFamily: 'sans-serif',
+    fontFamily: 'Lato',
+    fontSize: '1rem',
     textTransform: 'capitalize'
   }
 }

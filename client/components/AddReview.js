@@ -81,7 +81,7 @@ class AddReview extends React.Component {
                   value={this.state.review}
                 />
               </div>
-              <button type="submit">Submit</button>
+              <button type="submit">Add Review</button>
               <br />
             </section>
           </form>

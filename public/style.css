@@ -70,7 +70,6 @@ table {
   width: 100%;
 }
 
-
 .checkout {
   height: 50 px;
   width: 300px;
@@ -135,15 +134,8 @@ nav li a:hover {
 }
 
 #product-description {
-
-  width: 500px;
-  margin-right: 45px;
-
-  position: absolute;
-  top: 8em;
-  right: 4em;
-
-
+  width: 20em;
+  margin-right: 4.5em;
 }
 
 #product-image {
@@ -190,4 +182,35 @@ textarea {
   margin-bottom: -10px;
 }
 
-/* CART CSS */
+blockquote {
+  border-radius: 3px;
+  position: relative; /*  <--- */
+  font-style: italic;
+  text-align: center;
+  padding: 1rem 1.2rem;
+  width: 80%; /* create space for the quotes */
+  color: #4a4a4a;
+  margin: 1rem auto 2rem;
+  color: #4a4a4a;
+  background: #e8e8e8;
+  font-size: 5em;
+}
+
+#logo {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 100px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #ededed 7px 4px 0;
+  position: relative;
+  text-align: center;
+}
+
+#linkNoMarg {
+  margin: 0px;
+}
+
