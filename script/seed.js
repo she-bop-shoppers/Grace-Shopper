@@ -526,10 +526,11 @@ const users = [
   {
     firstName: 'Jillian',
     lastName: 'Mclaren',
-    email: 'absolutely@fabulous.com',
+    email: 'jillian.mclaren@email.com',
     isAdmin: true,
     isActive: true,
     userName: 'Jillian',
+    password: 'hello',
     date: Date.now()
   },
   {
