@@ -37,10 +37,13 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const cart = req.body
-    const user = await User.create({email: 'guest@user.com'})
-    let userId = user.id
+    let user
+    let userId
     if (req.user) {
       userId = req.user.id
+    } else {
+      user = await User.create({email: 'guest@user.com'})
+      userId = user.id
     }
     console.log(userId)
     let price = 0
